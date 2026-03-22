@@ -1,0 +1,19 @@
+﻿# Reactive Programming Challenges
+
+This folder provides optional challenge prompts aligned to the lesson topic.
+
+## Challenge List
+
+- 01-challenge/
+- 02-challenge/
+- 03-challenge/
+
+Use the existing lesson files for implementation and validation:
+
+- 06-Reactive-Programming.js
+- 06-Reactive-Programming.md
+- 06-Reactive-Programming.test.js
+
+## Run
+
+npm run check 07-Functional-Architecture/06-Reactive-Programming
