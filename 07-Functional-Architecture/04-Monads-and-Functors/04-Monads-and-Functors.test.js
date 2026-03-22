@@ -20,11 +20,25 @@ describe('Monads-and-Functors', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveMonadsAndFunctors([NaN, -0, '0'])).toEqual({
+    expect(solveMonadsAndFunctors([NaN, -0, "0"])).toEqual({
       topic: 'Monads-and-Functors',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveMonadsAndFunctors(null)).toThrow('values must be an array');
+    expect(() => solveMonadsAndFunctors('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveMonadsAndFunctors(input);
+
+    expect(input).toEqual(clone);
   });
 });
