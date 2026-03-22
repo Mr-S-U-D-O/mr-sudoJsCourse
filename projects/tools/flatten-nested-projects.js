@@ -54,11 +54,15 @@ function flattenNestedDirectories() {
 
   for (const level of levels) {
     const levelPath = path.join(projectsRoot, level);
-    const projectDirs = listDirectories(levelPath).filter((d) => /^\d{2}-/.test(d));
+    const projectDirs = listDirectories(levelPath).filter((d) =>
+      /^\d{2}-/.test(d),
+    );
 
     for (const projectDir of projectDirs) {
       const projectPath = path.join(levelPath, projectDir);
-      const nestedDirs = listDirectories(projectPath).filter((d) => /^\d{2}-/.test(d));
+      const nestedDirs = listDirectories(projectPath).filter((d) =>
+        /^\d{2}-/.test(d),
+      );
 
       for (const nestedDir of nestedDirs) {
         report.nestedDirsFound += 1;
