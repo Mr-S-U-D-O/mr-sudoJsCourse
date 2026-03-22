@@ -7,24 +7,7 @@
  * @throws {TypeError} When values is not an array.
  */
 function solveFunctionsBasics(values) {
-  if (!Array.isArray(values)) {
-    throw new TypeError('values must be an array');
-  }
-
-  let truthyCount = 0;
-
-  for (const value of values) {
-    if (Boolean(value)) {
-      truthyCount += 1;
-    }
-  }
-
-  return {
-    topic: 'Functions-Basics',
-    total: values.length,
-    truthyCount,
-    falsyCount: values.length - truthyCount,
-  };
+  // TODO: Implement your solution
 }
 
 module.exports = solveFunctionsBasics;
