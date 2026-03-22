@@ -22,7 +22,7 @@ describe('Type-Coercion', () => {
   test('Trap: handles coercion edge values', () => {
     expect(solveTypeCoercion([0, false, "0", [], null])).toEqual({
       topic: 'Type-Coercion',
-      total: 3,
+      total: 5,
       truthyCount: 2,
       falsyCount: 3,
     });
