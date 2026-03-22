@@ -58,9 +58,15 @@ For fundamentals, this module is now **teach-first**:
 
 ## Optional Challenge Commands
 
-- `npm run check 01-Easy-Fundamentals/01-Variables/01-var/challenges/01-fill-blanks.test.js`
-- `npm run check 01-Easy-Fundamentals/01-Variables/02-let/challenges/01-fill-blanks.test.js`
-- `npm run check 01-Easy-Fundamentals/01-Variables/03-const/challenges/01-fill-blanks.test.js`
+- `npm run check 01-Easy-Fundamentals/01-Variables/01-var/challenges/01-challenge/challenge.test.js`
+- `npm run check 01-Easy-Fundamentals/01-Variables/01-var/challenges/02-challenge/challenge.test.js`
+- `npm run check 01-Easy-Fundamentals/01-Variables/01-var/challenges/03-challenge/challenge.test.js`
+- `npm run check 01-Easy-Fundamentals/01-Variables/02-let/challenges/01-challenge/challenge.test.js`
+- `npm run check 01-Easy-Fundamentals/01-Variables/02-let/challenges/02-challenge/challenge.test.js`
+- `npm run check 01-Easy-Fundamentals/01-Variables/02-let/challenges/03-challenge/challenge.test.js`
+- `npm run check 01-Easy-Fundamentals/01-Variables/03-const/challenges/01-challenge/challenge.test.js`
+- `npm run check 01-Easy-Fundamentals/01-Variables/03-const/challenges/02-challenge/challenge.test.js`
+- `npm run check 01-Easy-Fundamentals/01-Variables/03-const/challenges/03-challenge/challenge.test.js`
 
 ## Progression to Advanced Topics
 
