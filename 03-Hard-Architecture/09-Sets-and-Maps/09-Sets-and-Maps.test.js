@@ -19,12 +19,26 @@ describe('Sets-and-Maps', () => {
     });
   });
 
-  test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveSetsAndMaps([NaN, -0, '0'])).toEqual({
+  test('Trap: empty Set and Map are still truthy objects', () => {
+    expect(solveSetsAndMaps([new Set(), new Map(), 0])).toEqual({
       topic: 'Sets-and-Maps',
       total: 3,
-      truthyCount: 1,
-      falsyCount: 2,
+      truthyCount: 2,
+      falsyCount: 1,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveSetsAndMaps(null)).toThrow('values must be an array');
+    expect(() => solveSetsAndMaps('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveSetsAndMaps(input);
+
+    expect(input).toEqual(clone);
   });
 });
