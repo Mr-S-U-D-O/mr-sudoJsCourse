@@ -3,6 +3,7 @@
 These are full-blown JavaScript projects, not quick tasks.
 
 Each project is designed to do two things at once:
+
 - push students to figure out implementation details independently;
 - produce a real, presentable portfolio artifact.
 
@@ -27,6 +28,7 @@ Each project is designed to do two things at once:
 ## Completion Standard (Portfolio Ready)
 
 A project is considered complete only when it includes:
+
 - a working implementation;
 - meaningful test coverage;
 - architecture notes in `docs/`;
