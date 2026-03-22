@@ -40,3 +40,22 @@ npm run check 01-Easy-Fundamentals/02-Data-Types
 - You Don't Know JS Yet: https://github.com/getify/You-Dont-Know-JS
 - Node.js Learn: https://nodejs.org/en/learn
 - TC39 Proposals: https://github.com/tc39/proposals
+
+## Automated Contribution Splits
+Use these commands to auto-create many small commits from your current changes.
+
+- Per-file commits + push: npm run contrib:file
+- Per-lesson commits + push: npm run contrib:lesson
+- Per-track commits + push: npm run contrib:track
+- Local only (no push): npm run contrib:file:local
+
+Advanced usage:
+- node scripts/split-commits.js --group file --message "Course update" --push
+- node scripts/split-commits.js --group lesson --message "Lesson batch"
+- node scripts/split-commits.js --group file --include-untracked --push
+
+Notes:
+- Group modes: file, lesson, track.
+- Default commit prefix: Auto contribution.
+- Untracked files are ignored unless --include-untracked is passed.
+- node_modules is always ignored.
