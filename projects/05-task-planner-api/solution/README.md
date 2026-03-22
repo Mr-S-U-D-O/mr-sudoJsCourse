@@ -1,8 +1,8 @@
-# Solution Folder
+# Solution Notes
 
-Put complete reference implementation files for this project here.
+This solution intentionally stays framework-agnostic.
 
-Rules:
-- keep final answer code only in this folder;
-- do not keep learner starter code in here;
-- include a short solution-notes.md describing tradeoffs.
+You can wire these methods into:
+- Express route handlers,
+- Fastify handlers,
+- serverless functions.

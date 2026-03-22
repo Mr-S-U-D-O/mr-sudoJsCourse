@@ -1,29 +1,25 @@
-# Architecture Notes Template
+# Ticket System Architecture Notes
 
-## Context
+## Scope
 
-What product/system does this logic support?
+Ticket lifecycle, assignment, SLA, and reporting in a domain service layer.
 
-## Requirements
+## Core Components
 
-List critical functional and non-functional requirements.
+- ticket aggregate
+- transition guard rules
+- SLA calculator
+- timeline/event store
+- metrics service
 
-## Domain Model
+## Invariants
 
-List main entities, fields, and invariants.
+- ticket has one valid status
+- invalid transition is rejected
+- timeline is append-only
 
-## Module Boundaries
+## Next Iterations
 
-Document how src/ is split and why.
-
-## Error Handling Strategy
-
-How are expected vs unexpected errors represented?
-
-## Testing Strategy
-
-What is unit-tested, integration-tested, and contract-tested?
-
-## Tradeoffs
-
-What did you optimize for and what did you intentionally defer?
+- queue routing algorithms
+- business-hour calendar support
+- notifications/webhooks

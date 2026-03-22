@@ -1,60 +1,27 @@
 # Project 05: Task Planner API
 
-## What You Are Building
+## What This Project Is
 
-A production-style REST API for personal/team task planning, with authentication, persistence, and auditability.
+You are building the core logic of a production-style task planner API with authentication and access control.
 
-## Why This Is Real World
+## Why This Project
 
-Building APIs is one of the highest-signal backend skills for recruiters and real product work.
+APIs are high-signal portfolio artifacts and mirror real backend work used by teams and recruiters.
 
-## Skills You Should Know Before Starting
+## What You Should Know First
 
-- Node.js and Express fundamentals
-- HTTP methods and status codes
-- JSON schema validation
-- Basic authentication and authorization
-- Integration testing
+- JavaScript async programming
+- HTTP request/response concepts
+- authentication basics
+- data validation patterns
 
-## Project Goals
+## Rules
 
-- Implement CRUD for projects and tasks
-- Add user accounts and auth tokens
-- Support filtering, sorting, and pagination
-- Add due-date reminders and status tracking
-- Produce OpenAPI documentation
+- validate all inputs;
+- separate auth from domain logic;
+- enforce ownership/permissions;
+- keep storage abstraction isolated.
 
-## Best Practices
+## Motivation
 
-- Keep route handlers thin; use service layer for business logic
-- Validate all request payloads
-- Centralize error handling
-- Separate data models from transport concerns
-- Add integration tests for API workflows
-
-## Step-by-Step Build Guide
-
-1. Define API contract and data models.
-2. Set up Express app structure.
-3. Implement auth flows (register/login/token verification).
-4. Implement project and task CRUD endpoints.
-5. Add filters, pagination, and sorting.
-6. Add validation middleware for request bodies and query params.
-7. Implement permission checks (owner/team roles).
-8. Add activity logging and audit fields.
-9. Add OpenAPI docs and example payloads.
-10. Add integration tests with a test database.
-11. Prepare deployment-ready config and environment docs.
-
-## Deliverables
-
-- API code in src/
-- Endpoint tests in tests/
-- Architecture and API docs in docs/
-- Full reference implementation in solution/
-
-## Suggested Extensions
-
-- Webhooks
-- Rate limiting and API keys
-- Background jobs for reminders
+This project demonstrates practical backend architecture and operational thinking.

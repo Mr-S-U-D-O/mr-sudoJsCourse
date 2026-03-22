@@ -1,11 +1,24 @@
 /**
- * Agent Workflow Orchestrator starter.
- * Build a robust orchestration runtime for multi-step agent workflows.
+ * Student starter scaffold.
+ * Goal: build a workflow orchestrator runtime.
  */
-function createOrchestrator(config = {}) {
-  throw new Error("TODO: implement createOrchestrator");
+
+async function runWorkflow(workflow, handlers) {
+  // TODO: validate workflow schema and execute nodes by dependencies
+  if (!workflow || typeof workflow !== "object") {
+    throw new TypeError("workflow must be an object");
+  }
+
+  if (!handlers || typeof handlers !== "object") {
+    throw new TypeError("handlers must be an object");
+  }
+
+  return {
+    status: "todo",
+    steps: [],
+  };
 }
 
 module.exports = {
-  createOrchestrator,
+  runWorkflow,
 };

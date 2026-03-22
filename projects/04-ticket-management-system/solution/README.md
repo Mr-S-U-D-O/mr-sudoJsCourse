@@ -1,8 +1,8 @@
-# Solution Folder
+# Solution Notes
 
-Put complete reference implementation files for this project here.
+This solution models tickets as an aggregate with:
+- transition guards;
+- SLA due date evaluation;
+- timeline events for auditing.
 
-Rules:
-- keep final answer code only in this folder;
-- do not keep learner starter code in here;
-- include a short solution-notes.md describing tradeoffs.
+Use it after implementing your own status machine.

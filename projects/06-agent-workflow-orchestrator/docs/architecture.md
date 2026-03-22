@@ -1,29 +1,25 @@
-# Architecture Notes Template
+# Agent Orchestrator Architecture Notes
 
-## Context
+## Scope
 
-What product/system does this logic support?
+Workflow schema, scheduler, executor, retry policy, and runtime state logging.
 
-## Requirements
+## Components
 
-List critical functional and non-functional requirements.
+- schema validator
+- dependency scheduler
+- node executor
+- retry manager
+- run-state store
 
-## Domain Model
+## Reliability Principles
 
-List main entities, fields, and invariants.
+- fail fast on invalid graph definitions
+- make retries explicit and bounded
+- capture reason metadata for all failures
 
-## Module Boundaries
+## Next Iterations
 
-Document how src/ is split and why.
-
-## Error Handling Strategy
-
-How are expected vs unexpected errors represented?
-
-## Testing Strategy
-
-What is unit-tested, integration-tested, and contract-tested?
-
-## Tradeoffs
-
-What did you optimize for and what did you intentionally defer?
+- parallel branch execution
+- human approval nodes
+- pluggable persistence backend

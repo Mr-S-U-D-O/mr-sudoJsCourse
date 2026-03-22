@@ -1,29 +1,24 @@
-# Architecture Notes Template
+# Task Planner API Architecture Notes
 
-## Context
+## Scope
 
-What product/system does this logic support?
+Auth, projects, tasks, filtering, pagination, ownership checks.
 
-## Requirements
+## Layers
 
-List critical functional and non-functional requirements.
+- route/controller layer
+- service/domain layer
+- repository/storage layer
+- auth/validation middleware
 
-## Domain Model
+## Security Notes
 
-List main entities, fields, and invariants.
+- never trust client identity without token verification
+- validate all user-provided payload fields
+- sanitize sort/filter inputs
 
-## Module Boundaries
+## Next Iterations
 
-Document how src/ is split and why.
-
-## Error Handling Strategy
-
-How are expected vs unexpected errors represented?
-
-## Testing Strategy
-
-What is unit-tested, integration-tested, and contract-tested?
-
-## Tradeoffs
-
-What did you optimize for and what did you intentionally defer?
+- refresh tokens
+- rate limiting
+- audit webhooks
