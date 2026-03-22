@@ -1,17 +1,9 @@
 # 02-Intermediate-Core
 
-## Difficulty Profile
-- Difficulty: Lower-Intermediate
-- Goal: connect syntax with predictable behavior in production code
+## Track Goal
+Build practical confidence in Intermediate Core through implementation-first exercises.
 
-## Recommended Learning Loop
-1. Start with one topic only.
-2. Read the lesson markdown before coding.
-3. Implement the function from scratch.
-4. Run: npm run check 02-Intermediate-Core/<topic>
-5. Review trap behavior and summarize what surprised you.
-
-## Topics
+## Lessons
 - 01-Scope-and-Hoisting
 - 02-Arrow-Functions
 - 03-Template-Literals
@@ -22,5 +14,15 @@
 - 08-Error-Handling
 - 09-Type-Coercion
 
-## Completion Standard
-You finish this level when you can explain every trap test without reading notes.
+## Study Rhythm
+1. Complete one lesson per session.
+2. Keep each session under 45 minutes.
+3. Re-run previous trap tests once per week.
+4. Capture one real-world use case per topic.
+
+## Learning Resources
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript
+- https://javascript.info/
+- https://exploringjs.com/
+- https://github.com/getify/You-Dont-Know-JS
+- https://nodejs.org/en/learn
