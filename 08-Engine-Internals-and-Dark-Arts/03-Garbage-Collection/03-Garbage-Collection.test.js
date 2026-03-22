@@ -20,11 +20,25 @@ describe('Garbage-Collection', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveGarbageCollection([NaN, -0, '0'])).toEqual({
+    expect(solveGarbageCollection([NaN, -0, "0"])).toEqual({
       topic: 'Garbage-Collection',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveGarbageCollection(null)).toThrow('values must be an array');
+    expect(() => solveGarbageCollection('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveGarbageCollection(input);
+
+    expect(input).toEqual(clone);
   });
 });
