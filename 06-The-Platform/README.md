@@ -1,4 +1,4 @@
-# 06-The-Platform
+﻿# 06-The-Platform
 
 ## Track Goal
 
@@ -62,3 +62,19 @@ See ../docs/PROJECT-LADDER.md for complete project expectations.
 - https://exploringjs.com/
 - https://github.com/getify/You-Dont-Know-JS
 - https://nodejs.org/en/learn
+
+## Teach-First Lesson Flow
+
+For each lesson folder, start in lessons/README.md and follow:
+
+1. 01-core.md
+2. 02-visualizations.md
+3. 03-resources.md
+4. 04-common-mistakes.md
+5. 05-mini-drills.md
+6. 06-real-world-patterns.md
+7. 07-self-quiz.md
+8. 08-cheat-sheet.md
+
+Implementation and tests remain available after the lesson flow for optional reinforcement.
+
