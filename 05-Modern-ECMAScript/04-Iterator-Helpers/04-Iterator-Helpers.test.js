@@ -20,11 +20,25 @@ describe('Iterator-Helpers', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveIteratorHelpers([NaN, -0, '0'])).toEqual({
+    expect(solveIteratorHelpers([NaN, -0, "0"])).toEqual({
       topic: 'Iterator-Helpers',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveIteratorHelpers(null)).toThrow('values must be an array');
+    expect(() => solveIteratorHelpers('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveIteratorHelpers(input);
+
+    expect(input).toEqual(clone);
   });
 });
