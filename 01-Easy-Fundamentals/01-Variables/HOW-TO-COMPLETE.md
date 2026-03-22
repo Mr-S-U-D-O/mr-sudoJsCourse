@@ -17,7 +17,12 @@ This fundamentals module is now **teach-first**:
 1. Open [01-var/lessons/01-core.md](01-var/lessons/01-core.md)
 2. Study [01-var/lessons/02-visualizations.md](01-var/lessons/02-visualizations.md)
 3. Use [01-var/lessons/03-resources.md](01-var/lessons/03-resources.md)
-4. Optional practice in [01-var/challenges/01-fill-blanks.js](01-var/challenges/01-fill-blanks.js)
+4. Review [01-var/lessons/04-common-mistakes.md](01-var/lessons/04-common-mistakes.md)
+5. Practice [01-var/lessons/05-mini-drills.md](01-var/lessons/05-mini-drills.md)
+6. Apply [01-var/lessons/06-real-world-patterns.md](01-var/lessons/06-real-world-patterns.md)
+7. Check yourself with [01-var/lessons/07-self-quiz.md](01-var/lessons/07-self-quiz.md)
+8. Keep [01-var/lessons/08-cheat-sheet.md](01-var/lessons/08-cheat-sheet.md) as your quick reference
+9. Optional practice in [01-var/challenges/01-fill-blanks.js](01-var/challenges/01-fill-blanks.js)
 
 ### Lesson 2: let
 
@@ -26,6 +31,11 @@ Repeat the same flow in:
 - [02-let/lessons/01-core.md](02-let/lessons/01-core.md)
 - [02-let/lessons/02-visualizations.md](02-let/lessons/02-visualizations.md)
 - [02-let/lessons/03-resources.md](02-let/lessons/03-resources.md)
+- [02-let/lessons/04-common-mistakes.md](02-let/lessons/04-common-mistakes.md)
+- [02-let/lessons/05-mini-drills.md](02-let/lessons/05-mini-drills.md)
+- [02-let/lessons/06-real-world-patterns.md](02-let/lessons/06-real-world-patterns.md)
+- [02-let/lessons/07-self-quiz.md](02-let/lessons/07-self-quiz.md)
+- [02-let/lessons/08-cheat-sheet.md](02-let/lessons/08-cheat-sheet.md)
 - Optional challenge: [02-let/challenges/01-fill-blanks.js](02-let/challenges/01-fill-blanks.js)
 
 Focus on block scope and Temporal Dead Zone.
@@ -37,6 +47,11 @@ Repeat the same flow in:
 - [03-const/lessons/01-core.md](03-const/lessons/01-core.md)
 - [03-const/lessons/02-visualizations.md](03-const/lessons/02-visualizations.md)
 - [03-const/lessons/03-resources.md](03-const/lessons/03-resources.md)
+- [03-const/lessons/04-common-mistakes.md](03-const/lessons/04-common-mistakes.md)
+- [03-const/lessons/05-mini-drills.md](03-const/lessons/05-mini-drills.md)
+- [03-const/lessons/06-real-world-patterns.md](03-const/lessons/06-real-world-patterns.md)
+- [03-const/lessons/07-self-quiz.md](03-const/lessons/07-self-quiz.md)
+- [03-const/lessons/08-cheat-sheet.md](03-const/lessons/08-cheat-sheet.md)
 - Optional challenge: [03-const/challenges/01-fill-blanks.js](03-const/challenges/01-fill-blanks.js)
 
 Focus on binding vs value (what `const` protects).

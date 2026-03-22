@@ -53,8 +53,13 @@ For fundamentals, this module is now **teach-first**:
 2. Read `lessons/01-core.md`.
 3. Read `lessons/02-visualizations.md`.
 4. Use `lessons/03-resources.md` for extra study.
-5. (Optional) Complete `challenges/01-fill-blanks.js`.
-6. (Optional) Run the challenge test.
+5. Study `lessons/04-common-mistakes.md`.
+6. Complete `lessons/05-mini-drills.md`.
+7. Read `lessons/06-real-world-patterns.md`.
+8. Take `lessons/07-self-quiz.md`.
+9. Keep `lessons/08-cheat-sheet.md` nearby while coding.
+10. (Optional) Complete `challenges/01-fill-blanks.js`.
+11. (Optional) Run the challenge test.
 
 ## Optional Challenge Commands
 
