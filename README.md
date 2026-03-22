@@ -53,10 +53,9 @@ Advanced usage:
 - node scripts/split-commits.js --group file --message "Course update" --push
 - node scripts/split-commits.js --group lesson --message "Lesson batch"
 - node scripts/split-commits.js --group file --include-untracked --push
-- node scripts/split-commits.js --group lesson --include-untracked --include-node-modules --push
 
 Notes:
 - Group modes: file, lesson, track.
 - Default commit prefix: Auto contribution.
 - Untracked files are ignored unless --include-untracked is passed.
-- node_modules is ignored by default. Add --include-node-modules to include it intentionally.
+- node_modules is always ignored by automation so pushes stay code-only.
