@@ -1,17 +1,9 @@
 # 07-Functional-Architecture
 
-## Difficulty Profile
-- Difficulty: Expert
-- Goal: design composable and testable functional systems
+## Track Goal
+Build practical confidence in Functional Architecture through implementation-first exercises.
 
-## Recommended Learning Loop
-1. Start with one topic only.
-2. Read the lesson markdown before coding.
-3. Implement the function from scratch.
-4. Run: npm run check 07-Functional-Architecture/<topic>
-5. Review trap behavior and summarize what surprised you.
-
-## Topics
+## Lessons
 - 01-Pure-Functions
 - 02-Currying-and-Partial-App
 - 03-Point-Free-Style
@@ -20,5 +12,15 @@
 - 06-Reactive-Programming
 - 07-Clean-Architecture
 
-## Completion Standard
-You finish this level when you can explain every trap test without reading notes.
+## Study Rhythm
+1. Complete one lesson per session.
+2. Keep each session under 45 minutes.
+3. Re-run previous trap tests once per week.
+4. Capture one real-world use case per topic.
+
+## Learning Resources
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript
+- https://javascript.info/
+- https://exploringjs.com/
+- https://github.com/getify/You-Dont-Know-JS
+- https://nodejs.org/en/learn
