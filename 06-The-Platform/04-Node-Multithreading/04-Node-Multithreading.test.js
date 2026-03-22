@@ -20,11 +20,25 @@ describe('Node-Multithreading', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveNodeMultithreading([NaN, -0, '0'])).toEqual({
+    expect(solveNodeMultithreading([NaN, -0, "0"])).toEqual({
       topic: 'Node-Multithreading',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveNodeMultithreading(null)).toThrow('values must be an array');
+    expect(() => solveNodeMultithreading('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveNodeMultithreading(input);
+
+    expect(input).toEqual(clone);
   });
 });
