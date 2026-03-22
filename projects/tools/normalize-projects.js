@@ -4,7 +4,12 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const levelDirs = ["01-beginner", "02-intermediate", "03-advanced", "04-expert"];
+const levelDirs = [
+  "01-beginner",
+  "02-intermediate",
+  "03-advanced",
+  "04-expert",
+];
 
 const requiredDirectories = ["src", "solution", "docs", "data"];
 const requiredFiles = [
@@ -255,8 +260,11 @@ function copyFileIfMissing(fromPath, toPath) {
 }
 
 function maybeBackfillFromNested(projectPath) {
-  const nestedCandidates = readDirNames(projectPath).filter((d) => /^\d{2}-/.test(d));
-  if (nestedCandidates.length !== 1) return { backfilled: 0, nestedCandidate: null };
+  const nestedCandidates = readDirNames(projectPath).filter((d) =>
+    /^\d{2}-/.test(d),
+  );
+  if (nestedCandidates.length !== 1)
+    return { backfilled: 0, nestedCandidate: null };
 
   const nestedName = nestedCandidates[0];
   const nestedPath = path.join(projectPath, nestedName);
@@ -291,13 +299,17 @@ function run() {
 
   for (const levelDir of levelDirs) {
     const levelPath = path.join(root, levelDir);
-    const projectDirs = readDirNames(levelPath).filter((d) => /^\d{2}-/.test(d));
+    const projectDirs = readDirNames(levelPath).filter((d) =>
+      /^\d{2}-/.test(d),
+    );
 
     projectDirs.forEach((projectDir, index) => {
       const actual = parseProjectNumber(projectDir);
       const expected = index + 1;
       if (actual !== expected) {
-        report.numberingIssues.push(`${levelDir}/${projectDir} expected ${String(expected).padStart(2, "0")}`);
+        report.numberingIssues.push(
+          `${levelDir}/${projectDir} expected ${String(expected).padStart(2, "0")}`,
+        );
       }
     });
 
@@ -305,9 +317,13 @@ function run() {
       report.projects += 1;
       const projectPath = path.join(levelPath, projectDir);
 
-      const nestedDirs = readDirNames(projectPath).filter((d) => /^\d{2}-/.test(d));
+      const nestedDirs = readDirNames(projectPath).filter((d) =>
+        /^\d{2}-/.test(d),
+      );
       if (nestedDirs.length > 0) {
-        report.nestedNumberedDirs.push(`${levelDir}/${projectDir} -> ${nestedDirs.join(", ")}`);
+        report.nestedNumberedDirs.push(
+          `${levelDir}/${projectDir} -> ${nestedDirs.join(", ")}`,
+        );
       }
 
       const nestedResult = maybeBackfillFromNested(projectPath);
@@ -347,7 +363,9 @@ function run() {
   console.log(`Files created: ${report.filesCreated}`);
   console.log(`Empty files populated: ${report.filesPopulated}`);
   console.log(`Existing files kept: ${report.filesKept}`);
-  console.log(`Files backfilled from nested project dirs: ${report.backfilledFromNested}`);
+  console.log(
+    `Files backfilled from nested project dirs: ${report.backfilledFromNested}`,
+  );
   console.log("");
 
   if (report.numberingIssues.length > 0) {

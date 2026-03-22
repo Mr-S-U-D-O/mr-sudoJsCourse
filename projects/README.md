@@ -129,12 +129,14 @@ project-name/
 - [Learning Playbook](./PROJECTS-PLAYBOOK.md): practical weekly plans, quality rubric, interview prep, and extension prompts.
 - [Structure Audit Script](./tools/audit-projects.js): scans every project for missing standard files and folder anomalies.
 - [Normalization Script](./tools/normalize-projects.js): creates any missing standard files and fills empty files with starter guidance.
+- [Flatten Nested Script](./tools/flatten-nested-projects.js): removes legacy nested numbered project folders after safely promoting missing files.
 - [Beginner Level Guide](./01-beginner/README.md): onboarding path for first-time learners.
 
 ### Run The Structure Audit
 
 ```bash
 node ./projects/tools/normalize-projects.js
+node ./projects/tools/flatten-nested-projects.js
 node ./projects/tools/audit-projects.js
 node ./projects/tools/audit-projects.js --summary
 node ./projects/tools/audit-projects.js --summary --fail-on-issues
