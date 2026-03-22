@@ -185,7 +185,7 @@ function createProject(initialState = {}) {
       return { ...state };
     },
     describe() {
-      return `${metadata.project} (${metadata.level})`;
+      return metadata.project + " (" + metadata.level + ")";
     },
   };
 }

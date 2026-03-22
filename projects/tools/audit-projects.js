@@ -41,9 +41,13 @@ function findProjectDirectories(levelPath) {
   return listDirectories(levelPath).filter((name) => /^\d{2}-/.test(name));
 }
 
-function detectNestedDuplicateDir(projectPath, projectDirName) {
-  const nestedPath = path.join(projectPath, projectDirName);
-  return isDirectory(nestedPath);
+function parseProjectNumber(projectDirName) {
+  const match = projectDirName.match(/^(\d{2})-/);
+  return match ? Number(match[1]) : null;
+}
+
+function detectNestedNumberedDirs(projectPath) {
+  return listDirectories(projectPath).filter((name) => /^\d{2}-/.test(name));
 }
 
 function auditProject(levelName, projectDirName) {
@@ -51,39 +55,50 @@ function auditProject(levelName, projectDirName) {
   const missing = requiredItems.filter(
     (item) => !exists(path.join(projectPath, item)),
   );
-  const hasNestedDuplicate = detectNestedDuplicateDir(
-    projectPath,
-    projectDirName,
-  );
+  const nestedNumberedDirs = detectNestedNumberedDirs(projectPath);
 
   return {
     levelName,
     projectDirName,
     projectPath,
     missing,
-    hasNestedDuplicate,
+    nestedNumberedDirs,
   };
 }
 
 function runAudit() {
   const results = [];
+  const numberingIssues = [];
 
   for (const levelName of levels) {
     const levelPath = path.join(projectsRoot, levelName);
     const projectDirs = findProjectDirectories(levelPath);
+
+    projectDirs.forEach((projectDirName, index) => {
+      const expected = index + 1;
+      const actual = parseProjectNumber(projectDirName);
+      if (actual !== expected) {
+        numberingIssues.push({
+          levelName,
+          projectDirName,
+          expected,
+          actual,
+        });
+      }
+    });
 
     for (const projectDirName of projectDirs) {
       results.push(auditProject(levelName, projectDirName));
     }
   }
 
-  return results;
+  return { results, numberingIssues };
 }
 
-function printReport(results) {
+function printReport({ results, numberingIssues }) {
   const total = results.length;
   const projectsWithMissing = results.filter((r) => r.missing.length > 0);
-  const nestedDuplicates = results.filter((r) => r.hasNestedDuplicate);
+  const nestedNumbered = results.filter((r) => r.nestedNumberedDirs.length > 0);
 
   console.log("Projects Structure Audit");
   console.log("=".repeat(24));
@@ -93,13 +108,16 @@ function printReport(results) {
     `Projects with missing standard items: ${projectsWithMissing.length}`,
   );
   console.log(
-    `Projects with nested duplicate folder name: ${nestedDuplicates.length}`,
+    `Projects with nested numbered directories: ${nestedNumbered.length}`,
   );
+  console.log(`Sequential numbering issues: ${numberingIssues.length}`);
   console.log("");
 
   if (summaryOnly) {
     const hasIssues =
-      projectsWithMissing.length > 0 || nestedDuplicates.length > 0;
+      projectsWithMissing.length > 0 ||
+      nestedNumbered.length > 0 ||
+      numberingIssues.length > 0;
     console.log(
       hasIssues ? "Summary result: ATTENTION NEEDED" : "Summary result: PASS",
     );
@@ -122,20 +140,40 @@ function printReport(results) {
     console.log("");
   }
 
-  if (nestedDuplicates.length > 0) {
-    console.log("Nested duplicate folder anomalies:");
-    console.log("-".repeat(34));
+  if (nestedNumbered.length > 0) {
+    console.log("Nested numbered directory anomalies:");
+    console.log("-".repeat(35));
 
-    for (const item of nestedDuplicates) {
+    for (const item of nestedNumbered) {
       console.log(`* ${item.levelName}/${item.projectDirName}`);
-      console.log(`  - Contains nested: ${item.projectDirName}/`);
+      for (const nested of item.nestedNumberedDirs) {
+        console.log(`  - Contains nested: ${nested}/`);
+      }
+    }
+
+    console.log("");
+  }
+
+  if (numberingIssues.length > 0) {
+    console.log("Sequential numbering issues:");
+    console.log("-".repeat(28));
+
+    for (const issue of numberingIssues) {
+      const expectedLabel = String(issue.expected).padStart(2, "0");
+      const actualLabel =
+        issue.actual === null ? "??" : String(issue.actual).padStart(2, "0");
+      console.log(
+        `* ${issue.levelName}/${issue.projectDirName} (expected ${expectedLabel}, found ${actualLabel})`,
+      );
     }
 
     console.log("");
   }
 
   const hasIssues =
-    projectsWithMissing.length > 0 || nestedDuplicates.length > 0;
+    projectsWithMissing.length > 0 ||
+    nestedNumbered.length > 0 ||
+    numberingIssues.length > 0;
   console.log(
     hasIssues ? "Audit result: ATTENTION NEEDED" : "Audit result: PASS",
   );
