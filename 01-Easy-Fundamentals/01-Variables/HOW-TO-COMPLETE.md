@@ -3,6 +3,7 @@
 ## New Approach
 
 This fundamentals module is now **teach-first**:
+
 1. Learn from short lessons and visualizations.
 2. Use resources to reinforce understanding.
 3. Do optional, simple challenge tests only if needed.
@@ -21,6 +22,7 @@ This fundamentals module is now **teach-first**:
 ### Lesson 2: let
 
 Repeat the same flow in:
+
 - [02-let/lessons/01-core.md](02-let/lessons/01-core.md)
 - [02-let/lessons/02-visualizations.md](02-let/lessons/02-visualizations.md)
 - [02-let/lessons/03-resources.md](02-let/lessons/03-resources.md)
@@ -31,6 +33,7 @@ Focus on block scope and Temporal Dead Zone.
 ### Lesson 3: const
 
 Repeat the same flow in:
+
 - [03-const/lessons/01-core.md](03-const/lessons/01-core.md)
 - [03-const/lessons/02-visualizations.md](03-const/lessons/02-visualizations.md)
 - [03-const/lessons/03-resources.md](03-const/lessons/03-resources.md)
@@ -57,16 +60,19 @@ npm run check 01-Easy-Fundamentals/01-Variables/03-const/challenges/01-fill-blan
 You should be able to answer:
 
 **About var**:
+
 - What is hoisting?
 - Why is var function-scoped instead of block-scoped?
 - Give one example of a bug var causes that let wouldn't.
 
 **About let**:
+
 - What is block scope and why does it matter?
 - What is the Temporal Dead Zone?
 - Why can't you redeclare a let variable?
 
 **About const**:
+
 - What does const actually protect - the binding or the value?
 - Can you modify an object declared with const? Why?
 - Why does modern code prefer const over let over var?
@@ -92,12 +98,12 @@ This is called **scaffolding** — you learn the foundation first, then add comp
 ✅ **Do**: Read each code example carefully  
 ✅ **Do**: Write down your predictions before looking at the answer  
 ✅ **Do**: Understand WHY each answer is correct  
-✅ **Do**: Explain the concept in your own words  
+✅ **Do**: Explain the concept in your own words
 
 ❌ **Don't**: Skip reading the lesson  
 ❌ **Don't**: Copy answers without understanding  
 ❌ **Don't**: Rush through without testing  
-❌ **Don't**: Memorize — internalize the patterns  
+❌ **Don't**: Memorize — internalize the patterns
 
 ---
 
