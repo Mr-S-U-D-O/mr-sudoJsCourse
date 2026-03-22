@@ -20,11 +20,25 @@ describe('Persistence', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solvePersistence([NaN, -0, '0'])).toEqual({
+    expect(solvePersistence([NaN, -0, "0"])).toEqual({
       topic: 'Persistence',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solvePersistence(null)).toThrow('values must be an array');
+    expect(() => solvePersistence('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solvePersistence(input);
+
+    expect(input).toEqual(clone);
   });
 });
