@@ -1,22 +1,35 @@
+<!-- enriched: projects/tools/enrich-project-lessons.js -->
 # Ml Pipeline Framework
 
 ## Project Aim
 
-Build a robust ml pipeline framework implementation with clear module boundaries and predictable behavior.
+Design maintainable platform tooling with observability and safe extensibility.
 
-## Learning Objectives
+## Real-World Use Cases
 
-- Design data flow before coding.
-- Handle invalid inputs safely.
-- Keep functions small and testable.
-- Explain tradeoffs in implementation decisions.
+- ops tooling
+- data pipelines
+- platform extensions
 
-## Recommended Steps
+## Core Concepts You Must Learn
 
-1. Read this README fully.
-2. Follow the implementation checklist in guide.md.
-3. Build from src/index.js.
-4. Compare with solution/index.solution.js after your first complete attempt.
+- pipeline design
+- plugin boundaries
+- observability
+
+## Accuracy Traps To Avoid
+
+- Treating malformed records as successful processing.
+- No schema/version strategy for evolving inputs.
+- Plugin code running without isolation boundaries.
+
+## Quality Checks
+
+- Invalid records are counted and surfaced, not ignored.
+- Version or compatibility checks run before processing.
+- Extension points validate plugin contracts.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
 
 ## How To Run
 
@@ -28,14 +41,15 @@ Run from repository root.
 node -e "const m=require('./projects/04-expert/09-ml-pipeline-framework/src'); console.log(Object.keys(m));"
 ```
 
-2. Run the reference solution
+2. Inspect solution metadata
 
 ```bash
-node -e "const m=require('./projects/04-expert/09-ml-pipeline-framework/solution/index.solution'); console.log(m.metadata);"
+node -e "const m=require('./projects/04-expert/09-ml-pipeline-framework/solution/index.solution'); console.log(m.metadata || Object.keys(m));"
 ```
 
-## Deliverables
+## Acceptance Criteria
 
-- Implement starter TODOs in src/index.js.
-- Add edge-case checks.
-- Document architecture decisions in docs/architecture.md.
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

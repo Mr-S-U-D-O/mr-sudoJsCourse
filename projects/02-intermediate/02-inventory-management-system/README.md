@@ -72,3 +72,30 @@ What this does:
 - Problem: inventory consistency and traceability.
 - Design: mutation methods + movement ledger + reporting layer.
 - Outcome: predictable stock state and explainable audit history.
+
+## Core Concepts You Must Learn
+
+- invariants
+- atomic updates
+- ledger thinking
+
+## Accuracy Traps To Avoid
+
+- Updating partial state on failed operations.
+- Using floating math where currency precision is required.
+- Not validating entity existence before writes.
+
+## Quality Checks
+
+- Totals remain consistent after add/remove/update operations.
+- Failed operations do not mutate persisted state.
+- Audit output can explain how final totals were computed.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
+
+## Acceptance Criteria
+
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

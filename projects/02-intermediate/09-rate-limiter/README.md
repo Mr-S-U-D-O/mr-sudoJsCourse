@@ -1,22 +1,35 @@
+<!-- enriched: projects/tools/enrich-project-lessons.js -->
 # Rate Limiter
 
 ## Project Aim
 
-Build a robust rate limiter implementation with clear module boundaries and predictable behavior.
+Build reliability-focused systems with explicit resilience strategies.
 
-## Learning Objectives
+## Real-World Use Cases
 
-- Design data flow before coding.
-- Handle invalid inputs safely.
-- Keep functions small and testable.
-- Explain tradeoffs in implementation decisions.
+- API gateways
+- distributed jobs
+- real-time systems
 
-## Recommended Steps
+## Core Concepts You Must Learn
 
-1. Read this README fully.
-2. Follow the implementation checklist in guide.md.
-3. Build from src/index.js.
-4. Compare with solution/index.solution.js after your first complete attempt.
+- timeouts
+- retries
+- backpressure
+
+## Accuracy Traps To Avoid
+
+- Retrying non-idempotent operations blindly.
+- Ignoring timeout and cancellation propagation.
+- No visibility into failure reasons and latency.
+
+## Quality Checks
+
+- Timeout, retry, and failure behavior are deterministic in tests.
+- Backpressure or queue bounds prevent unbounded growth.
+- Operational metrics expose throughput and error rate.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
 
 ## How To Run
 
@@ -28,14 +41,15 @@ Run from repository root.
 node -e "const m=require('./projects/02-intermediate/09-rate-limiter/src'); console.log(Object.keys(m));"
 ```
 
-2. Run the reference solution
+2. Inspect solution metadata
 
 ```bash
-node -e "const m=require('./projects/02-intermediate/09-rate-limiter/solution/index.solution'); console.log(m.metadata);"
+node -e "const m=require('./projects/02-intermediate/09-rate-limiter/solution/index.solution'); console.log(m.metadata || Object.keys(m));"
 ```
 
-## Deliverables
+## Acceptance Criteria
 
-- Implement starter TODOs in src/index.js.
-- Add edge-case checks.
-- Document architecture decisions in docs/architecture.md.
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

@@ -75,3 +75,30 @@ What this does:
 - Problem: auth-safe task and project operations.
 - Design: service-style domain API with token-based ownership checks.
 - Outcome: secure, extensible backend core ready to wire into Express/Fastify.
+
+## Core Concepts You Must Learn
+
+- state machines
+- validation
+- audit trail
+
+## Accuracy Traps To Avoid
+
+- Allowing illegal status jumps.
+- Losing history when entities are updated.
+- Mixing command logic with query logic.
+
+## Quality Checks
+
+- Only allowed transitions are accepted.
+- Each transition writes an event to history.
+- Computed metrics reflect current state correctly.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
+
+## Acceptance Criteria
+
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

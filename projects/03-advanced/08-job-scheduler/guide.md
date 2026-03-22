@@ -1,26 +1,46 @@
+<!-- enriched: projects/tools/enrich-project-lessons.js -->
 # Implementation Guide: Job Scheduler
 
-## Step 1: Define Inputs And Outputs
+## Phase 1: Model The Domain
 
-- List expected input shapes.
-- Define return values for success and failure paths.
+- Define the entities and state transitions first.
+- Write input and output contracts before implementation.
+- List invariants that must always remain true.
 
-## Step 2: Build Core Logic
+## Phase 2: Build Minimal Correct Behavior
 
-- Implement one behavior at a time.
-- Keep each helper function focused on one responsibility.
+- Implement one end-to-end flow that works reliably.
+- Keep pure logic separate from I/O side effects.
+- Add guard clauses for invalid input paths.
 
-## Step 3: Add Guardrails
+## Phase 3: Add Resilience
 
-- Validate required inputs.
-- Return deterministic errors or fallback values.
+- Add explicit error handling for expected failure modes.
+- Add boundaries for untrusted or malformed data.
+- Capture metadata useful for debugging and observability.
 
-## Step 4: Validate With Manual Runs
+## Manual Test Matrix
 
-- Add at least 3 normal cases.
-- Add at least 2 edge cases.
+- Happy path: one normal operation that should succeed.
+- Edge path: smallest and largest valid values.
+- Failure path: malformed input with expected error.
+- Repeatability: same input run twice should match output.
+- Explainability: each result can be traced to a rule.
 
-## Step 5: Compare And Reflect
+## Quality Validation Checklist
 
-- Compare with solution/index.solution.js.
-- Note one design improvement you would apply next.
+- [ ] Core concepts are visible in code structure: timeouts, retries, backpressure, consistency.
+- [ ] Error messages are actionable and consistent.
+- [ ] At least 3 edge cases are documented and tested.
+- [ ] Behavior aligns with all listed quality checks in README.
+- [ ] One improvement idea is recorded after comparing with solution.
+
+## Reflection Prompt
+
+Write 5 lines:
+
+1. Which invariant was hardest to preserve?
+2. Which bug appeared first and why?
+3. What would break first in production?
+4. What metric would you monitor?
+5. What would you refactor next?

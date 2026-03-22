@@ -1,22 +1,35 @@
+<!-- enriched: projects/tools/enrich-project-lessons.js -->
 # Simple Todo Tracker
 
 ## Project Aim
 
-Build a robust simple todo tracker implementation with clear module boundaries and predictable behavior.
+Design reliable workflow state transitions with clear invariants.
 
-## Learning Objectives
+## Real-World Use Cases
 
-- Design data flow before coding.
-- Handle invalid inputs safely.
-- Keep functions small and testable.
-- Explain tradeoffs in implementation decisions.
+- issue tracking
+- project planning
+- service desk workflows
 
-## Recommended Steps
+## Core Concepts You Must Learn
 
-1. Read this README fully.
-2. Follow the implementation checklist in guide.md.
-3. Build from src/index.js.
-4. Compare with solution/index.solution.js after your first complete attempt.
+- state machines
+- validation
+- audit trail
+
+## Accuracy Traps To Avoid
+
+- Allowing illegal status jumps.
+- Losing history when entities are updated.
+- Mixing command logic with query logic.
+
+## Quality Checks
+
+- Only allowed transitions are accepted.
+- Each transition writes an event to history.
+- Computed metrics reflect current state correctly.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
 
 ## How To Run
 
@@ -28,14 +41,15 @@ Run from repository root.
 node -e "const m=require('./projects/01-beginner/05-simple-todo-tracker/src'); console.log(Object.keys(m));"
 ```
 
-2. Run the reference solution
+2. Inspect solution metadata
 
 ```bash
-node -e "const m=require('./projects/01-beginner/05-simple-todo-tracker/solution/index.solution'); console.log(m.metadata);"
+node -e "const m=require('./projects/01-beginner/05-simple-todo-tracker/solution/index.solution'); console.log(m.metadata || Object.keys(m));"
 ```
 
-## Deliverables
+## Acceptance Criteria
 
-- Implement starter TODOs in src/index.js.
-- Add edge-case checks.
-- Document architecture decisions in docs/architecture.md.
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

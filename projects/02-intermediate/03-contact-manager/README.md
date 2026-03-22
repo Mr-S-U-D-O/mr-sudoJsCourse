@@ -78,3 +78,30 @@ node -e "const m=require('./projects/02-intermediate/03-contact-manager/solution
 **Start with:** [guide.md](./guide.md) for step-by-step implementation  
 **Reference:** [solution/index.solution.js](./solution/index.solution.js) after attempting  
 **Explore:** [docs/architecture.md](./docs/architecture.md) for design decisions
+
+## Core Concepts You Must Learn
+
+- clear interfaces
+- error handling
+- deterministic behavior
+
+## Accuracy Traps To Avoid
+
+- No explicit input validation.
+- Implicit state mutations that are hard to debug.
+- No measurable correctness checks.
+
+## Quality Checks
+
+- Core behavior passes normal and edge-case examples.
+- Invalid input paths return actionable errors.
+- Design choices are explained at Intermediate depth.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
+
+## Acceptance Criteria
+
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

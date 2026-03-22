@@ -80,3 +80,30 @@ node -e "const m=require('./projects/01-beginner/02-string-manipulator/solution/
 **Start with:** [guide.md](./guide.md) for step-by-step implementation  
 **Reference:** [solution/index.solution.js](./solution/index.solution.js) after attempting  
 **Explore:** [docs/architecture.md](./docs/architecture.md) for design decisions
+
+## Core Concepts You Must Learn
+
+- string normalization
+- regex safety
+- pure functions
+
+## Accuracy Traps To Avoid
+
+- Treating Unicode and ASCII as identical.
+- Using regex patterns that over-match input.
+- Mutating shared options objects between operations.
+
+## Quality Checks
+
+- Normalization keeps output deterministic for repeated runs.
+- Empty strings and whitespace-only strings are handled safely.
+- Transformation order is explicit and testable.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
+
+## Acceptance Criteria
+
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

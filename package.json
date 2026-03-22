@@ -4,6 +4,11 @@
   "scripts": {
     "test": "jest",
     "check": "jest",
+    "projects:normalize": "node ./projects/tools/normalize-projects.js",
+    "projects:flatten": "node ./projects/tools/flatten-nested-projects.js",
+    "projects:enrich": "node ./projects/tools/enrich-project-lessons.js",
+    "projects:quality": "node ./projects/tools/check-project-quality.js",
+    "projects:audit": "node ./projects/tools/audit-projects.js --summary --fail-on-issues",
     "contrib:file": "node scripts/split-commits.js --group file --push",
     "contrib:lesson": "node scripts/split-commits.js --group lesson --push",
     "contrib:track": "node scripts/split-commits.js --group track --push",

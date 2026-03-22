@@ -1,22 +1,35 @@
+<!-- enriched: projects/tools/enrich-project-lessons.js -->
 # Word Counter
 
 ## Project Aim
 
-Build a robust word counter implementation with clear module boundaries and predictable behavior.
+Analyze text accurately using deterministic tokenization and counts.
 
-## Learning Objectives
+## Real-World Use Cases
 
-- Design data flow before coding.
-- Handle invalid inputs safely.
-- Keep functions small and testable.
-- Explain tradeoffs in implementation decisions.
+- content analysis
+- search ranking
+- editor analytics
 
-## Recommended Steps
+## Core Concepts You Must Learn
 
-1. Read this README fully.
-2. Follow the implementation checklist in guide.md.
-3. Build from src/index.js.
-4. Compare with solution/index.solution.js after your first complete attempt.
+- tokenization
+- frequency maps
+- normalization
+
+## Accuracy Traps To Avoid
+
+- Splitting only on spaces and missing punctuation rules.
+- Counting case variants as separate words by mistake.
+- Not handling empty input or multiple separators.
+
+## Quality Checks
+
+- Case-insensitive counting can be toggled and verified.
+- Punctuation handling is documented and consistent.
+- Top-N frequency output is stable for ties.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
 
 ## How To Run
 
@@ -28,14 +41,15 @@ Run from repository root.
 node -e "const m=require('./projects/01-beginner/04-word-counter/src'); console.log(Object.keys(m));"
 ```
 
-2. Run the reference solution
+2. Inspect solution metadata
 
 ```bash
-node -e "const m=require('./projects/01-beginner/04-word-counter/solution/index.solution'); console.log(m.metadata);"
+node -e "const m=require('./projects/01-beginner/04-word-counter/solution/index.solution'); console.log(m.metadata || Object.keys(m));"
 ```
 
-## Deliverables
+## Acceptance Criteria
 
-- Implement starter TODOs in src/index.js.
-- Add edge-case checks.
-- Document architecture decisions in docs/architecture.md.
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

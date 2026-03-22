@@ -130,6 +130,8 @@ project-name/
 - [Structure Audit Script](./tools/audit-projects.js): scans every project for missing standard files and folder anomalies.
 - [Normalization Script](./tools/normalize-projects.js): creates any missing standard files and fills empty files with starter guidance.
 - [Flatten Nested Script](./tools/flatten-nested-projects.js): removes legacy nested numbered project folders after safely promoting missing files.
+- [Lesson Enrichment Script](./tools/enrich-project-lessons.js): upgrades generic lessons into domain-specific instruction with quality checks.
+- [Quality Check Script](./tools/check-project-quality.js): validates that each project README and guide includes required teaching and validation sections.
 - [Beginner Level Guide](./01-beginner/README.md): onboarding path for first-time learners.
 
 ### Run The Structure Audit
@@ -137,6 +139,8 @@ project-name/
 ```bash
 node ./projects/tools/normalize-projects.js
 node ./projects/tools/flatten-nested-projects.js
+node ./projects/tools/enrich-project-lessons.js
+node ./projects/tools/check-project-quality.js
 node ./projects/tools/audit-projects.js
 node ./projects/tools/audit-projects.js --summary
 node ./projects/tools/audit-projects.js --summary --fail-on-issues

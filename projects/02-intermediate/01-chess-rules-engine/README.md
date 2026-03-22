@@ -85,3 +85,30 @@ Exact breakdown:
 - Design: board model + move generation + legality filter.
 - Hard part: self-check prevention and status detection.
 - Outcome: reusable game logic independent of UI.
+
+## Core Concepts You Must Learn
+
+- state transitions
+- rule validation
+- random control
+
+## Accuracy Traps To Avoid
+
+- Tying game rules directly to UI behavior.
+- Using true randomness in tests.
+- Skipping invalid move/input checks.
+
+## Quality Checks
+
+- Game state changes are explicit and reversible where needed.
+- Random paths can be controlled with seeded input or stubs.
+- Illegal actions are rejected with clear errors.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
+
+## Acceptance Criteria
+
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

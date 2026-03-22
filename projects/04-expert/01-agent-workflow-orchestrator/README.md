@@ -74,3 +74,30 @@ What this does:
 - Problem: reliable execution of dependent async tasks.
 - Design: schema validator + cycle detection + scheduler + retry wrapper.
 - Outcome: debuggable orchestration with deterministic behavior.
+
+## Core Concepts You Must Learn
+
+- timeouts
+- retries
+- backpressure
+
+## Accuracy Traps To Avoid
+
+- Retrying non-idempotent operations blindly.
+- Ignoring timeout and cancellation propagation.
+- No visibility into failure reasons and latency.
+
+## Quality Checks
+
+- Timeout, retry, and failure behavior are deterministic in tests.
+- Backpressure or queue bounds prevent unbounded growth.
+- Operational metrics expose throughput and error rate.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
+
+## Acceptance Criteria
+
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

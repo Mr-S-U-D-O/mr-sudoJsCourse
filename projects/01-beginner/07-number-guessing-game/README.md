@@ -1,22 +1,35 @@
+<!-- enriched: projects/tools/enrich-project-lessons.js -->
 # Number Guessing Game
 
 ## Project Aim
 
-Build a robust number guessing game implementation with clear module boundaries and predictable behavior.
+Build deterministic game logic where randomness and rules are testable.
 
-## Learning Objectives
+## Real-World Use Cases
 
-- Design data flow before coding.
-- Handle invalid inputs safely.
-- Keep functions small and testable.
-- Explain tradeoffs in implementation decisions.
+- browser games
+- training apps
+- simulation tools
 
-## Recommended Steps
+## Core Concepts You Must Learn
 
-1. Read this README fully.
-2. Follow the implementation checklist in guide.md.
-3. Build from src/index.js.
-4. Compare with solution/index.solution.js after your first complete attempt.
+- state transitions
+- rule validation
+- random control
+
+## Accuracy Traps To Avoid
+
+- Tying game rules directly to UI behavior.
+- Using true randomness in tests.
+- Skipping invalid move/input checks.
+
+## Quality Checks
+
+- Game state changes are explicit and reversible where needed.
+- Random paths can be controlled with seeded input or stubs.
+- Illegal actions are rejected with clear errors.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
 
 ## How To Run
 
@@ -28,14 +41,15 @@ Run from repository root.
 node -e "const m=require('./projects/01-beginner/07-number-guessing-game/src'); console.log(Object.keys(m));"
 ```
 
-2. Run the reference solution
+2. Inspect solution metadata
 
 ```bash
-node -e "const m=require('./projects/01-beginner/07-number-guessing-game/solution/index.solution'); console.log(m.metadata);"
+node -e "const m=require('./projects/01-beginner/07-number-guessing-game/solution/index.solution'); console.log(m.metadata || Object.keys(m));"
 ```
 
-## Deliverables
+## Acceptance Criteria
 
-- Implement starter TODOs in src/index.js.
-- Add edge-case checks.
-- Document architecture decisions in docs/architecture.md.
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.

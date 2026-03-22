@@ -1,22 +1,35 @@
+<!-- enriched: projects/tools/enrich-project-lessons.js -->
 # Unit Converter
 
 ## Project Aim
 
-Build a robust unit converter implementation with clear module boundaries and predictable behavior.
+Implement accurate unit conversion with explicit formulas and boundaries.
 
-## Learning Objectives
+## Real-World Use Cases
 
-- Design data flow before coding.
-- Handle invalid inputs safely.
-- Keep functions small and testable.
-- Explain tradeoffs in implementation decisions.
+- weather apps
+- fitness apps
+- engineering tooling
 
-## Recommended Steps
+## Core Concepts You Must Learn
 
-1. Read this README fully.
-2. Follow the implementation checklist in guide.md.
-3. Build from src/index.js.
-4. Compare with solution/index.solution.js after your first complete attempt.
+- normalization
+- conversion maps
+- precision handling
+
+## Accuracy Traps To Avoid
+
+- Rounding too early and losing precision.
+- Not validating supported units before converting.
+- Hard-coding formulas in multiple places.
+
+## Quality Checks
+
+- 0C converts to 32F exactly.
+- Reverse conversion returns the original value within tolerance.
+- Unknown unit returns a clear validation error.
+- Starter API exports can be inspected and documented.
+- Solution output can be reproduced from a single command.
 
 ## How To Run
 
@@ -28,14 +41,15 @@ Run from repository root.
 node -e "const m=require('./projects/01-beginner/09-unit-converter/src'); console.log(Object.keys(m));"
 ```
 
-2. Run the reference solution
+2. Inspect solution metadata
 
 ```bash
-node -e "const m=require('./projects/01-beginner/09-unit-converter/solution/index.solution'); console.log(m.metadata);"
+node -e "const m=require('./projects/01-beginner/09-unit-converter/solution/index.solution'); console.log(m.metadata || Object.keys(m));"
 ```
 
-## Deliverables
+## Acceptance Criteria
 
-- Implement starter TODOs in src/index.js.
-- Add edge-case checks.
-- Document architecture decisions in docs/architecture.md.
+- Behavior is deterministic for the same input.
+- Invalid inputs return consistent error messages.
+- At least 5 representative manual checks are documented in guide.md.
+- Architecture notes explain one key tradeoff.
