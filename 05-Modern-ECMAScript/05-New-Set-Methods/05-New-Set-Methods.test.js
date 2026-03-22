@@ -19,12 +19,26 @@ describe('New-Set-Methods', () => {
     });
   });
 
-  test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveNewSetMethods([NaN, -0, '0'])).toEqual({
+  test('Trap: empty Set and Map are still truthy objects', () => {
+    expect(solveNewSetMethods([new Set(), new Map(), 0])).toEqual({
       topic: 'New-Set-Methods',
       total: 3,
-      truthyCount: 1,
-      falsyCount: 2,
+      truthyCount: 2,
+      falsyCount: 1,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveNewSetMethods(null)).toThrow('values must be an array');
+    expect(() => solveNewSetMethods('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveNewSetMethods(input);
+
+    expect(input).toEqual(clone);
   });
 });
