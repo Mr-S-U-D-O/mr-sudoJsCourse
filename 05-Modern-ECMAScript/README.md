@@ -1,6 +1,7 @@
 # 05-Modern-ECMAScript
 
 ## Track Goal
+
 Build practical confidence in Modern ECMAScript through implementation-first exercises.
 
 ## Mastery Outcomes
@@ -18,6 +19,7 @@ By the end of this track, you should be able to:
 - Challenge Lane: add one compatibility-focused test per lesson.
 
 ## Lessons
+
 - 01-Explicit-Resource-Management
 - 02-The-Temporal-API
 - 03-Decorators
@@ -54,6 +56,7 @@ Suggested Tier-3 project themes for this track:
 See ../docs/PROJECT-LADDER.md for complete project expectations.
 
 ## Learning Resources
+
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - https://javascript.info/
 - https://exploringjs.com/

@@ -13,11 +13,13 @@ This ladder turns topic mastery into portfolio-ready outcomes.
 Target tracks: 01-Easy-Fundamentals, 02-Intermediate-Core
 
 Project ideas:
+
 - Grade analyzer CLI
 - Expense categorizer
 - String and data cleanup toolkit
 
 Required outcomes:
+
 - Clean function decomposition
 - Input validation
 - Readable test names
@@ -27,11 +29,13 @@ Required outcomes:
 Target tracks: 03-Hard-Architecture, 04-Advanced-Deep-JS
 
 Project ideas:
+
 - Task queue simulator
 - Event loop visual logger
 - Promise orchestration utility
 
 Required outcomes:
+
 - Async failure handling strategy
 - Concurrency reasoning
 - Debugging notes in README
@@ -41,11 +45,13 @@ Required outcomes:
 Target tracks: 05-Modern-ECMAScript, 06-The-Platform
 
 Project ideas:
+
 - Streaming transform pipeline
 - Worker-thread data processor
 - Typed array binary parser
 
 Required outcomes:
+
 - Performance baseline and comparison
 - Resource management notes
 - Platform tradeoff analysis
@@ -55,11 +61,13 @@ Required outcomes:
 Target tracks: 07-Functional-Architecture, 08-Engine-Internals-and-Dark-Arts
 
 Project ideas:
+
 - Functional rules engine
 - Secure object merge library
 - Runtime behavior profiler
 
 Required outcomes:
+
 - Explicit architecture decision record
 - Security checklist
 - Complexity and memory discussion

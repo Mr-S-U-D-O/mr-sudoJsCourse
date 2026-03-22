@@ -16,7 +16,7 @@ function normalizeScore(value) {
 
 function analyzeGrades(submissions) {
   if (!Array.isArray(submissions)) {
-    throw new Error('submissions must be an array');
+    throw new Error("submissions must be an array");
   }
 
   let passedCount = 0;
@@ -27,7 +27,7 @@ function analyzeGrades(submissions) {
   let topScore = -1;
 
   for (const item of submissions) {
-    const record = item && typeof item === 'object' ? item : {};
+    const record = item && typeof item === "object" ? item : {};
     const score = normalizeScore(record.score);
     const passed = score >= 70;
 

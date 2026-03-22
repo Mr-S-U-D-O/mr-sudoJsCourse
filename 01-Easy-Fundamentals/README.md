@@ -1,6 +1,7 @@
 # 01-Easy-Fundamentals
 
 ## Track Goal
+
 Build practical confidence in Easy Fundamentals through implementation-first exercises.
 
 ## Mastery Outcomes
@@ -18,6 +19,7 @@ By the end of this track, you should be able to:
 - Challenge Lane: add one extra edge-case test per lesson.
 
 ## Lessons
+
 - 01-Variables
 - 02-Data-Types
 - 03-Operators
@@ -53,6 +55,7 @@ Suggested Tier-1 project themes for this track:
 See ../docs/PROJECT-LADDER.md for complete project expectations.
 
 ## Learning Resources
+
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - https://javascript.info/
 - https://exploringjs.com/

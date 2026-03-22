@@ -1,6 +1,7 @@
 # 08-Engine-Internals-and-Dark-Arts
 
 ## Track Goal
+
 Build practical confidence in Engine Internals and Dark Arts through implementation-first exercises.
 
 ## Mastery Outcomes
@@ -18,6 +19,7 @@ By the end of this track, you should be able to:
 - Challenge Lane: add one security or runtime trap test per lesson.
 
 ## Lessons
+
 - 01-Shapes-and-Hidden-Classes
 - 02-Inline-Caching
 - 03-Garbage-Collection
@@ -54,6 +56,7 @@ Suggested Tier-4 project themes for this track:
 See ../docs/PROJECT-LADDER.md for complete project expectations.
 
 ## Learning Resources
+
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - https://javascript.info/
 - https://exploringjs.com/

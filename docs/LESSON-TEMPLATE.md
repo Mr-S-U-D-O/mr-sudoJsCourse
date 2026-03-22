@@ -65,6 +65,7 @@ List two to four likely mistakes.
 Use one short prompt that forces understanding.
 
 Examples:
+
 - "What bug would happen if we used X instead of Y?"
 - "How would you explain this to a teammate in 20 seconds?"
 

@@ -1,6 +1,7 @@
 # 07-Functional-Architecture
 
 ## Track Goal
+
 Build practical confidence in Functional Architecture through implementation-first exercises.
 
 ## Mastery Outcomes
@@ -18,6 +19,7 @@ By the end of this track, you should be able to:
 - Challenge Lane: add one algebraic edge-case test per lesson.
 
 ## Lessons
+
 - 01-Pure-Functions
 - 02-Currying-and-Partial-App
 - 03-Point-Free-Style
@@ -52,6 +54,7 @@ Suggested Tier-4 project themes for this track:
 See ../docs/PROJECT-LADDER.md for complete project expectations.
 
 ## Learning Resources
+
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - https://javascript.info/
 - https://exploringjs.com/

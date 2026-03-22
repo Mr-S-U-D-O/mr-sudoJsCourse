@@ -1,6 +1,7 @@
 # 03-Hard-Architecture
 
 ## Track Goal
+
 Build practical confidence in Hard Architecture through implementation-first exercises.
 
 ## Mastery Outcomes
@@ -18,6 +19,7 @@ By the end of this track, you should be able to:
 - Challenge Lane: add one failure-mode test per lesson.
 
 ## Lessons
+
 - 01-Closures
 - 02-The-This-Keyword
 - 03-Prototypes
@@ -54,6 +56,7 @@ Suggested Tier-2 project themes for this track:
 See ../docs/PROJECT-LADDER.md for complete project expectations.
 
 ## Learning Resources
+
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - https://javascript.info/
 - https://exploringjs.com/

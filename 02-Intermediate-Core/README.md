@@ -1,6 +1,7 @@
 # 02-Intermediate-Core
 
 ## Track Goal
+
 Build practical confidence in Intermediate Core through implementation-first exercises.
 
 ## Mastery Outcomes
@@ -18,6 +19,7 @@ By the end of this track, you should be able to:
 - Challenge Lane: write one additional trap-style test per lesson.
 
 ## Lessons
+
 - 01-Scope-and-Hoisting
 - 02-Arrow-Functions
 - 03-Template-Literals
@@ -54,6 +56,7 @@ Suggested Tier-1 project themes for this track:
 See ../docs/PROJECT-LADDER.md for complete project expectations.
 
 ## Learning Resources
+
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - https://javascript.info/
 - https://exploringjs.com/

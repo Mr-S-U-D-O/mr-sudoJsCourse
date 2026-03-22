@@ -1,6 +1,7 @@
 # 06-The-Platform
 
 ## Track Goal
+
 Build practical confidence in The Platform through implementation-first exercises.
 
 ## Mastery Outcomes
@@ -18,6 +19,7 @@ By the end of this track, you should be able to:
 - Challenge Lane: add one reliability-focused test per lesson.
 
 ## Lessons
+
 - 01-Streams-API
 - 02-Buffers-and-TypedArrays
 - 03-Web-and-Service-Workers
@@ -54,6 +56,7 @@ Suggested Tier-3 project themes for this track:
 See ../docs/PROJECT-LADDER.md for complete project expectations.
 
 ## Learning Resources
+
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - https://javascript.info/
 - https://exploringjs.com/

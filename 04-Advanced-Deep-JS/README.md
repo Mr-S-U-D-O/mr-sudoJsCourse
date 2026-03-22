@@ -1,6 +1,7 @@
 # 04-Advanced-Deep-JS
 
 ## Track Goal
+
 Build practical confidence in Advanced Deep JS through implementation-first exercises.
 
 ## Mastery Outcomes
@@ -18,6 +19,7 @@ By the end of this track, you should be able to:
 - Challenge Lane: create one counterexample test per lesson.
 
 ## Lessons
+
 - 01-The-Event-Loop
 - 02-Iterators-Generators
 - 03-Proxy-and-Reflect
@@ -52,6 +54,7 @@ Suggested Tier-2 project themes for this track:
 See ../docs/PROJECT-LADDER.md for complete project expectations.
 
 ## Learning Resources
+
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - https://javascript.info/
 - https://exploringjs.com/

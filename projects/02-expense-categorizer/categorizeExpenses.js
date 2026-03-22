@@ -1,10 +1,10 @@
 function normalizeCategory(value) {
-  if (typeof value !== 'string') {
-    return 'uncategorized';
+  if (typeof value !== "string") {
+    return "uncategorized";
   }
 
   const trimmed = value.trim();
-  return trimmed === '' ? 'uncategorized' : trimmed.toLowerCase();
+  return trimmed === "" ? "uncategorized" : trimmed.toLowerCase();
 }
 
 function normalizeAmount(value) {
@@ -21,11 +21,15 @@ function normalizeAmount(value) {
 
 function categorizeExpenses(entries, budgets = {}) {
   if (!Array.isArray(entries)) {
-    throw new Error('entries must be an array');
+    throw new Error("entries must be an array");
   }
 
-  if (budgets === null || typeof budgets !== 'object' || Array.isArray(budgets)) {
-    throw new Error('budgets must be an object');
+  if (
+    budgets === null ||
+    typeof budgets !== "object" ||
+    Array.isArray(budgets)
+  ) {
+    throw new Error("budgets must be an object");
   }
 
   const byCategory = {};
@@ -33,7 +37,7 @@ function categorizeExpenses(entries, budgets = {}) {
   let uncategorizedCount = 0;
 
   for (const item of entries) {
-    const record = item && typeof item === 'object' ? item : {};
+    const record = item && typeof item === "object" ? item : {};
     const amount = normalizeAmount(record.amount);
 
     if (amount === null) {
@@ -42,7 +46,7 @@ function categorizeExpenses(entries, budgets = {}) {
 
     const category = normalizeCategory(record.category);
 
-    if (category === 'uncategorized') {
+    if (category === "uncategorized") {
       uncategorizedCount += 1;
     }
 
@@ -51,7 +55,11 @@ function categorizeExpenses(entries, budgets = {}) {
   }
 
   const overBudget = Object.keys(byCategory)
-    .filter((category) => Number.isFinite(budgets[category]) && byCategory[category] > budgets[category])
+    .filter(
+      (category) =>
+        Number.isFinite(budgets[category]) &&
+        byCategory[category] > budgets[category],
+    )
     .sort();
 
   return {

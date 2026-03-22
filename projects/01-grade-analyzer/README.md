@@ -9,15 +9,18 @@ Build a robust grade analysis utility that can summarize raw submissions into cl
 Implement analyzeGrades in analyzeGrades.js.
 
 Input:
+
 - submissions: array of objects with id, score, and optional critical.
 
 Rules:
+
 - score >= 70 is passing.
 - non-finite score values count as 0.
 - score is clamped between 0 and 100.
 - critical failures are submissions with critical=true and score < 70.
 
 Output shape:
+
 - total
 - passedCount
 - failedCount
