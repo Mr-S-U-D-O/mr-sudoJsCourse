@@ -20,11 +20,25 @@ describe('Arrow-Functions', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveArrowFunctions([NaN, -0, '0'])).toEqual({
+    expect(solveArrowFunctions([NaN, -0, "0"])).toEqual({
       topic: 'Arrow-Functions',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveArrowFunctions(null)).toThrow('values must be an array');
+    expect(() => solveArrowFunctions('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveArrowFunctions(input);
+
+    expect(input).toEqual(clone);
   });
 });
