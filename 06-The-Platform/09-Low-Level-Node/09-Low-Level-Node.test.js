@@ -20,11 +20,25 @@ describe('Low-Level-Node', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveLowLevelNode([NaN, -0, '0'])).toEqual({
+    expect(solveLowLevelNode([NaN, -0, "0"])).toEqual({
       topic: 'Low-Level-Node',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveLowLevelNode(null)).toThrow('values must be an array');
+    expect(() => solveLowLevelNode('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveLowLevelNode(input);
+
+    expect(input).toEqual(clone);
   });
 });
