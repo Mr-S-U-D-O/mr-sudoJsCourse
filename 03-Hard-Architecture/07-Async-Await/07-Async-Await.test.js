@@ -19,12 +19,26 @@ describe('Async-Await', () => {
     });
   });
 
-  test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveAsyncAwait([NaN, -0, '0'])).toEqual({
+  test('Trap: Promise instances are truthy even when unresolved', () => {
+    expect(solveAsyncAwait([Promise.resolve(1), 0, false])).toEqual({
       topic: 'Async-Await',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveAsyncAwait(null)).toThrow('values must be an array');
+    expect(() => solveAsyncAwait('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveAsyncAwait(input);
+
+    expect(input).toEqual(clone);
   });
 });
