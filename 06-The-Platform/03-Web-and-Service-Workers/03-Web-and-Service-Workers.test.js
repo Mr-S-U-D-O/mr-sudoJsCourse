@@ -20,11 +20,25 @@ describe('Web-and-Service-Workers', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveWebAndServiceWorkers([NaN, -0, '0'])).toEqual({
+    expect(solveWebAndServiceWorkers([NaN, -0, "0"])).toEqual({
       topic: 'Web-and-Service-Workers',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveWebAndServiceWorkers(null)).toThrow('values must be an array');
+    expect(() => solveWebAndServiceWorkers('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveWebAndServiceWorkers(input);
+
+    expect(input).toEqual(clone);
   });
 });
