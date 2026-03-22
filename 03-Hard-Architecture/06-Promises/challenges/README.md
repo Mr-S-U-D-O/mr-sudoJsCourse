@@ -1,0 +1,19 @@
+﻿# Promises Challenges
+
+This folder provides optional challenge prompts aligned to the lesson topic.
+
+## Challenge List
+
+- 01-challenge/
+- 02-challenge/
+- 03-challenge/
+
+Use the existing lesson files for implementation and validation:
+
+- 06-Promises.js
+- 06-Promises.md
+- 06-Promises.test.js
+
+## Run
+
+npm run check 03-Hard-Architecture/06-Promises
