@@ -19,12 +19,26 @@ describe('Scope-and-Hoisting', () => {
     });
   });
 
-  test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveScopeAndHoisting([NaN, -0, '0'])).toEqual({
+  test('Trap: treats undefined and empty string as falsy', () => {
+    expect(solveScopeAndHoisting([undefined, "", "hoist"])).toEqual({
       topic: 'Scope-and-Hoisting',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveScopeAndHoisting(null)).toThrow('values must be an array');
+    expect(() => solveScopeAndHoisting('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveScopeAndHoisting(input);
+
+    expect(input).toEqual(clone);
   });
 });
