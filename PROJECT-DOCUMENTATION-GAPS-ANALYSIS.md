@@ -5,6 +5,7 @@
 **Status**: ❌ CRITICAL - Projects lack essential student guidance
 
 **Core Issue**: While some projects (like Calculator-Engine) have been enriched with comprehensive documentation, most projects are minimal and confusing. Students cannot answer basic questions:
+
 - What am I building?
 - Why would I care about this in real work?
 - Where do I even start?
@@ -15,7 +16,9 @@
 ## Comparison: Enriched vs Minimal Projects
 
 ### ENRICHED PROJECT (Calculator-Engine) ✅
+
 **Has:**
+
 - ✅ One-liner project aim
 - ✅ Real-world use cases (CLI calculators, formula engines, game math)
 - ✅ Visualization (examples showing expected behavior)
@@ -32,7 +35,9 @@
 **Result:** Students know exactly what they're building, why, and how to succeed.
 
 ### MINIMAL PROJECTS (Most Beginner/Intermediate/Advanced)
+
 **Has:**
+
 - ✅ One-liner project aim
 - ✅ Real-world use cases (sometimes)
 - ❌ **NO visualization** - students can't picture the end result
@@ -53,24 +58,25 @@
 
 ### BEGINNER PROJECTS (01-beginner) - 10 Projects
 
-| Project | Prerequisites | Visualization | Concepts | Traps | Quality Checks | Learning Tips | Code Comments |
-|---------|---------------|----------------|----------|-------|----------------|--------------|-----------------|
-| 01-Calculator Engine | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 02-String Manipulator | ⚠️ Partial | ✅ | ✅ | ❌ | ⚠️ | ❌ | ❌ |
-| 03-Temperature Converter | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| 04-Word Counter | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| 05-Simple Todo Tracker | ⚠️ Minimal | ❌ | ⚠️ Minimal | ❌ | ✅ | ❌ | ❌ |
-| 06-Password Checker | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| 07-Number Guessing Game | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| 08-Shopping Cart | ⚠️ Minimal | ❌ | ⚠️ Minimal | ❌ | ✅ | ❌ | ❌ |
-| 09-Unit Converter | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| 10-Dice Roller Stats | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Project                  | Prerequisites | Visualization | Concepts   | Traps | Quality Checks | Learning Tips | Code Comments |
+| ------------------------ | ------------- | ------------- | ---------- | ----- | -------------- | ------------- | ------------- |
+| 01-Calculator Engine     | ✅            | ✅            | ✅         | ✅    | ✅             | ✅            | ✅            |
+| 02-String Manipulator    | ⚠️ Partial    | ✅            | ✅         | ❌    | ⚠️             | ❌            | ❌            |
+| 03-Temperature Converter | ❌            | ❌            | ❌         | ❌    | ❌             | ❌            | ❌            |
+| 04-Word Counter          | ❌            | ❌            | ❌         | ❌    | ❌             | ❌            | ❌            |
+| 05-Simple Todo Tracker   | ⚠️ Minimal    | ❌            | ⚠️ Minimal | ❌    | ✅             | ❌            | ❌            |
+| 06-Password Checker      | ❌            | ❌            | ❌         | ❌    | ❌             | ❌            | ❌            |
+| 07-Number Guessing Game  | ❌            | ❌            | ❌         | ❌    | ❌             | ❌            | ❌            |
+| 08-Shopping Cart         | ⚠️ Minimal    | ❌            | ⚠️ Minimal | ❌    | ✅             | ❌            | ❌            |
+| 09-Unit Converter        | ❌            | ❌            | ❌         | ❌    | ❌             | ❌            | ❌            |
+| 10-Dice Roller Stats     | ❌            | ❌            | ❌         | ❌    | ❌             | ❌            | ❌            |
 
 **Beginner Summary**: 1/10 fully enriched. **90% incomplete.**
 
 ### INTERMEDIATE PROJECTS (02-intermediate) - 10 Projects
 
 Most follow minimal format:
+
 - Project Aim ✅
 - Visualize The Product ✅
 - Real-World Use Cases ✅
@@ -84,6 +90,7 @@ Most follow minimal format:
 ### ADVANCED PROJECTS (03-advanced) - 10 Projects
 
 Same issues as intermediate:
+
 - Basic structure present
 - **MISSING:** Prerequisites, detailed concept exploration, common mistakes section, learning strategy
 
@@ -176,6 +183,7 @@ Compare Calculator-Engine structure with others. It has:
 ```
 
 Plus:
+
 - **Code comments** in src/index.js with TODO hints
 - **Architecture narrative** explaining design choices
 - **Interview explanation** (what problem, solution, outcome)
@@ -185,12 +193,14 @@ Plus:
 ## Impact Assessment
 
 ### Current State: High Confusion, Low Completion
+
 - Students open projects not knowing where to start
 - No prerequisites = learning gaps exposed mid-project
 - No traps section = trial-and-error methodology
 - No learning tips = frustration and abandonment
 
 ### Enriched State: Clear Path, High Confidence
+
 - Students know exact prerequisites (review them first)
 - Real-world examples make it relevant
 - Learn from others' mistakes (traps section)
@@ -202,15 +212,19 @@ Plus:
 ## Improvement Priority
 
 ### Phase 1: Beginner Projects (10 projects)
+
 **Why first?** Foundational for all later projects. Highest student frustration.
 
 ### Phase 2: Intermediate Projects (10 projects)
+
 **Why next?** Builds on Phase 1 completion.
 
 ### Phase 3: Advanced Projects (10 projects)
+
 **Why last?** Students are now experienced readers of documentation.
 
 ### Phase 4: Expert Projects
+
 **Why conditional?** Depends on expert project scope.
 
 ---
@@ -277,4 +291,3 @@ For each project:
 4. **Implement** Phase 1 enrichment across all 10 beginner projects
 5. **Test** with new cohort of students
 6. **Iterate** based on feedback
-
