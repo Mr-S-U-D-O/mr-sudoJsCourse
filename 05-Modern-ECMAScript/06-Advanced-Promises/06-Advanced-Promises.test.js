@@ -19,12 +19,26 @@ describe('Advanced-Promises', () => {
     });
   });
 
-  test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveAdvancedPromises([NaN, -0, '0'])).toEqual({
+  test('Trap: Promise instances are truthy even when unresolved', () => {
+    expect(solveAdvancedPromises([Promise.resolve(1), 0, false])).toEqual({
       topic: 'Advanced-Promises',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveAdvancedPromises(null)).toThrow('values must be an array');
+    expect(() => solveAdvancedPromises('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveAdvancedPromises(input);
+
+    expect(input).toEqual(clone);
   });
 });
