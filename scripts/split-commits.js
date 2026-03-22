@@ -24,6 +24,7 @@ function parseArgs(argv) {
     message: 'Auto contribution',
     push: false,
     includeUntracked: false,
+    includeNodeModules: false,
     remote: 'origin',
     branch: '',
   };
@@ -50,6 +51,11 @@ function parseArgs(argv) {
 
     if (arg === '--include-untracked') {
       config.includeUntracked = true;
+      continue;
+    }
+
+    if (arg === '--include-node-modules') {
+      config.includeNodeModules = true;
       continue;
     }
 
@@ -84,8 +90,12 @@ function normalizeStatusLine(line) {
   };
 }
 
-function shouldInclude(line, includeUntracked) {
-  if (!line.filePath || line.filePath.startsWith('node_modules/')) {
+function shouldInclude(line, includeUntracked, includeNodeModules) {
+  if (!line.filePath) {
+    return false;
+  }
+
+  if (!includeNodeModules && line.filePath.startsWith('node_modules/')) {
     return false;
   }
 
@@ -167,7 +177,7 @@ function main() {
     .split(/\r?\n/)
     .filter(Boolean)
     .map(normalizeStatusLine)
-    .filter((entry) => shouldInclude(entry, config.includeUntracked));
+    .filter((entry) => shouldInclude(entry, config.includeUntracked, config.includeNodeModules));
 
   const files = [...new Set(lines.map((entry) => entry.filePath))];
 
