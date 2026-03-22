@@ -1,73 +1,65 @@
-# Guide: Inventory Management System
+<!-- generated: projects/tools/regenerate-guides.js -->
+# Implementation Guide: Inventory Management System
 
-## Build Order
+## Why This Guide Exists
 
-1. Define entities: product, supplier, stock movement, purchase order.
-2. Implement create/update/read product operations.
-3. Implement stock mutation operations with reasons.
-4. Add reorder calculations from min thresholds.
-5. Build reports: low stock, stock valuation, movement history.
-6. Add persistence adapter boundaries.
+This guide is project-specific. Use it to translate this folder's API surface into a step-by-step implementation plan.
 
-## What To Search
+## Project Mental Model
 
-- inventory domain model design
-- stock movement ledger pattern
-- reorder point formula basics
-- JavaScript repository pattern
+Think in terms of transactional correctness: validate first, mutate atomically, record outcomes.
 
-## How To Think
+## First Invariants To Lock In
 
-- Every stock update is a business event.
-- Preserve event history first, then derive reports.
-- Treat invalid state transitions as hard errors.
+- Partially failed operations do not leave partial state.
+- Totals/limits/quotas remain internally consistent.
+- Key operations are observable through logs or stats.
 
-## Suggested Learning Resources
+## Suggested Implementation Order
 
-- https://martinfowler.com/eaaCatalog/repository.html
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
-- https://nodejs.org/en/learn
+1. createInventorySystem: define constructor inputs and object shape
+2. addProduct: validate input then append/update state safely
+3. adjustStock: define clear behavior and edge-case handling
+4. generateReport: define clear behavior and edge-case handling
+5. nowIso: define clear behavior and edge-case handling
+6. assertObject: define clear behavior and edge-case handling
+7. assertFiniteNumber: define clear behavior and edge-case handling
+8. updateProduct: apply partial changes without breaking invariants
+9. listProducts: return deterministic read model
+10. getLowStock: return deterministic read model
+11. getStockValuation: return deterministic read model
+12. getMovements: return deterministic read model
 
-## Phase 1: Model The Domain
+## Failure Cases To Handle Early
 
-- Define the entities and state transitions first.
-- Write input and output contracts before implementation.
-- List invariants that must always remain true.
+- Duplicate keys or missing entities
+- Concurrent-like repeated operations
+- Boundary values at limits/quotas
 
-## Phase 2: Build Minimal Correct Behavior
+## Project-Specific Manual Tests
 
-- Implement one end-to-end flow that works reliably.
-- Keep pure logic separate from I/O side effects.
-- Add guard clauses for invalid input paths.
+1. Normal operation changes state correctly
+2. Failed operation leaves state unchanged
+3. Stats or totals match expected values
 
-## Phase 3: Add Resilience
+## API Completion Checklist
 
-- Add explicit error handling for expected failure modes.
-- Add boundaries for untrusted or malformed data.
-- Capture metadata useful for debugging and observability.
+- [ ] createInventorySystem has at least one happy path and one edge-case test.
+- [ ] addProduct has at least one happy path and one edge-case test.
+- [ ] adjustStock has at least one happy path and one edge-case test.
+- [ ] generateReport has at least one happy path and one edge-case test.
+- [ ] nowIso has at least one happy path and one edge-case test.
+- [ ] assertObject has at least one happy path and one edge-case test.
+- [ ] assertFiniteNumber has at least one happy path and one edge-case test.
+- [ ] updateProduct has at least one happy path and one edge-case test.
+- [ ] listProducts has at least one happy path and one edge-case test.
+- [ ] getLowStock has at least one happy path and one edge-case test.
+- [ ] getStockValuation has at least one happy path and one edge-case test.
+- [ ] getMovements has at least one happy path and one edge-case test.
 
-## Manual Test Matrix
+## Level-Up Reflection (Intermediate)
 
-- Happy path: one normal operation that should succeed.
-- Edge path: smallest and largest valid values.
-- Failure path: malformed input with expected error.
-- Repeatability: same input run twice should match output.
-- Explainability: each result can be traced to a rule.
-
-## Quality Validation Checklist
-
-- [ ] Core concepts are visible in code structure: invariants, atomic updates, ledger thinking.
-- [ ] Error messages are actionable and consistent.
-- [ ] At least 3 edge cases are documented and tested.
-- [ ] Behavior aligns with all listed quality checks in README.
-- [ ] One improvement idea is recorded after comparing with solution.
-
-## Reflection Prompt
-
-Write 5 lines:
-
-1. Which invariant was hardest to preserve?
-2. Which bug appeared first and why?
-3. What would break first in production?
-4. What metric would you monitor?
-5. What would you refactor next?
+1. Which function was hardest to make deterministic and why?
+2. Which invariant almost broke during implementation?
+3. Which failure case gave you the most insight into the design?
+4. What one refactor would improve maintainability next?

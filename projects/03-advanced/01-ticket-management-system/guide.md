@@ -1,73 +1,69 @@
-# Guide: Ticket Management System
+<!-- generated: projects/tools/regenerate-guides.js -->
+# Implementation Guide: Ticket Management System
 
-## Build Order
+## Why This Guide Exists
 
-1. Define entities: ticket, agent, comment, event, SLA policy.
-2. Implement ticket creation and validation.
-3. Add transition rules (open -> in_progress -> resolved -> closed, etc).
-4. Add assignment/reassignment flows.
-5. Add SLA due-at calculation and breach checks.
-6. Add timeline query and metrics summary.
+This guide is project-specific. Use it to translate this folder's API surface into a step-by-step implementation plan.
 
-## What To Search
+## Project Mental Model
 
-- finite state machine javascript workflow
-- sla breach calculation support systems
-- issue tracker domain model
-- append only event log pattern
+Model state transitions first, then enforce transition rules before mutating state.
 
-## How To Think
+## First Invariants To Lock In
 
-- Treat status transitions as guarded commands.
-- Keep a machine-friendly event timeline.
-- Build reporting from timeline data.
+- Invalid state transitions are rejected.
+- State mutations are explicit and traceable.
+- History or audit trail can explain final state.
 
-## Suggested Learning Resources
+## Suggested Implementation Order
 
-- https://martinfowler.com/bliki/DDD_Aggregate.html
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
-- https://nodejs.org/en/learn
+1. createTicketSystem: define constructor inputs and object shape
+2. createTicket: define constructor inputs and object shape
+3. transitionTicket: define clear behavior and edge-case handling
+4. getMetrics: return deterministic read model
+5. nowIso: define clear behavior and edge-case handling
+6. assertObject: define clear behavior and edge-case handling
+7. recordEvent: define clear behavior and edge-case handling
+8. computeDueAt: define clear behavior and edge-case handling
+9. getTicketOrThrow: return deterministic read model
+10. assignTicket: define clear behavior and edge-case handling
+11. addComment: validate input then append/update state safely
+12. isBreached: return a pure boolean predicate
+13. listTickets: return deterministic read model
+14. getTimeline: return deterministic read model
 
-## Phase 1: Model The Domain
+## Failure Cases To Handle Early
 
-- Define the entities and state transitions first.
-- Write input and output contracts before implementation.
-- List invariants that must always remain true.
+- Illegal transition jumps
+- Mutating state after terminal status
+- Missing audit/event log entry
 
-## Phase 2: Build Minimal Correct Behavior
+## Project-Specific Manual Tests
 
-- Implement one end-to-end flow that works reliably.
-- Keep pure logic separate from I/O side effects.
-- Add guard clauses for invalid input paths.
+1. Allowed transition succeeds
+2. Disallowed transition fails with clear reason
+3. History reflects exactly what happened
 
-## Phase 3: Add Resilience
+## API Completion Checklist
 
-- Add explicit error handling for expected failure modes.
-- Add boundaries for untrusted or malformed data.
-- Capture metadata useful for debugging and observability.
+- [ ] createTicketSystem has at least one happy path and one edge-case test.
+- [ ] createTicket has at least one happy path and one edge-case test.
+- [ ] transitionTicket has at least one happy path and one edge-case test.
+- [ ] getMetrics has at least one happy path and one edge-case test.
+- [ ] nowIso has at least one happy path and one edge-case test.
+- [ ] assertObject has at least one happy path and one edge-case test.
+- [ ] recordEvent has at least one happy path and one edge-case test.
+- [ ] computeDueAt has at least one happy path and one edge-case test.
+- [ ] getTicketOrThrow has at least one happy path and one edge-case test.
+- [ ] assignTicket has at least one happy path and one edge-case test.
+- [ ] addComment has at least one happy path and one edge-case test.
+- [ ] isBreached has at least one happy path and one edge-case test.
+- [ ] listTickets has at least one happy path and one edge-case test.
+- [ ] getTimeline has at least one happy path and one edge-case test.
 
-## Manual Test Matrix
+## Level-Up Reflection (Advanced)
 
-- Happy path: one normal operation that should succeed.
-- Edge path: smallest and largest valid values.
-- Failure path: malformed input with expected error.
-- Repeatability: same input run twice should match output.
-- Explainability: each result can be traced to a rule.
-
-## Quality Validation Checklist
-
-- [ ] Core concepts are visible in code structure: state machines, validation, audit trail.
-- [ ] Error messages are actionable and consistent.
-- [ ] At least 3 edge cases are documented and tested.
-- [ ] Behavior aligns with all listed quality checks in README.
-- [ ] One improvement idea is recorded after comparing with solution.
-
-## Reflection Prompt
-
-Write 5 lines:
-
-1. Which invariant was hardest to preserve?
-2. Which bug appeared first and why?
-3. What would break first in production?
-4. What metric would you monitor?
-5. What would you refactor next?
+1. Which function was hardest to make deterministic and why?
+2. Which invariant almost broke during implementation?
+3. Which failure case gave you the most insight into the design?
+4. What one refactor would improve maintainability next?

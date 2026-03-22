@@ -1,46 +1,57 @@
-<!-- enriched: projects/tools/enrich-project-lessons.js -->
+<!-- generated: projects/tools/regenerate-guides.js -->
 # Implementation Guide: Temperature Converter
 
-## Phase 1: Model The Domain
+## Why This Guide Exists
 
-- Define the entities and state transitions first.
-- Write input and output contracts before implementation.
-- List invariants that must always remain true.
+This guide is project-specific. Use it to translate this folder's API surface into a step-by-step implementation plan.
 
-## Phase 2: Build Minimal Correct Behavior
+## Project Mental Model
 
-- Implement one end-to-end flow that works reliably.
-- Keep pure logic separate from I/O side effects.
-- Add guard clauses for invalid input paths.
+Use canonical conversion math with a single source of truth for factors/formulas.
 
-## Phase 3: Add Resilience
+## First Invariants To Lock In
 
-- Add explicit error handling for expected failure modes.
-- Add boundaries for untrusted or malformed data.
-- Capture metadata useful for debugging and observability.
+- Every supported unit can convert through a known path.
+- Precision policy is consistent.
+- Unsupported units fail fast with clear validation.
 
-## Manual Test Matrix
+## Suggested Implementation Order
 
-- Happy path: one normal operation that should succeed.
-- Edge path: smallest and largest valid values.
-- Failure path: malformed input with expected error.
-- Repeatability: same input run twice should match output.
-- Explainability: each result can be traced to a rule.
+1. celsiusToFahrenheit: define clear behavior and edge-case handling
+2. fahrenheitToCelsius: define clear behavior and edge-case handling
+3. celsiusToKelvin: define clear behavior and edge-case handling
+4. kelvinToCelsius: define clear behavior and edge-case handling
+5. fahrenheitToKelvin: define clear behavior and edge-case handling
+6. kelvinToFahrenheit: define clear behavior and edge-case handling
+7. getValidUnits: return deterministic read model
+8. convert: implement core math/rule transformation
 
-## Quality Validation Checklist
+## Failure Cases To Handle Early
 
-- [ ] Core concepts are visible in code structure: normalization, conversion maps, precision handling.
-- [ ] Error messages are actionable and consistent.
-- [ ] At least 3 edge cases are documented and tested.
-- [ ] Behavior aligns with all listed quality checks in README.
-- [ ] One improvement idea is recorded after comparing with solution.
+- Unknown unit names
+- Non-numeric values
+- Rounding errors from repeated conversion
 
-## Reflection Prompt
+## Project-Specific Manual Tests
 
-Write 5 lines:
+1. 0C should convert to 32F
+2. Round-trip conversion should stay within tolerance
+3. Unknown units should produce validation error
 
-1. Which invariant was hardest to preserve?
-2. Which bug appeared first and why?
-3. What would break first in production?
-4. What metric would you monitor?
-5. What would you refactor next?
+## API Completion Checklist
+
+- [ ] celsiusToFahrenheit has at least one happy path and one edge-case test.
+- [ ] fahrenheitToCelsius has at least one happy path and one edge-case test.
+- [ ] celsiusToKelvin has at least one happy path and one edge-case test.
+- [ ] kelvinToCelsius has at least one happy path and one edge-case test.
+- [ ] fahrenheitToKelvin has at least one happy path and one edge-case test.
+- [ ] kelvinToFahrenheit has at least one happy path and one edge-case test.
+- [ ] getValidUnits has at least one happy path and one edge-case test.
+- [ ] convert has at least one happy path and one edge-case test.
+
+## Level-Up Reflection (Beginner)
+
+1. Which function was hardest to make deterministic and why?
+2. Which invariant almost broke during implementation?
+3. Which failure case gave you the most insight into the design?
+4. What one refactor would improve maintainability next?

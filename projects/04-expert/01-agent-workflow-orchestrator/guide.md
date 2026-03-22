@@ -1,73 +1,51 @@
-# Guide: Agent Workflow Orchestrator
+<!-- generated: projects/tools/regenerate-guides.js -->
+# Implementation Guide: Agent Workflow Orchestrator
 
-## Build Order
+## Why This Guide Exists
 
-1. Define workflow schema (nodes, deps, retry policy).
-2. Validate graph shape and reject cycles.
-3. Build scheduler to find runnable nodes.
-4. Execute nodes via tool adapters.
-5. Add retry/backoff and timeout handling.
-6. Persist run-state snapshots and logs.
+This guide is project-specific. Use it to translate this folder's API surface into a step-by-step implementation plan.
 
-## What To Search
+## Project Mental Model
 
-- dag scheduler javascript
-- retry backoff strategy node js
-- idempotent workflow steps
-- structured logging distributed systems
+Model state transitions first, then enforce transition rules before mutating state.
 
-## How To Think
+## First Invariants To Lock In
 
-- Separate coordination from tool logic.
-- Make each step replay-safe where possible.
-- Design with failures as normal behavior.
+- Invalid state transitions are rejected.
+- State mutations are explicit and traceable.
+- History or audit trail can explain final state.
 
-## Suggested Learning Resources
+## Suggested Implementation Order
 
-- https://nodejs.org/en/learn/asynchronous-work
-- https://martinfowler.com/articles/patterns-of-distributed-systems/
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+1. runWorkflow: orchestrate dependent steps in correct order
+2. assertWorkflowSchema: define clear behavior and edge-case handling
+3. detectCycle: define clear behavior and edge-case handling
+4. sleep: define clear behavior and edge-case handling
+5. executeNodeWithRetry: orchestrate dependent steps in correct order
 
-## Phase 1: Model The Domain
+## Failure Cases To Handle Early
 
-- Define the entities and state transitions first.
-- Write input and output contracts before implementation.
-- List invariants that must always remain true.
+- Illegal transition jumps
+- Mutating state after terminal status
+- Missing audit/event log entry
 
-## Phase 2: Build Minimal Correct Behavior
+## Project-Specific Manual Tests
 
-- Implement one end-to-end flow that works reliably.
-- Keep pure logic separate from I/O side effects.
-- Add guard clauses for invalid input paths.
+1. Allowed transition succeeds
+2. Disallowed transition fails with clear reason
+3. History reflects exactly what happened
 
-## Phase 3: Add Resilience
+## API Completion Checklist
 
-- Add explicit error handling for expected failure modes.
-- Add boundaries for untrusted or malformed data.
-- Capture metadata useful for debugging and observability.
+- [ ] runWorkflow has at least one happy path and one edge-case test.
+- [ ] assertWorkflowSchema has at least one happy path and one edge-case test.
+- [ ] detectCycle has at least one happy path and one edge-case test.
+- [ ] sleep has at least one happy path and one edge-case test.
+- [ ] executeNodeWithRetry has at least one happy path and one edge-case test.
 
-## Manual Test Matrix
+## Level-Up Reflection (Expert)
 
-- Happy path: one normal operation that should succeed.
-- Edge path: smallest and largest valid values.
-- Failure path: malformed input with expected error.
-- Repeatability: same input run twice should match output.
-- Explainability: each result can be traced to a rule.
-
-## Quality Validation Checklist
-
-- [ ] Core concepts are visible in code structure: timeouts, retries, backpressure, consistency.
-- [ ] Error messages are actionable and consistent.
-- [ ] At least 3 edge cases are documented and tested.
-- [ ] Behavior aligns with all listed quality checks in README.
-- [ ] One improvement idea is recorded after comparing with solution.
-
-## Reflection Prompt
-
-Write 5 lines:
-
-1. Which invariant was hardest to preserve?
-2. Which bug appeared first and why?
-3. What would break first in production?
-4. What metric would you monitor?
-5. What would you refactor next?
+1. Which function was hardest to make deterministic and why?
+2. Which invariant almost broke during implementation?
+3. Which failure case gave you the most insight into the design?
+4. What one refactor would improve maintainability next?

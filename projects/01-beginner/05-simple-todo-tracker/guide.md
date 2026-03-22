@@ -1,46 +1,55 @@
-<!-- enriched: projects/tools/enrich-project-lessons.js -->
+<!-- generated: projects/tools/regenerate-guides.js -->
 # Implementation Guide: Simple Todo Tracker
 
-## Phase 1: Model The Domain
+## Why This Guide Exists
 
-- Define the entities and state transitions first.
-- Write input and output contracts before implementation.
-- List invariants that must always remain true.
+This guide is project-specific. Use it to translate this folder's API surface into a step-by-step implementation plan.
 
-## Phase 2: Build Minimal Correct Behavior
+## Project Mental Model
 
-- Implement one end-to-end flow that works reliably.
-- Keep pure logic separate from I/O side effects.
-- Add guard clauses for invalid input paths.
+Model state transitions first, then enforce transition rules before mutating state.
 
-## Phase 3: Add Resilience
+## First Invariants To Lock In
 
-- Add explicit error handling for expected failure modes.
-- Add boundaries for untrusted or malformed data.
-- Capture metadata useful for debugging and observability.
+- Invalid state transitions are rejected.
+- State mutations are explicit and traceable.
+- History or audit trail can explain final state.
 
-## Manual Test Matrix
+## Suggested Implementation Order
 
-- Happy path: one normal operation that should succeed.
-- Edge path: smallest and largest valid values.
-- Failure path: malformed input with expected error.
-- Repeatability: same input run twice should match output.
-- Explainability: each result can be traced to a rule.
+1. createTodo: define constructor inputs and object shape
+2. addTodo: validate input then append/update state safely
+3. updateTodoStatus: apply partial changes without breaking invariants
+4. getTodo: return deterministic read model
+5. getAllTodos: return deterministic read model
+6. getMetrics: return deterministic read model
+7. getHistory: return deterministic read model
 
-## Quality Validation Checklist
+## Failure Cases To Handle Early
 
-- [ ] Core concepts are visible in code structure: state machines, validation, audit trail.
-- [ ] Error messages are actionable and consistent.
-- [ ] At least 3 edge cases are documented and tested.
-- [ ] Behavior aligns with all listed quality checks in README.
-- [ ] One improvement idea is recorded after comparing with solution.
+- Illegal transition jumps
+- Mutating state after terminal status
+- Missing audit/event log entry
 
-## Reflection Prompt
+## Project-Specific Manual Tests
 
-Write 5 lines:
+1. Allowed transition succeeds
+2. Disallowed transition fails with clear reason
+3. History reflects exactly what happened
 
-1. Which invariant was hardest to preserve?
-2. Which bug appeared first and why?
-3. What would break first in production?
-4. What metric would you monitor?
-5. What would you refactor next?
+## API Completion Checklist
+
+- [ ] createTodo has at least one happy path and one edge-case test.
+- [ ] addTodo has at least one happy path and one edge-case test.
+- [ ] updateTodoStatus has at least one happy path and one edge-case test.
+- [ ] getTodo has at least one happy path and one edge-case test.
+- [ ] getAllTodos has at least one happy path and one edge-case test.
+- [ ] getMetrics has at least one happy path and one edge-case test.
+- [ ] getHistory has at least one happy path and one edge-case test.
+
+## Level-Up Reflection (Beginner)
+
+1. Which function was hardest to make deterministic and why?
+2. Which invariant almost broke during implementation?
+3. Which failure case gave you the most insight into the design?
+4. What one refactor would improve maintainability next?
