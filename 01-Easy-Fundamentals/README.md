@@ -28,6 +28,8 @@ By the end of this track, you should be able to:
 - 06-Functions-Basics
 - 07-Arrays-Basics
 - 08-Objects-Basics
+- 09-String-Parsing (NEW: Required for Calculator Engine, Markdown Parser)
+- 10-Error-Handling (NEW: Required for all production code)
 
 ## Session Loop
 

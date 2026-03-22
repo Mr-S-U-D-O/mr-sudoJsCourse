@@ -1,4 +1,5 @@
 <!-- enriched: projects/tools/enrich-project-lessons.js -->
+
 # Calculator Engine
 
 ## Quick Start
@@ -11,13 +12,13 @@ Before starting this project, you must complete these fundamentals lessons:
 
 1. **01-Variables** - understand variable scope
 2. **02-Data-Types** - know what strings, numbers, and arrays are
-3. **03-Operators** - understand +, -, *, / and their precedence
+3. **03-Operators** - understand +, -, \*, / and their precedence
 4. **05-Loops** - comfortable iterating with while or for loops
 5. **06-Functions-Basics** - write and call functions
 6. **07-Arrays-Basics** - array indexing, splice, length
-7. **NEW: String Parsing Basics** (* - see "Required Learning" below)
+7. **09-String-Parsing** (NEW in fundamentals) - character iteration, tokenization, pattern building
 
-*Required Learning: If you haven't studied string iteration and character-by-character processing, complete "String Parsing Basics" lesson before this project.*
+_Required Learning: If you haven't studied string iteration and character-by-character processing, complete "String Parsing Basics" lesson before this project._
 
 ## Project Aim
 
@@ -33,7 +34,7 @@ Parse and evaluate arithmetic expressions safely without using JavaScript's `eva
 ## Core Concepts You Must Learn
 
 - **Tokenization**: breaking "2+3*4" into ['2', '+', '3', '*', '4']
-- **Operator precedence**: * and / before + and - (BODMAS/PEMDAS)
+- **Operator precedence**: \* and / before + and - (BODMAS/PEMDAS)
 - **Validation**: ensuring token sequences are well-formed
 - **Separation of concerns**: parsing logic separate from evaluation logic
 - **Error handling**: clear messages for invalid input

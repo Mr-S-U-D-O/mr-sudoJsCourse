@@ -2,12 +2,12 @@
 
 /**
  * CALCULATOR ENGINE - REFERENCE SOLUTION
- * 
+ *
  * This implementation demonstrates:
  * - Tokenization: breaking a string into meaningful pieces
  * - Validation: ensuring input is well-formed
  * - Evaluation: applying operator precedence (BODMAS/PEMDAS)
- * 
+ *
  * Key insight: Separating concerns (parsing vs evaluating) makes code testable.
  */
 
@@ -63,7 +63,7 @@ function tokenize(expression) {
     // Invalid character
     throw new Error(
       `Invalid character at position ${i}: '${char}'. ` +
-      `Only digits, operators (+, -, *, /), and whitespace are allowed.`
+        `Only digits, operators (+, -, *, /), and whitespace are allowed.`,
     );
   }
 
@@ -96,16 +96,12 @@ function validateTokens(tokens) {
     if (i % 2 === 0) {
       // Even positions should be numbers
       if (!isNumber) {
-        throw new Error(
-          `Expected number at position ${i}, got '${token}'`
-        );
+        throw new Error(`Expected number at position ${i}, got '${token}'`);
       }
     } else {
       // Odd positions should be operators
       if (!isOperator) {
-        throw new Error(
-          `Expected operator at position ${i}, got '${token}'`
-        );
+        throw new Error(`Expected operator at position ${i}, got '${token}'`);
       }
     }
   }
@@ -154,10 +150,7 @@ function evaluate(tokens) {
     const left = processed[i - 1];
     const right = processed[i + 1];
 
-    const result =
-      operator === "+"
-        ? left + right
-        : left - right;
+    const result = operator === "+" ? left + right : left - right;
 
     processed.splice(i - 1, 3, result);
     i -= 2;
