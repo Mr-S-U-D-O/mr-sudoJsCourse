@@ -7,7 +7,24 @@
  * @throws {TypeError} When values is not an array.
  */
 function solveRecordsAndTuples(values) {
-  // TODO: Implement your solution
+  if (!Array.isArray(values)) {
+    throw new TypeError('values must be an array');
+  }
+
+  let truthyCount = 0;
+
+  for (const value of values) {
+    if (value) {
+      truthyCount += 1;
+    }
+  }
+
+  return {
+    topic: 'Records-and-Tuples',
+    total: values.length,
+    truthyCount,
+    falsyCount: values.length - truthyCount,
+  };
 }
 
 module.exports = solveRecordsAndTuples;

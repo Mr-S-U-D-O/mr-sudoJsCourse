@@ -7,7 +7,24 @@
  * @throws {TypeError} When values is not an array.
  */
 function solveCurryingAndPartialApp(values) {
-  // TODO: Implement your solution
+  if (!Array.isArray(values)) {
+    throw new TypeError('values must be an array');
+  }
+
+  let truthyCount = 0;
+
+  for (const value of values) {
+    if (value) {
+      truthyCount += 1;
+    }
+  }
+
+  return {
+    topic: 'Currying-and-Partial-App',
+    total: values.length,
+    truthyCount,
+    falsyCount: values.length - truthyCount,
+  };
 }
 
 module.exports = solveCurryingAndPartialApp;
