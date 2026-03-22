@@ -124,6 +124,22 @@ project-name/
 
 ## 🚀 Getting Started
 
+## Project Resource Hub
+
+- [Learning Playbook](./PROJECTS-PLAYBOOK.md): practical weekly plans, quality rubric, interview prep, and extension prompts.
+- [Structure Audit Script](./tools/audit-projects.js): scans every project for missing standard files and folder anomalies.
+- [Beginner Level Guide](./01-beginner/README.md): onboarding path for first-time learners.
+
+### Run The Structure Audit
+
+```bash
+node ./projects/tools/audit-projects.js
+node ./projects/tools/audit-projects.js --summary
+node ./projects/tools/audit-projects.js --summary --fail-on-issues
+```
+
+Use this audit before and after you work on projects to keep structure consistent.
+
 ### Prerequisites
 
 - Node.js 18+ (recommended)
