@@ -7,7 +7,24 @@
  * @throws {TypeError} When values is not an array.
  */
 function solveCallbacks(values) {
-  // TODO: Your code here
+  if (!Array.isArray(values)) {
+    throw new TypeError('values must be an array');
+  }
+
+  let truthyCount = 0;
+
+  for (const value of values) {
+    if (Boolean(value)) {
+      truthyCount += 1;
+    }
+  }
+
+  return {
+    topic: 'Callbacks',
+    total: values.length,
+    truthyCount,
+    falsyCount: values.length - truthyCount,
+  };
 }
 
 module.exports = solveCallbacks;
