@@ -19,12 +19,26 @@ describe('Callbacks', () => {
     });
   });
 
-  test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveCallbacks([NaN, -0, '0'])).toEqual({
+  test('Trap: Promise instances are truthy even when unresolved', () => {
+    expect(solveCallbacks([Promise.resolve(1), 0, false])).toEqual({
       topic: 'Callbacks',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveCallbacks(null)).toThrow('values must be an array');
+    expect(() => solveCallbacks('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveCallbacks(input);
+
+    expect(input).toEqual(clone);
   });
 });
