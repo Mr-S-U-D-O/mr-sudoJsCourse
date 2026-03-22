@@ -22,8 +22,8 @@ function tokenize(text, options = {}) {
   const settings = { ...defaults, ...options };
   return text
     .split(/\s+/)
-    .map(word => normalizeWord(word, settings))
-    .filter(word => word.length > 0);
+    .map((word) => normalizeWord(word, settings))
+    .filter((word) => word.length > 0);
 }
 
 function countWords(text) {
@@ -44,7 +44,7 @@ function getTopNWords(text, n) {
   return Object.entries(freq)
     .sort((a, b) => b[1] - a[1])
     .slice(0, n)
-    .map(entry => entry[0]);
+    .map((entry) => entry[0]);
 }
 
 function createProject(initialState = {}) {

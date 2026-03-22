@@ -5,7 +5,7 @@ function createLimiter(maxRequests, timeWindowMs) {
 }
 
 function isAllowed(limiter, userId) {
-  // TODO: Check if user can make request  
+  // TODO: Check if user can make request
 }
 
 function increment(limiter, userId) {

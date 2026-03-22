@@ -8,11 +8,36 @@ const metadata = {
 
 function getStrengthRules() {
   return [
-    { id: "length8", test: p => p.length >= 8, weight: 20, message: "At least 8 characters" },
-    { id: "uppercase", test: p => /[A-Z]/.test(p), weight: 15, message: "Contains uppercase letter" },
-    { id: "lowercase", test: p => /[a-z]/.test(p), weight: 15, message: "Contains lowercase letter" },
-    { id: "numbers", test: p => /\d/.test(p), weight: 20, message: "Contains number" },
-    { id: "special", test: p => /[!@#$%^&*]/.test(p), weight: 30, message: "Contains special character" }
+    {
+      id: "length8",
+      test: (p) => p.length >= 8,
+      weight: 20,
+      message: "At least 8 characters",
+    },
+    {
+      id: "uppercase",
+      test: (p) => /[A-Z]/.test(p),
+      weight: 15,
+      message: "Contains uppercase letter",
+    },
+    {
+      id: "lowercase",
+      test: (p) => /[a-z]/.test(p),
+      weight: 15,
+      message: "Contains lowercase letter",
+    },
+    {
+      id: "numbers",
+      test: (p) => /\d/.test(p),
+      weight: 20,
+      message: "Contains number",
+    },
+    {
+      id: "special",
+      test: (p) => /[!@#$%^&*]/.test(p),
+      weight: 30,
+      message: "Contains special character",
+    },
   ];
 }
 
@@ -38,7 +63,7 @@ function checkPasswordStrength(password) {
 
   const score = computeScore(password);
   const rules = getStrengthRules();
-  
+
   let strength;
   if (score < 25) strength = "weak";
   else if (score < 50) strength = "fair";
@@ -51,7 +76,7 @@ function checkPasswordStrength(password) {
       feedback.push(rule.message);
     }
   }
-  
+
   return { strength, score, feedback };
 }
 
@@ -59,7 +84,11 @@ function validatePassword(password) {
   if (typeof password !== "string" || password.length < 8) {
     throw new Error("Password must be at least 8 characters");
   }
-  if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/\d/.test(password)) {
+  if (
+    !/[A-Z]/.test(password) ||
+    !/[a-z]/.test(password) ||
+    !/\d/.test(password)
+  ) {
     throw new Error("Password must contain uppercase, lowercase, and number");
   }
 }

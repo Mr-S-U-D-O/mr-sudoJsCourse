@@ -34,7 +34,7 @@ function processUser(user) {
   if (typeof user !== "object") throw new TypeError("user must be object");
   if (!user.name) throw new Error("user.name is required");
   if (!user.email) throw new Error("user.email is required");
-  
+
   // Now we know input is safe - process it
   return user.name.toUpperCase();
 }
@@ -76,26 +76,26 @@ Include useful information in errors:
 
 ```javascript
 function findUser(users, id) {
-  const user = users.find(u => u.id === id);
-  
+  const user = users.find((u) => u.id === id);
+
   if (!user) {
     const error = new Error("User not found");
     error.code = "USER_NOT_FOUND";
     error.userId = id;
-    error.searchedIds = users.map(u => u.id);
+    error.searchedIds = users.map((u) => u.id);
     throw error;
   }
-  
+
   return user;
 }
 
 // Usage:
 try {
-  const user = findUser([{id: 1}], 999);
+  const user = findUser([{ id: 1 }], 999);
 } catch (e) {
   console.error(e.message); // "User not found"
-  console.error(e.code);    // "USER_NOT_FOUND"
-  console.error(e.userId);  // 999
+  console.error(e.code); // "USER_NOT_FOUND"
+  console.error(e.userId); // 999
 }
 ```
 
@@ -104,16 +104,19 @@ try {
 Always ask:
 
 1. **Type check**: Is input the right type?
+
    ```javascript
    if (typeof value !== "number") throw new TypeError("...");
    ```
 
 2. **Range check**: Is value in valid range?
+
    ```javascript
    if (value < 0 || value > 100) throw new Error("...");
    ```
 
 3. **Existence check**: Does required value exist?
+
    ```javascript
    if (!value) throw new Error("value is required");
    ```

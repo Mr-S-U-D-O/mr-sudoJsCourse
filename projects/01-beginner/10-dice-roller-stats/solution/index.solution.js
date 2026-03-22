@@ -30,12 +30,20 @@ function getStats(rolls) {
   const sorted = [...rolls].sort((a, b) => a - b);
   const sum = rolls.reduce((a, b) => a + b, 0);
   const mean = sum / rolls.length;
-  const median = rolls.length % 2 === 0
-    ? (sorted[rolls.length / 2 - 1] + sorted[rolls.length / 2]) / 2
-    : sorted[Math.floor(rolls.length / 2)];
+  const median =
+    rolls.length % 2 === 0
+      ? (sorted[rolls.length / 2 - 1] + sorted[rolls.length / 2]) / 2
+      : sorted[Math.floor(rolls.length / 2)];
   const dist = getDistribution(rolls);
-  const mode = Object.keys(dist).reduce((a, b) => dist[a] > dist[b] ? a : b);
-  return { mean, median, mode: parseInt(mode), min: sorted[0], max: sorted[sorted.length - 1], distribution: dist };
+  const mode = Object.keys(dist).reduce((a, b) => (dist[a] > dist[b] ? a : b));
+  return {
+    mean,
+    median,
+    mode: parseInt(mode),
+    min: sorted[0],
+    max: sorted[sorted.length - 1],
+    distribution: dist,
+  };
 }
 
 function getRolls() {

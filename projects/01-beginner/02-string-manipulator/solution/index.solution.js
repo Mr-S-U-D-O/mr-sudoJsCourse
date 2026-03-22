@@ -51,10 +51,7 @@ function toCamelCase(str) {
 }
 
 function toSnakeCase(str) {
-  return str
-    .split(" ")
-    .join("_")
-    .toLowerCase();
+  return str.split(" ").join("_").toLowerCase();
 }
 
 function countCharacters(str) {
@@ -62,7 +59,10 @@ function countCharacters(str) {
 }
 
 function countWords(str) {
-  return str.trim().split(/\s+/).filter(word => word.length > 0).length;
+  return str
+    .trim()
+    .split(/\s+/)
+    .filter((word) => word.length > 0).length;
 }
 
 function countVowels(str) {
@@ -82,15 +82,15 @@ function isPalindrome(str) {
 function trim(str) {
   let start = 0;
   let end = str.length - 1;
-  
+
   while (start <= end && /\s/.test(str[start])) {
     start++;
   }
-  
+
   while (end >= start && /\s/.test(str[end])) {
     end--;
   }
-  
+
   return start > end ? "" : str.substring(start, end + 1);
 }
 

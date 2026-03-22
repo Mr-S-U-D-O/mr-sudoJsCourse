@@ -43,7 +43,7 @@ function tokenizeExpression(expr) {
 function validateTokens(tokens) {
   if (!Array.isArray(tokens)) throw new TypeError("tokens must be array");
   if (tokens.length === 0) throw new Error("empty tokens");
-  
+
   // Must have odd length
   if (tokens.length % 2 === 0) {
     throw new Error("Invalid: expected to end with number");
@@ -64,13 +64,14 @@ function validateTokens(tokens) {
 
 function parseCSV(line) {
   if (typeof line !== "string") throw new TypeError("line must be string");
-  return line.split(",").map(v => v.trim());
+  return line.split(",").map((v) => v.trim());
 }
 
 function templateVariables(template) {
-  if (typeof template !== "string") throw new TypeError("template must be string");
+  if (typeof template !== "string")
+    throw new TypeError("template must be string");
   const matches = template.match(/\{\{(\w+)\}\}/g) || [];
-  return matches.map(m => m.replace(/\{\{|\}\}/g, ""));
+  return matches.map((m) => m.replace(/\{\{|\}\}/g, ""));
 }
 
 module.exports = {

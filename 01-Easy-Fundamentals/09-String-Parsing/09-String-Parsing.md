@@ -53,7 +53,7 @@ const tokens = text.match(/\d+|[+\-*/]/g);
 #### 3. Split & Filter
 
 ```javascript
-const words = text.split(/\s+/).filter(word => word.length > 0);
+const words = text.split(/\s+/).filter((word) => word.length > 0);
 ```
 
 **Use when**: Separators divide tokens clearly
@@ -140,27 +140,27 @@ function validateTokens(tokens) {
 
 ## Manual Test Matrix
 
-| Input | Expected Tokens | Why? |
-|-------|-----------------|------|
-| `"123"` | `["123"]` | Single number |
-| `"1 + 2"` | `["1", "+", "2"]` | Whitespace ignored |
-| `"10*5+3"` | `["10", "*", "5", "+", "3"]` | No spaces OK |
-| `"2++3"` | ERROR | Invalid: double operator |
-| `"+2"` | ERROR | Invalid: starts with operator |
+| Input      | Expected Tokens              | Why?                          |
+| ---------- | ---------------------------- | ----------------------------- |
+| `"123"`    | `["123"]`                    | Single number                 |
+| `"1 + 2"`  | `["1", "+", "2"]`            | Whitespace ignored            |
+| `"10*5+3"` | `["10", "*", "5", "+", "3"]` | No spaces OK                  |
+| `"2++3"`   | ERROR                        | Invalid: double operator      |
+| `"+2"`     | ERROR                        | Invalid: starts with operator |
 
 ## Accuracy Traps
 
 1. **Forgetting accumulated state**: If you're building multi-character tokens,don't forget to save when transitioning
 2. **Off-by-one**: Loop to `i < text.length`, not `i <= text.length`
-3. **Not handling end-of-string**: Save any accumulated token *after* the loop ends
+3. **Not handling end-of-string**: Save any accumulated token _after_ the loop ends
 4. **Case sensitivity**: Decide early: is `A` different from `a`?
 
 ## Pattern: Tokenize → Validate → Process
 
 ```javascript
 // Pattern used in real systems:
-const tokens = tokenize(input);      // Step 1: Break into pieces
-validateTokens(tokens);               // Step 2: Ensure well-formed
+const tokens = tokenize(input); // Step 1: Break into pieces
+validateTokens(tokens); // Step 2: Ensure well-formed
 const result = processTokens(tokens); // Step 3: Do something with them
 ```
 
@@ -242,11 +242,13 @@ function parseTemplate(template) {
 ## When to Use
 
 ✅ **Use character-by-character parsing when:**
+
 - Token boundaries are clearly defined
 - Regex patterns are complex
 - You need granular control
 
 ❌ **Don't use when:**
+
 - Simple regex suffices (`text.match(/.../g)`)
 - Tokens are separated by clear separators (use `split()`)
 
