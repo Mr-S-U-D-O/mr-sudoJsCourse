@@ -1,0 +1,11 @@
+﻿# Security XSS Proto Pollution Challenge 1
+
+Use this prompt with the existing lesson implementation files:
+
+1. Read 09-Security-XSS-Proto-Pollution.md
+2. Implement or refactor 09-Security-XSS-Proto-Pollution.js
+3. Validate with 09-Security-XSS-Proto-Pollution.test.js
+
+Run:
+
+npm run check 08-Engine-Internals-and-Dark-Arts/09-Security-XSS-Proto-Pollution

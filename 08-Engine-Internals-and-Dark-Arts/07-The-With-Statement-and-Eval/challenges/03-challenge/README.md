@@ -1,0 +1,11 @@
+﻿# The With Statement and Eval Challenge 3
+
+Use this prompt with the existing lesson implementation files:
+
+1. Read 07-The-With-Statement-and-Eval.md
+2. Implement or refactor 07-The-With-Statement-and-Eval.js
+3. Validate with 07-The-With-Statement-and-Eval.test.js
+
+Run:
+
+npm run check 08-Engine-Internals-and-Dark-Arts/07-The-With-Statement-and-Eval
