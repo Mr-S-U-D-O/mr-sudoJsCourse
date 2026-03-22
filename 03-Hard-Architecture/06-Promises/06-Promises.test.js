@@ -19,12 +19,26 @@ describe('Promises', () => {
     });
   });
 
-  test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solvePromises([NaN, -0, '0'])).toEqual({
+  test('Trap: Promise instances are truthy even when unresolved', () => {
+    expect(solvePromises([Promise.resolve(1), 0, false])).toEqual({
       topic: 'Promises',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solvePromises(null)).toThrow('values must be an array');
+    expect(() => solvePromises('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solvePromises(input);
+
+    expect(input).toEqual(clone);
   });
 });

@@ -1,9 +1,10 @@
 /**
- * Analyze a list of values for the Promises exercise.
+ * Analyze values for the Promises lesson.
  *
- * @param {unknown[]} values - Values to evaluate.
+ * @param {unknown[]} values - List of values to inspect.
  * @returns {{ topic: string, total: number, truthyCount: number, falsyCount: number }}
- * An object containing the topic label and truthy/falsy counts.
+ * Summary object for this lesson challenge.
+ * @throws {TypeError} When values is not an array.
  */
 function solvePromises(values) {
   // TODO: Your code here
