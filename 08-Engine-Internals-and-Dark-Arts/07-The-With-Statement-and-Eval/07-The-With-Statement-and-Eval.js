@@ -7,24 +7,7 @@
  * @throws {TypeError} When values is not an array.
  */
 function solveTheWithStatementAndEval(values) {
-  if (!Array.isArray(values)) {
-    throw new TypeError('values must be an array');
-  }
-
-  let truthyCount = 0;
-
-  for (const value of values) {
-    if (Boolean(value)) {
-      truthyCount += 1;
-    }
-  }
-
-  return {
-    topic: 'The-With-Statement-and-Eval',
-    total: values.length,
-    truthyCount,
-    falsyCount: values.length - truthyCount,
-  };
+  // TODO: Implement your solution
 }
 
 module.exports = solveTheWithStatementAndEval;
