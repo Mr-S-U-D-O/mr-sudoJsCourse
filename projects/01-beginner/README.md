@@ -7,18 +7,18 @@ This level is designed to move you from syntax familiarity to practical coding c
 
 ## Projects Overview
 
-| # | Project | Concepts | Est. Time |
-| --- | --- | --- | --- |
-| 1 | [Calculator Engine](./01-calculator-engine/) | Parsing basics, operations, input safety | 4-6h |
-| 2 | [String Manipulator](./02-string-manipulator/) | String transforms, regex, utility design | 4-6h |
-| 3 | [Temperature Converter](./03-temperature-converter/) | Unit conversion, validation | 3-5h |
-| 4 | [Word Counter](./04-word-counter/) | Text scanning, counting, object maps | 4-6h |
-| 5 | [Simple Todo Tracker](./05-simple-todo-tracker/) | CRUD, arrays/objects, state updates | 5-7h |
-| 6 | [Password Strength Checker](./06-password-strength-checker/) | Rule systems, scoring, edge cases | 4-6h |
-| 7 | [Number Guessing Game](./07-number-guessing-game/) | Loops, randomness, interaction flow | 3-5h |
-| 8 | [Shopping Cart](./08-shopping-cart/) | Totals, discounts, state consistency | 5-7h |
-| 9 | [Unit Converter](./09-unit-converter/) | Mapping relationships, normalization | 4-6h |
-| 10 | [Dice Roller & Stats](./10-dice-roller-stats/) | Random simulation, statistics basics | 4-6h |
+| #   | Project                                                      | Concepts                                 | Est. Time |
+| --- | ------------------------------------------------------------ | ---------------------------------------- | --------- |
+| 1   | [Calculator Engine](./01-calculator-engine/)                 | Parsing basics, operations, input safety | 4-6h      |
+| 2   | [String Manipulator](./02-string-manipulator/)               | String transforms, regex, utility design | 4-6h      |
+| 3   | [Temperature Converter](./03-temperature-converter/)         | Unit conversion, validation              | 3-5h      |
+| 4   | [Word Counter](./04-word-counter/)                           | Text scanning, counting, object maps     | 4-6h      |
+| 5   | [Simple Todo Tracker](./05-simple-todo-tracker/)             | CRUD, arrays/objects, state updates      | 5-7h      |
+| 6   | [Password Strength Checker](./06-password-strength-checker/) | Rule systems, scoring, edge cases        | 4-6h      |
+| 7   | [Number Guessing Game](./07-number-guessing-game/)           | Loops, randomness, interaction flow      | 3-5h      |
+| 8   | [Shopping Cart](./08-shopping-cart/)                         | Totals, discounts, state consistency     | 5-7h      |
+| 9   | [Unit Converter](./09-unit-converter/)                       | Mapping relationships, normalization     | 4-6h      |
+| 10  | [Dice Roller & Stats](./10-dice-roller-stats/)               | Random simulation, statistics basics     | 4-6h      |
 
 **Total Estimated Time:** 50-72 hours
 

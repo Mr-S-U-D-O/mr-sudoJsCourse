@@ -48,8 +48,13 @@ function detectNestedDuplicateDir(projectPath, projectDirName) {
 
 function auditProject(levelName, projectDirName) {
   const projectPath = path.join(projectsRoot, levelName, projectDirName);
-  const missing = requiredItems.filter((item) => !exists(path.join(projectPath, item)));
-  const hasNestedDuplicate = detectNestedDuplicateDir(projectPath, projectDirName);
+  const missing = requiredItems.filter(
+    (item) => !exists(path.join(projectPath, item)),
+  );
+  const hasNestedDuplicate = detectNestedDuplicateDir(
+    projectPath,
+    projectDirName,
+  );
 
   return {
     levelName,
@@ -84,13 +89,20 @@ function printReport(results) {
   console.log("=".repeat(24));
   console.log(`Root: ${projectsRoot}`);
   console.log(`Total projects found: ${total}`);
-  console.log(`Projects with missing standard items: ${projectsWithMissing.length}`);
-  console.log(`Projects with nested duplicate folder name: ${nestedDuplicates.length}`);
+  console.log(
+    `Projects with missing standard items: ${projectsWithMissing.length}`,
+  );
+  console.log(
+    `Projects with nested duplicate folder name: ${nestedDuplicates.length}`,
+  );
   console.log("");
 
   if (summaryOnly) {
-    const hasIssues = projectsWithMissing.length > 0 || nestedDuplicates.length > 0;
-    console.log(hasIssues ? "Summary result: ATTENTION NEEDED" : "Summary result: PASS");
+    const hasIssues =
+      projectsWithMissing.length > 0 || nestedDuplicates.length > 0;
+    console.log(
+      hasIssues ? "Summary result: ATTENTION NEEDED" : "Summary result: PASS",
+    );
     process.exitCode = hasIssues && failOnIssues ? 1 : 0;
     return;
   }
@@ -122,8 +134,11 @@ function printReport(results) {
     console.log("");
   }
 
-  const hasIssues = projectsWithMissing.length > 0 || nestedDuplicates.length > 0;
-  console.log(hasIssues ? "Audit result: ATTENTION NEEDED" : "Audit result: PASS");
+  const hasIssues =
+    projectsWithMissing.length > 0 || nestedDuplicates.length > 0;
+  console.log(
+    hasIssues ? "Audit result: ATTENTION NEEDED" : "Audit result: PASS",
+  );
   process.exitCode = hasIssues && failOnIssues ? 1 : 0;
 }
 
