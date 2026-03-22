@@ -1,17 +1,9 @@
 # 06-The-Platform
 
-## Difficulty Profile
-- Difficulty: Advanced
-- Goal: bridge JavaScript language knowledge with platform APIs and systems constraints
+## Track Goal
+Build practical confidence in The Platform through implementation-first exercises.
 
-## Recommended Learning Loop
-1. Start with one topic only.
-2. Read the lesson markdown before coding.
-3. Implement the function from scratch.
-4. Run: npm run check 06-The-Platform/<topic>
-5. Review trap behavior and summarize what surprised you.
-
-## Topics
+## Lessons
 - 01-Streams-API
 - 02-Buffers-and-TypedArrays
 - 03-Web-and-Service-Workers
@@ -22,5 +14,15 @@
 - 08-Observability
 - 09-Low-Level-Node
 
-## Completion Standard
-You finish this level when you can explain every trap test without reading notes.
+## Study Rhythm
+1. Complete one lesson per session.
+2. Keep each session under 45 minutes.
+3. Re-run previous trap tests once per week.
+4. Capture one real-world use case per topic.
+
+## Learning Resources
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript
+- https://javascript.info/
+- https://exploringjs.com/
+- https://github.com/getify/You-Dont-Know-JS
+- https://nodejs.org/en/learn
