@@ -10,10 +10,12 @@ This folder provides optional challenge prompts aligned to the lesson topic.
 
 Use the existing lesson files for implementation and validation:
 
+- lessons/README.md
 - 04-Iterator-Helpers.js
-- 04-Iterator-Helpers.md
 - 04-Iterator-Helpers.test.js
 
 ## Run
 
 npm run check 05-Modern-ECMAScript/04-Iterator-Helpers
+
+

@@ -10,10 +10,12 @@ This folder provides optional challenge prompts aligned to the lesson topic.
 
 Use the existing lesson files for implementation and validation:
 
+- lessons/README.md
 - 03-Decorators.js
-- 03-Decorators.md
 - 03-Decorators.test.js
 
 ## Run
 
 npm run check 05-Modern-ECMAScript/03-Decorators
+
+

@@ -10,10 +10,12 @@ This folder provides optional challenge prompts aligned to the lesson topic.
 
 Use the existing lesson files for implementation and validation:
 
+- lessons/README.md
 - 08-Modules.js
-- 08-Modules.md
 - 08-Modules.test.js
 
 ## Run
 
 npm run check 03-Hard-Architecture/08-Modules
+
+

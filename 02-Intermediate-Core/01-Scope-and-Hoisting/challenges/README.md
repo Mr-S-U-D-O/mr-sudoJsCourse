@@ -10,10 +10,12 @@ This folder provides optional challenge prompts aligned to the lesson topic.
 
 Use the existing lesson files for implementation and validation:
 
+- lessons/README.md
 - 01-Scope-and-Hoisting.js
-- 01-Scope-and-Hoisting.md
 - 01-Scope-and-Hoisting.test.js
 
 ## Run
 
 npm run check 02-Intermediate-Core/01-Scope-and-Hoisting
+
+

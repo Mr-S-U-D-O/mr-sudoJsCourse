@@ -10,10 +10,12 @@ This folder provides optional challenge prompts aligned to the lesson topic.
 
 Use the existing lesson files for implementation and validation:
 
+- lessons/README.md
 - 07-Design-Patterns.js
-- 07-Design-Patterns.md
 - 07-Design-Patterns.test.js
 
 ## Run
 
 npm run check 04-Advanced-Deep-JS/07-Design-Patterns
+
+

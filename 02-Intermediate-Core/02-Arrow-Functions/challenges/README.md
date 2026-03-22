@@ -10,10 +10,12 @@ This folder provides optional challenge prompts aligned to the lesson topic.
 
 Use the existing lesson files for implementation and validation:
 
+- lessons/README.md
 - 02-Arrow-Functions.js
-- 02-Arrow-Functions.md
 - 02-Arrow-Functions.test.js
 
 ## Run
 
 npm run check 02-Intermediate-Core/02-Arrow-Functions
+
+

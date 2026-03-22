@@ -10,10 +10,12 @@ This folder provides optional challenge prompts aligned to the lesson topic.
 
 Use the existing lesson files for implementation and validation:
 
+- lessons/README.md
 - 06-Memory-Management.js
-- 06-Memory-Management.md
 - 06-Memory-Management.test.js
 
 ## Run
 
 npm run check 04-Advanced-Deep-JS/06-Memory-Management
+
+

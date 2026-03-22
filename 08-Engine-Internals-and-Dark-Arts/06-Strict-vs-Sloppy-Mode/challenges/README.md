@@ -10,10 +10,12 @@ This folder provides optional challenge prompts aligned to the lesson topic.
 
 Use the existing lesson files for implementation and validation:
 
+- lessons/README.md
 - 06-Strict-vs-Sloppy-Mode.js
-- 06-Strict-vs-Sloppy-Mode.md
 - 06-Strict-vs-Sloppy-Mode.test.js
 
 ## Run
 
 npm run check 08-Engine-Internals-and-Dark-Arts/06-Strict-vs-Sloppy-Mode
+
+
