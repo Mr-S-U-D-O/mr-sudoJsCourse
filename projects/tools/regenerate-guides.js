@@ -215,15 +215,24 @@ function loadFunctionSurface(projectPath) {
 function taskFromFunctionName(name) {
   const lower = name.toLowerCase();
 
-  if (lower.startsWith("create")) return "define constructor inputs and object shape";
-  if (lower.startsWith("add")) return "validate input then append/update state safely";
-  if (lower.startsWith("update")) return "apply partial changes without breaking invariants";
-  if (lower.startsWith("delete") || lower.startsWith("remove")) return "handle not-found paths and preserve consistency";
-  if (lower.startsWith("get") || lower.startsWith("list")) return "return deterministic read model";
-  if (lower.startsWith("parse") || lower.startsWith("token")) return "convert raw input into structured tokens";
-  if (lower.startsWith("validate") || lower.startsWith("check")) return "enforce contract and return actionable errors";
-  if (lower.startsWith("convert") || lower.startsWith("calculate")) return "implement core math/rule transformation";
-  if (lower.startsWith("execute") || lower.startsWith("run")) return "orchestrate dependent steps in correct order";
+  if (lower.startsWith("create"))
+    return "define constructor inputs and object shape";
+  if (lower.startsWith("add"))
+    return "validate input then append/update state safely";
+  if (lower.startsWith("update"))
+    return "apply partial changes without breaking invariants";
+  if (lower.startsWith("delete") || lower.startsWith("remove"))
+    return "handle not-found paths and preserve consistency";
+  if (lower.startsWith("get") || lower.startsWith("list"))
+    return "return deterministic read model";
+  if (lower.startsWith("parse") || lower.startsWith("token"))
+    return "convert raw input into structured tokens";
+  if (lower.startsWith("validate") || lower.startsWith("check"))
+    return "enforce contract and return actionable errors";
+  if (lower.startsWith("convert") || lower.startsWith("calculate"))
+    return "implement core math/rule transformation";
+  if (lower.startsWith("execute") || lower.startsWith("run"))
+    return "orchestrate dependent steps in correct order";
   if (lower.startsWith("is")) return "return a pure boolean predicate";
 
   return "define clear behavior and edge-case handling";
@@ -237,7 +246,9 @@ function makeGuide(levelDir, projectDir) {
   const functions = loadFunctionSurface(projectPath);
 
   const implementationOrder = functions
-    .map((name, index) => `${index + 1}. ${name}: ${taskFromFunctionName(name)}`)
+    .map(
+      (name, index) => `${index + 1}. ${name}: ${taskFromFunctionName(name)}`,
+    )
     .join("\n");
 
   const manualTests = profile.testIdeas
@@ -245,7 +256,10 @@ function makeGuide(levelDir, projectDir) {
     .join("\n");
 
   const functionChecklist = functions
-    .map((name) => `- [ ] ${name} has at least one happy path and one edge-case test.`)
+    .map(
+      (name) =>
+        `- [ ] ${name} has at least one happy path and one edge-case test.`,
+    )
     .join("\n");
 
   return `<!-- generated: projects/tools/regenerate-guides.js -->
