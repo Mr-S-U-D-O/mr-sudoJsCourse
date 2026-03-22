@@ -20,11 +20,25 @@ describe('Streams-API', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveStreamsAPI([NaN, -0, '0'])).toEqual({
+    expect(solveStreamsAPI([NaN, -0, "0"])).toEqual({
       topic: 'Streams-API',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveStreamsAPI(null)).toThrow('values must be an array');
+    expect(() => solveStreamsAPI('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveStreamsAPI(input);
+
+    expect(input).toEqual(clone);
   });
 });
