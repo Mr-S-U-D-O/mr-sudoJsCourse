@@ -1,18 +1,35 @@
 # The-Event-Loop
 
 ## Concept
-Imagine your codebase as a busy control room: every signal, dial, and switch has a type, a shape, and a behavior. In this exercise, you build a tiny inspector that keeps this room predictable by counting how values behave before they cause surprises.
+Imagine an airport tower scheduling takeoffs and landings. The runway can only do one thing at a time, but many events are queued and prioritized safely.
+
+## Difficulty
+- Level: Upper-Intermediate
+- Focus: model runtime internals and advanced language mechanics
+- Lesson target: The Event Loop
+
+## Learning Efficiency Sprint (20-30 minutes)
+1. Read this lesson once and highlight words that feel fuzzy.
+2. Sketch 2 tiny examples on paper before touching the keyboard.
+3. Implement the function in one pass, then refactor only once.
+4. Run tests and write a one-line note on each failed expectation.
+5. Re-run after fixes and explain the trap case out loud.
 
 ## Challenge
-Implement `solveTheEventLoop` in `01-The-Event-Loop.js`.
+Implement the function in 01-The-Event-Loop.js.
 
-Your function must:
-- Accept an array of values as input.
-- Return an object with `topic`, `total`, `truthyCount`, and `falsyCount`.
-- Preserve the exact topic label `The-Event-Loop` in the `topic` field.
+Requirements:
+- Accept exactly one argument named values.
+- Throw TypeError with the message "values must be an array" when the input is not an array.
+- Return an object with these fields:
+  - topic: the exact label "The-Event-Loop".
+  - total: total number of values.
+  - truthyCount: number of values where Boolean(value) is true.
+  - falsyCount: number of values where Boolean(value) is false.
+- Do not mutate the original input array.
 
 ## Pass Condition
-Run: `npm run check 04-Advanced-Deep-JS/01-The-Event-Loop`
+Run: npm run check 04-Advanced-Deep-JS/01-The-Event-Loop
 
 ## Escape Hatch
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop
