@@ -20,11 +20,25 @@ describe('Immutable-Arrays', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveImmutableArrays([NaN, -0, '0'])).toEqual({
+    expect(solveImmutableArrays([NaN, -0, "0"])).toEqual({
       topic: 'Immutable-Arrays',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveImmutableArrays(null)).toThrow('values must be an array');
+    expect(() => solveImmutableArrays('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveImmutableArrays(input);
+
+    expect(input).toEqual(clone);
   });
 });
