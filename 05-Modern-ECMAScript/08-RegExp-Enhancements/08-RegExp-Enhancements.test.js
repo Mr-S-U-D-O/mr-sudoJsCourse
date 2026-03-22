@@ -20,11 +20,25 @@ describe('RegExp-Enhancements', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveRegExpEnhancements([NaN, -0, '0'])).toEqual({
+    expect(solveRegExpEnhancements([NaN, -0, "0"])).toEqual({
       topic: 'RegExp-Enhancements',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveRegExpEnhancements(null)).toThrow('values must be an array');
+    expect(() => solveRegExpEnhancements('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveRegExpEnhancements(input);
+
+    expect(input).toEqual(clone);
   });
 });
