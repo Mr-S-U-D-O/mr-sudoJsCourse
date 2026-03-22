@@ -1,18 +1,18 @@
 # The JavaScript Mastery Repository
 
-A progressively structured JavaScript curriculum focused on deep understanding, not memorization.
+A complete implementation-first JavaScript curriculum focused on deep understanding, not memorization.
 
 ## How to Use This Repo
 1. Pick one lesson folder.
 2. Read the lesson markdown first.
-3. Implement the function in the matching .js file.
-4. Run only that lesson test path until green.
-5. Write a short reflection before moving forward.
+3. Implement the function in the matching JavaScript file.
+4. Run focused tests until green.
+5. Write a short reflection before moving to the next lesson.
 
 ## Quick Start
 - Install dependencies: npm install
 - Run all tests: npm test
-- Run a single lesson: npm run check <level>/<topic>
+- Run a specific lesson: npm run check <level>/<topic>
 
 Example:
 npm run check 01-Easy-Fundamentals/02-Data-Types
@@ -32,3 +32,11 @@ npm run check 01-Easy-Fundamentals/02-Data-Types
 - Prefer small, repeated cycles over long sessions.
 - Treat failed tests as feedback, not failure.
 - Move on only when you can explain the trap test in plain English.
+
+## Core Learning Resources
+- MDN JavaScript Guide: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+- JavaScript.info: https://javascript.info/
+- Exploring JS: https://exploringjs.com/
+- You Don't Know JS Yet: https://github.com/getify/You-Dont-Know-JS
+- Node.js Learn: https://nodejs.org/en/learn
+- TC39 Proposals: https://github.com/tc39/proposals
