@@ -22,7 +22,7 @@ describe('Operators', () => {
   test('Trap: handles coercion edge values', () => {
     expect(solveOperators([0, false, "0", [], null])).toEqual({
       topic: 'Operators',
-      total: 3,
+      total: 5,
       truthyCount: 2,
       falsyCount: 3,
     });
