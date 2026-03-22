@@ -1,8 +1,8 @@
-# Solution Folder
+# Solution Notes
 
-Put complete reference implementation files for this project here.
+This solution prioritizes:
+- validated state mutations;
+- append-only stock movement logs;
+- report generation from source-of-truth events.
 
-Rules:
-- keep final answer code only in this folder;
-- do not keep learner starter code in here;
-- include a short solution-notes.md describing tradeoffs.
+Study why each validation exists before copying any pattern.

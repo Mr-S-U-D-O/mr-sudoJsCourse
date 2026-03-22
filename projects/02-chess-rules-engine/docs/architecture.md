@@ -1,29 +1,23 @@
-# Architecture Notes Template
+# Chess Engine Architecture Notes
 
-## Context
+## Scope
 
-What product/system does this logic support?
+MVP includes legal movement, captures, turn management, check/checkmate/stalemate evaluation.
 
-## Requirements
+## Design
 
-List critical functional and non-functional requirements.
+- board: 8x8 matrix
+- game object: board + turn + status + history
+- move pipeline: parse -> pseudo-legal -> legal -> apply -> recompute status
 
-## Domain Model
+## Invariants
 
-List main entities, fields, and invariants.
+- exactly one king per side
+- no move may leave current player's king in check
+- turn alternates after successful move
 
-## Module Boundaries
+## Future Work
 
-Document how src/ is split and why.
-
-## Error Handling Strategy
-
-How are expected vs unexpected errors represented?
-
-## Testing Strategy
-
-What is unit-tested, integration-tested, and contract-tested?
-
-## Tradeoffs
-
-What did you optimize for and what did you intentionally defer?
+- castling rights
+- en passant
+- promotion choice UI integration

@@ -1,29 +1,24 @@
-# Architecture Notes Template
+# Inventory System Architecture Notes
 
-## Context
+## Scope
 
-What product/system does this logic support?
+Inventory tracking, stock movements, reorder recommendations, reporting.
 
-## Requirements
+## Modules
 
-List critical functional and non-functional requirements.
+- inventory service
+- audit ledger
+- report aggregators
+- storage adapter
 
-## Domain Model
+## Invariants
 
-List main entities, fields, and invariants.
+- stock cannot be negative
+- every adjustment has reason and timestamp
+- product SKU must be unique
 
-## Module Boundaries
+## Evolution Plan
 
-Document how src/ is split and why.
-
-## Error Handling Strategy
-
-How are expected vs unexpected errors represented?
-
-## Testing Strategy
-
-What is unit-tested, integration-tested, and contract-tested?
-
-## Tradeoffs
-
-What did you optimize for and what did you intentionally defer?
+- add multi-warehouse
+- add supplier lead-time forecasting
+- add role-based authorization

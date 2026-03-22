@@ -1,8 +1,8 @@
-# Solution Folder
+# Solution Notes
 
-Put complete reference implementation files for this project here.
+This solution uses:
+- a tokenizer;
+- infix-to-RPN conversion (shunting-yard style);
+- stack evaluation with explicit error handling.
 
-Rules:
-- keep final answer code only in this folder;
-- do not keep learner starter code in here;
-- include a short solution-notes.md describing tradeoffs.
+Use this as a reference after your own implementation attempt.

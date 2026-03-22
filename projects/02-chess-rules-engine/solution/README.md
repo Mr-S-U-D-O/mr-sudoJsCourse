@@ -1,8 +1,9 @@
-# Solution Folder
+# Solution Notes
 
-Put complete reference implementation files for this project here.
+This solution includes:
+- legal move generation;
+- self-check prevention;
+- check/checkmate/stalemate status updates;
+- pawn auto-promotion to queen at last rank.
 
-Rules:
-- keep final answer code only in this folder;
-- do not keep learner starter code in here;
-- include a short solution-notes.md describing tradeoffs.
+Special rules such as castling and en passant are natural follow-up milestones.

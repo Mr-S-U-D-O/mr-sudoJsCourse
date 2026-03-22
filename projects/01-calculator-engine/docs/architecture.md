@@ -1,29 +1,28 @@
-# Architecture Notes Template
+# Calculator Engine Architecture Notes
 
-## Context
+## Scope
 
-What product/system does this logic support?
-
-## Requirements
-
-List critical functional and non-functional requirements.
-
-## Domain Model
-
-List main entities, fields, and invariants.
+Expression parsing and evaluation for +, -, *, /, parentheses, decimals, unary minus.
 
 ## Module Boundaries
 
-Document how src/ is split and why.
+- tokenizer: string -> tokens
+- parser: infix tokens -> RPN
+- evaluator: RPN -> number
+- facade: evaluateExpression API
 
-## Error Handling Strategy
+## Error Strategy
 
-How are expected vs unexpected errors represented?
+Throw typed errors with exact reason and token position where possible.
 
-## Testing Strategy
+## Complexity Targets
 
-What is unit-tested, integration-tested, and contract-tested?
+- tokenization: O(n)
+- infix to RPN: O(n)
+- RPN evaluation: O(n)
 
-## Tradeoffs
+## Production Extensions
 
-What did you optimize for and what did you intentionally defer?
+- operator plugins
+- variables and context injection
+- expression caching
