@@ -3,13 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "test": "jest",
-    "check": "jest",
-    "contrib:file": "node scripts/split-commits.js --group file --push",
-    "contrib:lesson": "node scripts/split-commits.js --group lesson --push",
-    "contrib:track": "node scripts/split-commits.js --group track --push",
-    "contrib:file:local": "node scripts/split-commits.js --group file",
-    "contrib:lesson:local": "node scripts/split-commits.js --group lesson",
-    "contrib:track:local": "node scripts/split-commits.js --group track"
+    "check": "jest"
   },
   "devDependencies": {
     "jest": "^29.0.0"
