@@ -1,7 +1,7 @@
 const solveConst = require('./03-const.js');
 
 describe('const', () => {
-  test('Happy Path: counts truthy and falsy values', () => {
+  test('Bronze: counts truthy and falsy values', () => {
     expect(solveConst([1, 0, 'JS', '', true, false])).toEqual({
       topic: 'const',
       total: 6,
@@ -10,7 +10,7 @@ describe('const', () => {
     });
   });
 
-  test('Edge Case: handles an empty input array', () => {
+  test('Silver: handles an empty input array', () => {
     expect(solveConst([])).toEqual({
       topic: 'const',
       total: 0,
@@ -19,16 +19,16 @@ describe('const', () => {
     });
   });
 
-  test('Trap: handles declaration-related coercion edge values', () => {
+  test('Gold: handles declaration-related coercion edge values', () => {
     expect(solveConst([NaN, -0, 'immutable'])).toEqual({ topic: 'const', total: 3, truthyCount: 1, falsyCount: 2 });
   });
 
-  test('Validation: throws when input is not an array', () => {
+  test('Silver: throws when input is not an array', () => {
     expect(() => solveConst(null)).toThrow('values must be an array');
     expect(() => solveConst('not-an-array')).toThrow('values must be an array');
   });
 
-  test('Safety: does not mutate the input array', () => {
+  test('Gold: does not mutate the input array', () => {
     const input = [1, 0, 'x'];
     const clone = [...input];
 

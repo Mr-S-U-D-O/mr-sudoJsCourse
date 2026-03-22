@@ -3,6 +3,20 @@
 ## Track Goal
 Build practical confidence in Engine Internals and Dark Arts through implementation-first exercises.
 
+## Mastery Outcomes
+
+By the end of this track, you should be able to:
+
+- Explain hidden runtime mechanics that affect real-world code.
+- Identify security and correctness pitfalls before they ship.
+- Reason about engine-level performance behavior.
+
+## Learning Lanes
+
+- Core Lane: complete all lessons in order.
+- Deep Dive Lane: capture one engine behavior note per lesson.
+- Challenge Lane: add one security or runtime trap test per lesson.
+
 ## Lessons
 - 01-Shapes-and-Hidden-Classes
 - 02-Inline-Caching
@@ -14,11 +28,30 @@ Build practical confidence in Engine Internals and Dark Arts through implementat
 - 08-Well-Known-Symbols
 - 09-Security-XSS-Proto-Pollution
 
-## Study Rhythm
-1. Complete one lesson per session.
-2. Keep each session under 45 minutes.
-3. Re-run previous trap tests once per week.
-4. Capture one real-world use case per topic.
+## Session Loop
+
+1. Read the lesson markdown and summarize the goal in one sentence.
+2. Implement the required JavaScript file.
+3. Run tests until green.
+4. Add one reflection note: what confused me and what clicked.
+
+## Checkpoint Standard
+
+Before finishing the full course, complete all of the following:
+
+- Pass the Boss Fight for this track.
+- Explain one tradeoff from three different lessons.
+- Complete one Tier-4 project milestone.
+
+## Project Connection
+
+Suggested Tier-4 project themes for this track:
+
+- Secure object merge library
+- Runtime behavior profiler
+- Engine pitfall detection checklist tool
+
+See ../docs/PROJECT-LADDER.md for complete project expectations.
 
 ## Learning Resources
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript

@@ -77,6 +77,11 @@ npm run check 01-Easy-Fundamentals/02-Data-Types
 
 See docs/PROJECT-LADDER.md for full requirements.
 
+## Starter Portfolio Projects
+
+- projects/01-grade-analyzer
+- projects/02-expense-categorizer
+
 ## Learning Efficiency Rules
 
 - Timebox each lesson to 20-45 minutes.
@@ -106,4 +111,5 @@ See docs/PROJECT-LADDER.md for full requirements.
 - docs/LEARNING-SYSTEM.md
 - docs/LESSON-TEMPLATE.md
 - docs/PROJECT-LADDER.md
+- docs/TEST-TIERING.md
 - docs/WEEKLY-REVIEW-TEMPLATE.md

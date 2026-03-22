@@ -3,6 +3,20 @@
 ## Track Goal
 Build practical confidence in Hard Architecture through implementation-first exercises.
 
+## Mastery Outcomes
+
+By the end of this track, you should be able to:
+
+- Model asynchronous behavior with confidence.
+- Use this, prototypes, and classes intentionally.
+- Build modular systems with clear boundaries.
+
+## Learning Lanes
+
+- Core Lane: complete all lessons in order.
+- Deep Dive Lane: explain one runtime behavior in your own words.
+- Challenge Lane: add one failure-mode test per lesson.
+
 ## Lessons
 - 01-Closures
 - 02-The-This-Keyword
@@ -14,11 +28,30 @@ Build practical confidence in Hard Architecture through implementation-first exe
 - 08-Modules
 - 09-Sets-and-Maps
 
-## Study Rhythm
-1. Complete one lesson per session.
-2. Keep each session under 45 minutes.
-3. Re-run previous trap tests once per week.
-4. Capture one real-world use case per topic.
+## Session Loop
+
+1. Read the lesson markdown and summarize the goal in one sentence.
+2. Implement the required JavaScript file.
+3. Run tests until green.
+4. Add one reflection note: what confused me and what clicked.
+
+## Checkpoint Standard
+
+Before moving to the next track, complete all of the following:
+
+- Pass the Boss Fight for this track.
+- Explain one tradeoff from three different lessons.
+- Complete one Tier-2 project milestone.
+
+## Project Connection
+
+Suggested Tier-2 project themes for this track:
+
+- Async task scheduler
+- Promise orchestration helper
+- Module boundary refactor
+
+See ../docs/PROJECT-LADDER.md for complete project expectations.
 
 ## Learning Resources
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
