@@ -20,11 +20,25 @@ describe('Abstract-Syntax-Trees-AST', () => {
   });
 
   test('Trap: counts NaN and -0 as falsy while "0" is truthy', () => {
-    expect(solveAbstractSyntaxTreesAST([NaN, -0, '0'])).toEqual({
+    expect(solveAbstractSyntaxTreesAST([NaN, -0, "0"])).toEqual({
       topic: 'Abstract-Syntax-Trees-AST',
       total: 3,
       truthyCount: 1,
       falsyCount: 2,
     });
+  });
+
+  test('Validation: throws when input is not an array', () => {
+    expect(() => solveAbstractSyntaxTreesAST(null)).toThrow('values must be an array');
+    expect(() => solveAbstractSyntaxTreesAST('not-an-array')).toThrow('values must be an array');
+  });
+
+  test('Safety: does not mutate the input array', () => {
+    const input = [1, 0, 'x'];
+    const clone = [...input];
+
+    solveAbstractSyntaxTreesAST(input);
+
+    expect(input).toEqual(clone);
   });
 });
