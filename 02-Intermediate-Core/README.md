@@ -2,7 +2,7 @@
 
 ## Track Goal
 
-Build practical confidence in Intermediate Core through implementation-first exercises.
+Build practical confidence in Intermediate Core through a teach-first flow with optional implementation checks.
 
 ## Mastery Outcomes
 
@@ -32,10 +32,12 @@ By the end of this track, you should be able to:
 
 ## Session Loop
 
-1. Read the lesson markdown and summarize the goal in one sentence.
-2. Implement the required JavaScript file.
-3. Run tests until green.
-4. Add one reflection note: what confused me and what clicked.
+1. Open a lesson folder and start in its `lessons/README.md`.
+2. Read `01-core.md`, `02-visualizations.md`, and `03-resources.md`.
+3. Continue with `04-common-mistakes.md` through `08-cheat-sheet.md`.
+4. Optionally implement the required JavaScript file.
+5. Run tests to validate understanding.
+6. Add one reflection note: what confused me and what clicked.
 
 ## Checkpoint Standard
 
