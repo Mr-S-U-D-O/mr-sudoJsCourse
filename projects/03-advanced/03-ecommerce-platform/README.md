@@ -120,3 +120,34 @@ node -e "const m=require('./projects/03-advanced/03-ecommerce-platform/solution/
 - Invalid inputs return consistent error messages.
 - At least 5 representative manual checks are documented in guide.md.
 - Architecture notes explain one key tradeoff.
+
+## Quick Start
+
+Build transactional domain logic that preserves invariants under every mutation.
+
+## Prerequisites
+
+Before starting, review:
+
+1. 01-Closures
+2. 03-Prototypes
+3. 04-Classes
+4. 05-Callbacks
+5. 06-Promises
+6. 07-Async-Await
+7. 08-Modules
+
+## Learning Tips
+
+1. Implement the minimal happy path first.
+2. Add validation before edge-case behavior.
+3. Keep pure logic separate from side effects.
+4. Add deterministic checks before refactoring.
+
+## Interview Narrative
+
+Problem: Ecommerce Platform needs consistent behavior under real constraints.
+
+Approach: model inputs explicitly, enforce rule boundaries, separate logic from orchestration.
+
+Outcome: testable, deterministic behavior with clear extension points.

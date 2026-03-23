@@ -1,114 +1,176 @@
 # Project 02: Chess Rules Engine
 
-## Project Aim
+**Difficulty:** 🟡 Intermediate | **Time:** 8-12 hours | **Skills:** State Machines, Rule Validation, Deterministic Logic
 
-Build a deterministic chess logic engine that:
+## Quick Start
 
-- tracks board state;
-- validates legal moves;
-- updates turn and game status.
+Build the rules engine behind chess. Your code controls legal moves, turn order, check detection, and game-ending states. The board UI can be simple; this project is about correctness and deterministic game logic.
+
+---
+
+## Prerequisites
+
+Before starting, you should be comfortable with:
+
+1. 2D arrays and coordinate mapping
+2. Objects and immutable update patterns
+3. Pure functions and state transitions
+4. Guard clauses and error handling
+5. Basic graph/search thinking (for attack detection)
+6. Core chess movement rules for all pieces
+
+---
 
 ## Visualize The Product
 
-Imagine a web chess app where the UI draws pieces, but your engine decides:
+Your engine should answer questions like:
 
-- which moves are legal;
-- when a king is in check;
-- whether the game is checkmate or stalemate.
+```txt
+Start position
+turn: white
 
-The UI is just paint. Your engine is the referee.
+getLegalMoves("e2")
+-> ["e3", "e4"]
+
+move("e2", "e4")
+-> success
+turn: black
+
+move("e7", "e5")
+-> success
+turn: white
+
+move("e1", "e2") while in check
+-> Error: move leaves king in check
+```
+
+The UI only draws the board. This engine is the referee.
+
+---
 
 ## Real-World Use Cases
 
-- Browser chess games
-- Training and puzzle platforms
-- Move analysis tools
-- Rule-validation backends for multiplayer games
+1. Browser and mobile chess apps
+2. Puzzle/training platforms validating puzzle solutions
+3. Move analysis tools and PGN playback engines
+4. Turn-based game servers requiring anti-cheat rule enforcement
+5. Interview-caliber state-machine and validation architecture examples
 
-## What You Should Know First
+---
 
-- 2D board representations
-- Objects, arrays, and loops
-- Pure function design
-- Core chess rules
+## Project Aim
 
-## Rules
+Implement a deterministic chess engine that:
 
-- Reject illegal moves with clear errors.
-- Prevent moves that leave own king in check.
-- Keep pseudo-legal generation and final legality checks separate.
+1. Tracks full board state and turn
+2. Generates pseudo-legal moves per piece
+3. Filters out illegal moves that expose own king
+4. Applies a valid move and updates status
+5. Detects check/checkmate/stalemate states
+
+Key architecture:
+
+```txt
+Board State -> Generate Candidate Moves -> Legality Filter -> Apply Move -> Recompute Status
+```
+
+---
+
+## Core Concepts You Must Learn
+
+1. Board representation and square addressing (for example, "e2" <-> matrix index)
+2. Pseudo-legal vs legal move generation
+3. Self-check prevention via move simulation
+4. Deterministic state transitions (same state + same move = same result)
+5. Rule separation (piece movement, check detection, game status)
+6. Safe snapshots for debugging and replay
+
+---
+
+## Accuracy Traps To Avoid
+
+1. Mixing UI concerns into engine rules
+Why it fails: Rules become coupled to rendering and harder to test.
+Fix: Engine accepts/returns plain data structures only.
+
+2. Treating pseudo-legal moves as legal
+Why it fails: Allows moves that leave own king in check.
+Fix: Simulate each candidate move and reject if king remains attacked.
+
+3. Mutating board state during validation
+Why it fails: Validation accidentally changes live game state.
+Fix: Use cloned state for simulation.
+
+4. Skipping turn validation
+Why it fails: Same color can move twice.
+Fix: Reject moves where piece color does not match current turn.
+
+5. Incomplete checkmate/stalemate logic
+Why it fails: Game ends incorrectly.
+Fix: Distinguish:
+- checkmate: in check + no legal moves
+- stalemate: not in check + no legal moves
+
+---
+
+## Quality Checks
+
+Your implementation should satisfy all:
+
+1. New game starts with turn = white
+2. `getLegalMoves("e2")` returns white pawn forward options
+3. Illegal source square input throws clear error
+4. Moving opponent piece on wrong turn throws clear error
+5. After valid move, turn flips exactly once
+6. Move history records from/to/timestamp or turn metadata
+7. Illegal move does not mutate board state
+8. Self-check move is rejected
+9. Status transitions to check/checkmate/stalemate when applicable
+10. `getState()` returns a safe copy, not mutable internal references
+
+---
 
 ## How To Run
 
 Run from repository root.
 
-1. Inspect starter exports
-
 ```bash
-node -e "const m=require('./projects/02-chess-rules-engine/src'); console.log(Object.keys(m));"
+node -e "const m=require('./projects/02-intermediate/01-chess-rules-engine/src'); console.log(Object.keys(m));"
+node -e "const m=require('./projects/02-intermediate/01-chess-rules-engine/src'); const g=m.createGame(); console.log(g.getState().turn);"
+node -e "const m=require('./projects/02-intermediate/01-chess-rules-engine/solution/index.solution'); const g=m.createGame(); console.log(g.getLegalMoves('e2'));"
 ```
 
-What this does:
+---
 
-- loads your starter module from `src`;
-- prints available functions so you know the API surface.
+## Learning Tips
 
-2. Quick starter check
+1. Implement square parsing first (`"e2" -> row/col`) and test it heavily.
+2. Build piece movement generators before legality filtering.
+3. Add move simulation helper (`simulateMove`) before check detection.
+4. Keep every helper pure where possible for easier testing.
+5. Write tiny scenario tests instead of trying to test full games first.
 
-```bash
-node -e "const m=require('./projects/02-chess-rules-engine/src'); const g=m.createGame(); console.log(g.getState().turn);"
-```
+---
 
-What this does:
+## Interview Narrative
 
-- creates a new game instance;
-- prints whose turn it is;
-- verifies your factory returns a usable game object.
+Problem: Build a reliable chess rules engine independent of UI.
 
-3. Reference solution command (the one you asked about)
+Approach: I modeled game state as pure data, split move generation from legality filtering, then used simulation to prevent self-check. I applied valid moves through deterministic state transitions and status recomputation.
 
-```bash
-node -e "const m=require('./projects/02-chess-rules-engine/solution/index.solution'); const g=m.createGame(); console.log(g.getLegalMoves('e2'));"
-```
+Outcome: The engine became testable, reproducible, and reusable for UI clients, bots, and analysis tooling.
 
-Exact breakdown:
+---
 
-- `node -e` runs inline JavaScript from your terminal.
-- `require('./projects/02-chess-rules-engine/solution/index.solution')` imports the solved engine.
-- `const g=m.createGame()` creates a fresh initial board.
-- `g.getLegalMoves('e2')` asks: from square `e2`, where can that piece legally move right now?
-- `console.log(...)` prints the answer, usually squares like `e3` and `e4` at game start.
+## Code Comments in Starter
 
-## Interview Narrative You Can Use
+See `src/index.js` for structured TODO guidance on board modeling, legal move filtering, and safe state updates.
 
-- Problem: enforce chess rules with predictable state transitions.
-- Design: board model + move generation + legality filter.
-- Hard part: self-check prevention and status detection.
-- Outcome: reusable game logic independent of UI.
-
-## Core Concepts You Must Learn
-
-- state transitions
-- rule validation
-- random control
-
-## Accuracy Traps To Avoid
-
-- Tying game rules directly to UI behavior.
-- Using true randomness in tests.
-- Skipping invalid move/input checks.
-
-## Quality Checks
-
-- Game state changes are explicit and reversible where needed.
-- Random paths can be controlled with seeded input or stubs.
-- Illegal actions are rejected with clear errors.
-- Starter API exports can be inspected and documented.
-- Solution output can be reproduced from a single command.
+---
 
 ## Acceptance Criteria
 
-- Behavior is deterministic for the same input.
-- Invalid inputs return consistent error messages.
-- At least 5 representative manual checks are documented in guide.md.
-- Architecture notes explain one key tradeoff.
+- Deterministic behavior for identical game states
+- Clear errors for invalid inputs and illegal moves
+- No hidden state mutation during validation
+- At least 10 manual checks passing from this README

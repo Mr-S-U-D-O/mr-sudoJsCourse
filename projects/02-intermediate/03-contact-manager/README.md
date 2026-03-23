@@ -1,107 +1,159 @@
 # Contact Manager
 
-**Difficulty:** 🟡 Intermediate | **Time:** 8-10 hours | **Skills:** CRUD, Search, Filtering, Advanced Queries
+**Difficulty:** Intermediate | **Time:** 8-12 hours | **Skills:** CRUD, Search, Validation, Data Modeling
 
-## Project Aim
+## Quick Start
 
-Build a contact management system with full CRUD operations, advanced search, filtering, and tag-based organization. Master relational data patterns and query optimization.
-
-## Visualize The Product
-
-Imagine a contact app where you can organize your professional network:
-
-```
-contacts = [
-  { id: 1, name: "Alice", email: "alice@company.com", tags: ["manager", "tech"] },
-  { id: 2, name: "Bob", email: "bob@company.com", tags: ["developer", "mentor"] }
-]
-
-manager.searchByName("Alice")
-  → [{ id: 1, name: "Alice", ... }]
-
-manager.filterByTag("developer")
-  → [{ id: 2, name: "Bob", ... }]
-```
-
-## Real-World Use Cases
-
-1. **CRM Systems** - Manage customer relationships with search and filtering
-2. **Team Directories** - Company contact lists with department and role filtering
-3. **Email Clients** - Manage and search contacts with custom tags
-4. **Social Networks** - Build contact graphs with relationship tracking
-5. **Address Books** - Category-based organization and quick search
-
-## What You Should Know
-
-- **Data relationships**: How contacts relate to tags, groups, metadata
-- **Search algorithms**: Linear search vs indexed search for performance
-- **Filtering patterns**: Combining multiple filter conditions
-- **Data consistency**: Maintaining integrity when contacts reference tags
-- **Query optimization**: Building indexes, caching search results
-
-## Rules & Requirements
-
-Your implementation should:
-
-- ✅ Support 12+ operations (create, read, update, delete, search, filter, etc.)
-- ✅ Handle relationships between contacts and tags
-- ✅ Provide efficient search (by name, email, phone)
-- ✅ Support filtering by multiple tags
-- ✅ Maintain data consistency (deleting a tag updates all contacts)
-- ✅ Handle edge cases (duplicate emails, special characters)
-- ✅ Implement proper error handling
-
-## How To Run
-
-### Test the Starter (your implementation)
-
-```bash
-node -e "const m=require('./projects/02-intermediate/03-contact-manager/src'); const cm=m.createContactManager(); console.log(Object.keys(cm));"
-```
-
-### Test the Solution
-
-```bash
-node -e "const m=require('./projects/02-intermediate/03-contact-manager/solution/index.solution'); const cm=m.createContactManager(); cm.addContact({id:1, name:'Alice', email:'alice@example.com', tags:['tech']}); console.log(cm.searchByName('Alice'));"
-```
-
-## Interview Talking Points
-
-- How would you handle searching across millions of contacts?
-- Explain your data structure choices and trade-offs
-- How do you maintain consistency when relationships change?
-- What indexing strategies would improve search performance?
-- How would you extend this for real contact apps (groups, organizations)?
+Build a contact manager engine that supports creating, updating, deleting, searching, and listing contacts with reliable validation. This project is about clean data modeling and deterministic query behavior, not UI.
 
 ---
 
-**Start with:** [guide.md](./guide.md) for step-by-step implementation  
-**Reference:** [solution/index.solution.js](./solution/index.solution.js) after attempting  
-**Explore:** [docs/architecture.md](./docs/architecture.md) for design decisions
+## Prerequisites
+
+Before starting, you should be comfortable with:
+
+1. Objects and arrays for entity storage
+2. Input validation and guard clauses
+3. Filtering and search patterns with `map`/`filter`/`find`
+4. Immutable update style
+5. Error-first API behavior
+
+---
+
+## Visualize The Product
+
+```txt
+addContact({ name: "Alice", email: "alice@company.com", phone: "+1-555-1000" })
+-> { id: 1, name: "Alice", ... }
+
+addContact({ name: "Bob", email: "bob@company.com", phone: "+1-555-1001" })
+-> { id: 2, name: "Bob", ... }
+
+searchContacts("alice")
+-> [{ id: 1, name: "Alice", ... }]
+
+updateContact(1, { notes: "Team lead" })
+-> updated contact
+
+deleteContact(2)
+-> true
+```
+
+---
+
+## Real-World Use Cases
+
+1. CRM dashboards
+2. Internal employee directories
+3. Sales outreach tooling
+4. Helpdesk contact lookups
+5. Address-book style mobile/web apps
+
+---
+
+## Project Aim
+
+Implement a deterministic contact data layer that:
+
+1. Creates valid contact records
+2. Rejects duplicates and invalid input
+3. Updates and deletes by ID safely
+4. Supports predictable text search
+5. Returns stable output shapes
+
+Architecture flow:
+
+```txt
+Command -> Validation -> State Update -> Query
+```
+
+---
 
 ## Core Concepts You Must Learn
 
-- clear interfaces
-- error handling
-- deterministic behavior
+1. Entity design and required fields
+2. Referential consistency by ID
+3. Case-insensitive search behavior
+4. Immutable updates to avoid accidental side effects
+5. Explicit error messages for invalid operations
+
+---
 
 ## Accuracy Traps To Avoid
 
-- No explicit input validation.
-- Implicit state mutations that are hard to debug.
-- No measurable correctness checks.
+1. Allowing duplicate email entries
+Fix: enforce unique email check before insert.
+
+2. Mutating contact objects in place
+Fix: return new arrays/objects when updating.
+
+3. Unclear search semantics
+Fix: define exact behavior (case-insensitive contains match).
+
+4. Silent failures on missing IDs
+Fix: throw actionable errors for not-found IDs.
+
+5. Inconsistent return types
+Fix: keep each method output shape deterministic.
+
+---
 
 ## Quality Checks
 
-- Core behavior passes normal and edge-case examples.
-- Invalid input paths return actionable errors.
-- Design choices are explained at Intermediate depth.
-- Starter API exports can be inspected and documented.
-- Solution output can be reproduced from a single command.
+1. Creating contact validates required fields
+2. Duplicate email is rejected clearly
+3. Updating missing contact ID fails explicitly
+4. Delete removes only targeted contact
+5. Search is case-insensitive
+6. Search by name/email/phone works
+7. `getAllContacts` returns stable list shape
+8. Invalid input types throw clear errors
+9. Same input sequence yields same state
+10. APIs do not mutate caller-provided input objects
+
+---
+
+## How To Run
+
+Run from repository root.
+
+```bash
+node -e "const m=require('./projects/02-intermediate/03-contact-manager/src'); console.log(Object.keys(m));"
+node -e "const m=require('./projects/02-intermediate/03-contact-manager/src'); const c=m.createContact('Alice','alice@company.com','+1'); console.log(c.name);"
+node -e "const m=require('./projects/02-intermediate/03-contact-manager/solution/index.solution'); console.log(Object.keys(m));"
+```
+
+---
+
+## Learning Tips
+
+1. Implement create and list operations first.
+2. Add update/delete by ID next.
+3. Add search only after entity validation is solid.
+4. Write failure-path tests before success-path tests.
+5. Keep operations pure where possible.
+
+---
+
+## Interview Narrative
+
+Problem: Contact data quickly becomes unreliable without strong validation and deterministic query behavior.
+
+Approach: I modeled contacts as explicit entities, enforced required fields and uniqueness constraints, and built CRUD/search methods with predictable return shapes and clear error paths.
+
+Outcome: The module remained easy to test, dependable for downstream UI, and simple to extend.
+
+---
+
+## Code Comments in Starter
+
+See `src/index.js` for function-level TODO guidance on validation, immutable updates, and search behavior.
+
+---
 
 ## Acceptance Criteria
 
-- Behavior is deterministic for the same input.
-- Invalid inputs return consistent error messages.
-- At least 5 representative manual checks are documented in guide.md.
-- Architecture notes explain one key tradeoff.
+- Deterministic behavior for same operation sequence
+- Clear validation errors
+- At least 10 manual checks passing
+- Design notes explain one tradeoff

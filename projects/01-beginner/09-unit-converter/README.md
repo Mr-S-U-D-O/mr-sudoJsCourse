@@ -241,3 +241,11 @@ function getCategory(unit) {
 - [ ] Zero values convert correctly
 - [ ] You can explain your factor structure
 - [ ] You ran at least 5 test cases
+
+## Interview Narrative
+
+Problem: Unit Converter needs consistent behavior under real constraints.
+
+Approach: model inputs explicitly, enforce rule boundaries, separate logic from orchestration.
+
+Outcome: testable, deterministic behavior with clear extension points.

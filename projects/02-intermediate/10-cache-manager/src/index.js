@@ -1,5 +1,22 @@
 "use strict";
 
+/**
+ * CACHE MANAGER STARTER
+ *
+ * Purpose:
+ * Implement production-style core logic with clear contracts and predictable behavior.
+ *
+ * Learning Focus:
+ * state transitions, composable helpers, and robust error handling
+ *
+ * Implementation Strategy:
+ * 1. Define and validate input contracts first.
+ * 2. Implement a minimal happy path end-to-end.
+ * 3. Add edge-case handling and deterministic error messages.
+ * 4. Keep pure logic separated from side effects.
+ * 5. Export testable helpers and verify behavior with manual checks.
+ */
+
 function createCache(maxSize = 100, ttlMs = null) {
   // TODO: Initialize cache with size limit and optional TTL
 }

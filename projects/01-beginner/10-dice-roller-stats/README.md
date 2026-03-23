@@ -256,3 +256,11 @@ More trials → more reliable stats.
 - [ ] Law of large numbers is visible (1000 trials → mean ~3.5 for 1d6)
 - [ ] You can explain statistical measures (mean, median, mode)
 - [ ] You ran at least 5 test cases from "How To Run" section
+
+## Interview Narrative
+
+Problem: Dice Roller Stats needs consistent behavior under real constraints.
+
+Approach: model inputs explicitly, enforce rule boundaries, separate logic from orchestration.
+
+Outcome: testable, deterministic behavior with clear extension points.

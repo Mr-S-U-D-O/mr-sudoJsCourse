@@ -1,55 +1,91 @@
-<!-- enriched: projects/tools/enrich-project-lessons.js -->
+<!-- enriched-v2: projects/tools/enrich-project-lessons-v2.js -->
 # User Account System
 
-## Project Aim
+**Difficulty:** 🟠 Advanced | **Time:** 12-18 hours | **Focus:** invariants, atomic updates, consistency checks
 
-Implement security-aware validation and account logic with explicit rules.
+## Quick Start
+
+Build transactional domain logic that preserves invariants under every mutation.
+
+## Prerequisites
+
+Before starting, review:
+
+1. 01-Closures
+2. 03-Prototypes
+3. 04-Classes
+4. 05-Callbacks
+5. 06-Promises
+6. 07-Async-Await
+7. 08-Modules
+
+## Visualize The Product
+
+```txt
+Input: add item, update qty, remove item
+Pipeline: validate -> transform -> enforce rules -> return result
+Output: consistent totals and balances
+```
+
+Your implementation should keep this behavior deterministic and testable.
 
 ## Real-World Use Cases
 
-- sign-up forms
-- identity systems
-- access control
+- checkout flows
+- inventory services
+- financial operations
+
+## Project Aim
+
+Implement atomic updates, strict validation, and clear error paths to protect financial consistency.
 
 ## Core Concepts You Must Learn
 
-- rule engines
-- security validation
-- failure modes
+- invariants
+- atomic updates
+- consistency checks
 
 ## Accuracy Traps To Avoid
 
-- Leaking sensitive details in errors.
-- Using weak default validation rules.
-- Not separating authentication from authorization logic.
+- Applying partial updates on failure.
+- Using floating arithmetic for money.
+- Mutating non-existent entities.
 
 ## Quality Checks
 
-- Invalid credentials fail without leaking internals.
-- Rules are deterministic for the same input.
-- Privilege checks are enforced on protected operations.
-- Starter API exports can be inspected and documented.
-- Solution output can be reproduced from a single command.
+- Totals remain consistent after mutations.
+- Failed operations do not mutate state.
+- Audit output explains final values.
+- Starter API exports are discoverable.
+- Solution behavior can be reproduced from one command.
 
 ## How To Run
 
 Run from repository root.
 
-1. Inspect starter exports
-
 ```bash
-node -e "const m=require('./projects/03-advanced/04-user-account-system/src'); console.log(Object.keys(m));"
-```
-
-2. Inspect solution metadata
-
-```bash
-node -e "const m=require('./projects/03-advanced/04-user-account-system/solution/index.solution'); console.log(m.metadata || Object.keys(m));"
+node -e "const m=require('./projects/03-advanced/04-user-account-system/src'); console.log('Starter exports:', Object.keys(m));"
+node -e "const m=require('./projects/03-advanced/04-user-account-system/solution/index.solution'); console.log('Solution exports:', Object.keys(m));"
 ```
 
 ## Acceptance Criteria
 
-- Behavior is deterministic for the same input.
-- Invalid inputs return consistent error messages.
-- At least 5 representative manual checks are documented in guide.md.
-- Architecture notes explain one key tradeoff.
+- Deterministic outputs for identical inputs
+- Explicit validation for malformed input
+- At least 5 manual checks documented in guide.md
+- One architecture tradeoff explained in notes
+
+## Learning Tips
+
+1. Implement the minimal happy path first.
+2. Add validation before adding edge-case behavior.
+3. Keep pure logic separate from side effects.
+4. Add deterministic checks before refactoring.
+
+## Interview Narrative
+
+Problem: this domain needs consistent behavior under real constraints.
+
+Approach: I modeled inputs explicitly, enforced rule boundaries, and separated core logic from orchestration concerns.
+
+Outcome: the module became testable, deterministic, and easier to extend without regressions.

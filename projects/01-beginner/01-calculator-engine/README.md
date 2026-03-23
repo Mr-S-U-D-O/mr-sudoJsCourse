@@ -1,102 +1,91 @@
-<!-- enriched: projects/tools/enrich-project-lessons.js -->
-
+<!-- enriched-v2: projects/tools/enrich-project-lessons-v2.js -->
 # Calculator Engine
+
+**Difficulty:** 🟢 Beginner | **Time:** 5-8 hours | **Focus:** tokenization, precedence, validation
 
 ## Quick Start
 
-This project teaches you how programs break down complex problems: **tokenization → validation → evaluation**. You'll build a calculator that respects operator precedence (so `2 + 3 * 4` correctly returns 14, not 20).
+Build a safe arithmetic engine that parses expressions and evaluates them with correct precedence.
 
 ## Prerequisites
 
-Before starting this project, you must complete these fundamentals lessons:
+Before starting, review:
 
-1. **01-Variables** - understand variable scope
-2. **02-Data-Types** - know what strings, numbers, and arrays are
-3. **03-Operators** - understand +, -, \*, / and their precedence
-4. **05-Loops** - comfortable iterating with while or for loops
-5. **06-Functions-Basics** - write and call functions
-6. **07-Arrays-Basics** - array indexing, splice, length
-7. **09-String-Parsing** (NEW in fundamentals) - character iteration, tokenization, pattern building
+1. 01-Variables
+2. 02-Data-Types
+3. 03-Operators
+4. 04-Control-Flow
+5. 05-Loops
+6. 06-Functions-Basics
+7. 08-Objects-Basics
 
-_Required Learning: If you haven't studied string iteration and character-by-character processing, complete "String Parsing Basics" lesson before this project._
+## Visualize The Product
 
-## Project Aim
+```txt
+Input: 2 + 3 * 4
+Pipeline: validate -> transform -> enforce rules -> return result
+Output: 14
+```
 
-Parse and evaluate arithmetic expressions safely without using JavaScript's `eval()` function.
+Your implementation should keep this behavior deterministic and testable.
 
 ## Real-World Use Cases
 
-- **CLI calculators** - terminal-based math tools
-- **Formula engines** - spreadsheet cells, financial software
-- **Educational tools** - teaching how parsers work
-- **Game math** - game engine expression evaluators
+- CLI calculators
+- formula engines
+- education tooling
+
+## Project Aim
+
+Parse and evaluate arithmetic expressions without using eval, while keeping parsing, validation, and evaluation separate.
 
 ## Core Concepts You Must Learn
 
-- **Tokenization**: breaking "2+3*4" into ['2', '+', '3', '*', '4']
-- **Operator precedence**: \* and / before + and - (BODMAS/PEMDAS)
-- **Validation**: ensuring token sequences are well-formed
-- **Separation of concerns**: parsing logic separate from evaluation logic
-- **Error handling**: clear messages for invalid input
+- tokenization
+- precedence
+- validation
 
 ## Accuracy Traps To Avoid
 
-1. **Precedence mistakes**: Ignoring that `2 + 3 * 4` is NOT `(2 + 3) * 4`
-2. **Silent failures**: Accepting invalid input like `2++3` without error
-3. **Monolithic functions**: Mixing tokenization and evaluation makes bugs hard to find
-4. **Losing information**: Throwing away token types during evaluation
-5. **Integer-only arithmetic**: Forgetting decimal numbers are valid
+- Ignoring multiplication/division precedence.
+- Accepting invalid token sequences silently.
+- Combining parse and evaluate in one opaque function.
 
 ## Quality Checks
 
-Your solution must:
-
-- ✓ `calculate("2+3*4")` returns `14` (not 20)
-- ✓ `calculate("10/2-3")` returns `2` (not 6)
-- ✓ `calculate("(invalid")` throws clear error about parentheses not supported
-- ✓ `calculate("2++3")` throws clear error about double operators
-- ✓ `calculate("2 + 3 * 4")` and `calculate("2+3*4")` return same result (whitespace handled)
-- ✓ All helper functions (`tokenize`, `validate`, `evaluate`) are exported and testable
+- 2+3*4 returns 14.
+- Invalid expressions return clear errors.
+- Whitespace does not change output.
+- Starter API exports are discoverable.
+- Solution behavior can be reproduced from one command.
 
 ## How To Run
 
-From the repository root:
-
-**1. Test your starter code**
+Run from repository root.
 
 ```bash
-node -e "const m=require('./projects/01-beginner/01-calculator-engine/src'); console.log('Exports:', Object.keys(m));"
-```
-
-Expected output: `Exports: [ 'tokenize', 'validateTokens', 'evaluate', 'calculate', 'createProject' ]`
-
-**2. Test your implementation**
-
-```bash
-node -e "const m=require('./projects/01-beginner/01-calculator-engine/src'); console.log('2+3*4 =', m.calculate('2+3*4'));"
-```
-
-Expected output: `2+3*4 = 14`
-
-**3. Study the solution**
-
-```bash
-node -e "const m=require('./projects/01-beginner/01-calculator-engine/solution/index.solution'); console.log('Reference result:', m.calculate('2+3*4'));"
+node -e "const m=require('./projects/01-beginner/01-calculator-engine/src'); console.log('Starter exports:', Object.keys(m));"
+node -e "const m=require('./projects/01-beginner/01-calculator-engine/solution/index.solution'); console.log('Solution exports:', Object.keys(m));"
 ```
 
 ## Acceptance Criteria
 
-- [ ] Your `calculate()` function handles all quality checks above
-- [ ] Behavior is deterministic (same input produces same output every time)
-- [ ] Invalid inputs throw meaningful error messages
-- [ ] At least 5 test cases documented in your guide notes
-- [ ] You can explain the operator precedence algorithm to someone else
-- [ ] Architecture notes document one key design decision you made
+- Deterministic outputs for identical inputs
+- Explicit validation for malformed input
+- At least 5 manual checks documented in guide.md
+- One architecture tradeoff explained in notes
 
 ## Learning Tips
 
-1. **Start with tokenization**: Get `tokenize("2+3*4")` working first, even before validation
-2. **Test helpers separately**: Don't write `calculate()` until `tokenize()` works
-3. **Use console.log**: Print intermediate values to understand what's happening
-4. **Compare with solution**: After completing, study the solution to see alternative approaches
-5. **Extend it**: Add parentheses support, or decimal handling, or negative numbers as a stretch goal
+1. Implement the minimal happy path first.
+2. Add validation before adding edge-case behavior.
+3. Keep pure logic separate from side effects.
+4. Add deterministic checks before refactoring.
+
+## Interview Narrative
+
+Problem: this domain needs consistent behavior under real constraints.
+
+Approach: I modeled inputs explicitly, enforced rule boundaries, and separated core logic from orchestration concerns.
+
+Outcome: the module became testable, deterministic, and easier to extend without regressions.

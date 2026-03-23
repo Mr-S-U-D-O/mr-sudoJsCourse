@@ -102,3 +102,26 @@ What this does:
 - Invalid inputs return consistent error messages.
 - At least 5 representative manual checks are documented in guide.md.
 - Architecture notes explain one key tradeoff.
+
+## Quick Start
+
+Build a workflow engine with valid transitions, history tracking, and deterministic state metrics.
+
+## Prerequisites
+
+Before starting, review:
+
+1. 01-Closures
+2. 03-Prototypes
+3. 04-Classes
+4. 05-Callbacks
+5. 06-Promises
+6. 07-Async-Await
+7. 08-Modules
+
+## Learning Tips
+
+1. Implement the minimal happy path first.
+2. Add validation before edge-case behavior.
+3. Keep pure logic separate from side effects.
+4. Add deterministic checks before refactoring.
