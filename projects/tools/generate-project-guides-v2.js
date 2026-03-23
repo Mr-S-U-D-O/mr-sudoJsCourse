@@ -29,9 +29,12 @@ function toTitle(projectDir) {
 }
 
 function levelFocus(levelDir) {
-  if (levelDir.startsWith("01-")) return "core data flow and defensive validation";
-  if (levelDir.startsWith("02-")) return "state transitions and composable architecture";
-  if (levelDir.startsWith("03-")) return "resilience, boundaries, and maintainability";
+  if (levelDir.startsWith("01-"))
+    return "core data flow and defensive validation";
+  if (levelDir.startsWith("02-"))
+    return "state transitions and composable architecture";
+  if (levelDir.startsWith("03-"))
+    return "resilience, boundaries, and maintainability";
   return "scalability, extension safety, and operational reliability";
 }
 
@@ -99,7 +102,9 @@ function run() {
 
   for (const levelDir of levels) {
     const levelPath = path.join(projectsRoot, levelDir);
-    const projectDirs = listDirectories(levelPath).filter((name) => /^\d{2}-/.test(name));
+    const projectDirs = listDirectories(levelPath).filter((name) =>
+      /^\d{2}-/.test(name),
+    );
 
     for (const projectDir of projectDirs) {
       scanned += 1;

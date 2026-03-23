@@ -85,24 +85,24 @@ Command -> Validation -> Atomic State Update -> Ledger Entry -> Return Snapshot
 ## Accuracy Traps To Avoid
 
 1. Partial transfer writes
-Why it fails: Source debited but destination not credited on error.
-Fix: Validate all conditions first, then commit both updates together.
+   Why it fails: Source debited but destination not credited on error.
+   Fix: Validate all conditions first, then commit both updates together.
 
 2. Floating-point balance errors
-Why it fails: `0.1 + 0.2` precision issues drift balances over time.
-Fix: Use cent-safe approach or strict rounding discipline.
+   Why it fails: `0.1 + 0.2` precision issues drift balances over time.
+   Fix: Use cent-safe approach or strict rounding discipline.
 
 3. Skipping account existence checks
-Why it fails: Transactions against missing accounts corrupt logic.
-Fix: Fail fast with account-not-found errors.
+   Why it fails: Transactions against missing accounts corrupt logic.
+   Fix: Fail fast with account-not-found errors.
 
 4. Not recording failed/important events consistently
-Why it fails: Hard to audit and debug account history.
-Fix: Define clear transaction schema and append for successful operations.
+   Why it fails: Hard to audit and debug account history.
+   Fix: Define clear transaction schema and append for successful operations.
 
 5. Mutating caller-owned account objects
-Why it fails: Hidden side effects outside module boundaries.
-Fix: Return new snapshots or controlled objects.
+   Why it fails: Hidden side effects outside module boundaries.
+   Fix: Return new snapshots or controlled objects.
 
 ---
 

@@ -79,19 +79,19 @@ Set/Get -> TTL check -> eviction/return -> metrics update
 ## Accuracy Traps To Avoid
 
 1. Returning stale expired entries
-Fix: TTL-check before returning value.
+   Fix: TTL-check before returning value.
 
 2. Forgetting to update hit/miss counters
-Fix: instrument all get paths consistently.
+   Fix: instrument all get paths consistently.
 
 3. No defined eviction policy when full
-Fix: choose and document deterministic policy.
+   Fix: choose and document deterministic policy.
 
 4. Invalidate not handling missing keys safely
-Fix: define idempotent invalidate behavior.
+   Fix: define idempotent invalidate behavior.
 
 5. Hit rate divide-by-zero on empty metrics
-Fix: guard against zero total requests.
+   Fix: guard against zero total requests.
 
 ---
 

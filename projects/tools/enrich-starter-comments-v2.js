@@ -71,7 +71,13 @@ function buildHeader(levelDir, projectDir) {
 }
 
 function enrichFile(levelDir, projectDir) {
-  const filePath = path.join(projectsRoot, levelDir, projectDir, "src", "index.js");
+  const filePath = path.join(
+    projectsRoot,
+    levelDir,
+    projectDir,
+    "src",
+    "index.js",
+  );
   if (!exists(filePath)) return false;
 
   const text = fs.readFileSync(filePath, "utf8");
@@ -83,10 +89,10 @@ function enrichFile(levelDir, projectDir) {
 
   let next = text;
 
-  if (next.startsWith("\"use strict\";\n\n")) {
-    next = `"use strict";\n\n${header}\n\n${next.slice("\"use strict\";\n\n".length)}`;
-  } else if (next.startsWith("\"use strict\";\n")) {
-    next = `"use strict";\n\n${header}\n\n${next.slice("\"use strict\";\n".length)}`;
+  if (next.startsWith('"use strict";\n\n')) {
+    next = `"use strict";\n\n${header}\n\n${next.slice('"use strict";\n\n'.length)}`;
+  } else if (next.startsWith('"use strict";\n')) {
+    next = `"use strict";\n\n${header}\n\n${next.slice('"use strict";\n'.length)}`;
   } else {
     next = `${header}\n\n${next}`;
   }
@@ -101,7 +107,9 @@ function run() {
 
   for (const levelDir of levels) {
     const levelPath = path.join(projectsRoot, levelDir);
-    const projectDirs = listDirectories(levelPath).filter((name) => /^\d{2}-/.test(name));
+    const projectDirs = listDirectories(levelPath).filter((name) =>
+      /^\d{2}-/.test(name),
+    );
 
     for (const projectDir of projectDirs) {
       scanned += 1;

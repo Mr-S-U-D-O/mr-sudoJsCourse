@@ -75,19 +75,19 @@ Request -> middleware[0..n] -> transformed output
 ## Accuracy Traps To Avoid
 
 1. Nondeterministic middleware order
-Fix: preserve insertion or explicit position contract.
+   Fix: preserve insertion or explicit position contract.
 
 2. Mutating shared request object unexpectedly
-Fix: return transformed copies when possible.
+   Fix: return transformed copies when possible.
 
 3. Swallowing middleware exceptions
-Fix: surface clear chain execution errors.
+   Fix: surface clear chain execution errors.
 
 4. Removing middleware by value instead of exact reference
-Fix: document and enforce reference-based removal.
+   Fix: document and enforce reference-based removal.
 
 5. Hidden side effects across middleware
-Fix: keep handlers focused and testable.
+   Fix: keep handlers focused and testable.
 
 ---
 

@@ -82,19 +82,19 @@ User Action -> Validation -> Mutation -> Timeline Query
 ## Accuracy Traps To Avoid
 
 1. Allowing duplicate likes from same user
-Fix: enforce set-like behavior for likes.
+   Fix: enforce set-like behavior for likes.
 
 2. Missing ownership check on delete
-Fix: only post owner can delete unless policy says otherwise.
+   Fix: only post owner can delete unless policy says otherwise.
 
 3. Mutating arrays in place during reads
-Fix: clone/sort copies for query responses.
+   Fix: clone/sort copies for query responses.
 
 4. Accepting empty post/comment content
-Fix: validate non-empty trimmed text.
+   Fix: validate non-empty trimmed text.
 
 5. Nondeterministic feed order for same timestamp
-Fix: apply stable tie-break rules.
+   Fix: apply stable tie-break rules.
 
 ---
 

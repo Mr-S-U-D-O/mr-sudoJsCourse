@@ -77,19 +77,19 @@ Markdown -> tokenize -> parse blocks/inline -> AST -> HTML
 ## Accuracy Traps To Avoid
 
 1. Mixing block and inline parsing in one pass
-Fix: separate parse stages clearly.
+   Fix: separate parse stages clearly.
 
 2. Greedy inline matching that breaks nested text
-Fix: test with overlapping markers carefully.
+   Fix: test with overlapping markers carefully.
 
 3. Failing to escape raw HTML-sensitive chars
-Fix: sanitize or escape before generation.
+   Fix: sanitize or escape before generation.
 
 4. Nondeterministic whitespace handling
-Fix: define and enforce whitespace rules.
+   Fix: define and enforce whitespace rules.
 
 5. Unclear fallback behavior for malformed markdown
-Fix: return consistent fallback tokens or errors.
+   Fix: return consistent fallback tokens or errors.
 
 ---
 

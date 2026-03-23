@@ -119,7 +119,8 @@ function profileFor(projectDir) {
   const byKeyword = [
     {
       key: /calculator/,
-      quick: "Build a safe arithmetic engine that parses expressions and evaluates them with correct precedence.",
+      quick:
+        "Build a safe arithmetic engine that parses expressions and evaluates them with correct precedence.",
       visualizeInput: "2 + 3 * 4",
       visualizeOutput: "14",
       aim: "Parse and evaluate arithmetic expressions without using eval, while keeping parsing, validation, and evaluation separate.",
@@ -138,7 +139,8 @@ function profileFor(projectDir) {
     },
     {
       key: /temperature-converter|unit-converter/,
-      quick: "Build a deterministic conversion engine that handles units, ranges, and precision correctly.",
+      quick:
+        "Build a deterministic conversion engine that handles units, ranges, and precision correctly.",
       visualizeInput: "100 C -> F",
       visualizeOutput: "212 F",
       aim: "Implement explicit conversion formulas and unit validation so every conversion path is testable and reversible within tolerance.",
@@ -157,7 +159,8 @@ function profileFor(projectDir) {
     },
     {
       key: /word-counter|string-manipulator|markdown-parser/,
-      quick: "Build text-processing logic that is deterministic across edge cases like punctuation, whitespace, and casing.",
+      quick:
+        "Build text-processing logic that is deterministic across edge cases like punctuation, whitespace, and casing.",
       visualizeInput: "Hello, hello world",
       visualizeOutput: "hello:2, world:1",
       aim: "Create a stable text pipeline that tokenizes input, normalizes tokens, and computes accurate outputs.",
@@ -176,12 +179,17 @@ function profileFor(projectDir) {
     },
     {
       key: /todo|task|ticket|planner|scheduler/,
-      quick: "Build a workflow engine with valid transitions, history tracking, and deterministic state metrics.",
+      quick:
+        "Build a workflow engine with valid transitions, history tracking, and deterministic state metrics.",
       visualizeInput: "new -> triaged -> in_progress -> done",
       visualizeOutput: "valid timeline with metrics",
       aim: "Model lifecycle transitions as explicit rules and enforce invariants with event history.",
       concepts: ["state machines", "transition validation", "audit trail"],
-      useCases: ["service desks", "issue trackers", "operations workflow systems"],
+      useCases: [
+        "service desks",
+        "issue trackers",
+        "operations workflow systems",
+      ],
       traps: [
         "Allowing illegal status jumps.",
         "Updating records without timeline events.",
@@ -195,11 +203,16 @@ function profileFor(projectDir) {
     },
     {
       key: /guessing|dice|game|chess/,
-      quick: "Build game logic where rules, scoring, and state transitions are fully testable.",
+      quick:
+        "Build game logic where rules, scoring, and state transitions are fully testable.",
       visualizeInput: "guess 42 with max attempts",
       visualizeOutput: "too low/high feedback until win/loss",
       aim: "Separate game state, rule checks, and feedback generation so behavior is deterministic and easy to test.",
-      concepts: ["state transitions", "rule validation", "deterministic feedback"],
+      concepts: [
+        "state transitions",
+        "rule validation",
+        "deterministic feedback",
+      ],
       useCases: ["browser games", "training apps", "simulation systems"],
       traps: [
         "Coupling game logic to UI interaction.",
@@ -214,12 +227,17 @@ function profileFor(projectDir) {
     },
     {
       key: /shopping-cart|inventory|banking|ecommerce|account/,
-      quick: "Build transactional domain logic that preserves invariants under every mutation.",
+      quick:
+        "Build transactional domain logic that preserves invariants under every mutation.",
       visualizeInput: "add item, update qty, remove item",
       visualizeOutput: "consistent totals and balances",
       aim: "Implement atomic updates, strict validation, and clear error paths to protect financial consistency.",
       concepts: ["invariants", "atomic updates", "consistency checks"],
-      useCases: ["checkout flows", "inventory services", "financial operations"],
+      useCases: [
+        "checkout flows",
+        "inventory services",
+        "financial operations",
+      ],
       traps: [
         "Applying partial updates on failure.",
         "Using floating arithmetic for money.",
@@ -233,12 +251,17 @@ function profileFor(projectDir) {
     },
     {
       key: /http|gateway|interceptor|rate-limiter|cache|queue|workflow|orchestrator|distributed|consensus|event-sourcing|realtime|microservices/,
-      quick: "Build reliability-first backend components with explicit limits, retries, and observable behavior.",
+      quick:
+        "Build reliability-first backend components with explicit limits, retries, and observable behavior.",
       visualizeInput: "incoming request stream",
       visualizeOutput: "bounded, validated, and observable processing",
       aim: "Design resilient runtime behavior around failures, throughput limits, and deterministic policy enforcement.",
       concepts: ["resilience", "backpressure", "operational observability"],
-      useCases: ["API gateways", "platform infrastructure", "distributed workloads"],
+      useCases: [
+        "API gateways",
+        "platform infrastructure",
+        "distributed workloads",
+      ],
       traps: [
         "Retrying non-idempotent operations blindly.",
         "No timeout/cancellation propagation.",
@@ -252,12 +275,21 @@ function profileFor(projectDir) {
     },
     {
       key: /migration|log-analysis|config|ml-pipeline|profiler|plugin|query-optimizer|graphql/,
-      quick: "Build extensible platform tooling with strict contracts and measurable behavior.",
+      quick:
+        "Build extensible platform tooling with strict contracts and measurable behavior.",
       visualizeInput: "records/config/query set",
       visualizeOutput: "validated transformed output + metrics",
       aim: "Create pipeline stages with explicit contracts and compatibility checks so tooling evolves safely.",
-      concepts: ["pipeline stages", "contract validation", "extension boundaries"],
-      useCases: ["platform tooling", "analytics pipelines", "developer infrastructure"],
+      concepts: [
+        "pipeline stages",
+        "contract validation",
+        "extension boundaries",
+      ],
+      useCases: [
+        "platform tooling",
+        "analytics pipelines",
+        "developer infrastructure",
+      ],
       traps: [
         "Processing malformed data as success.",
         "No versioning strategy for schema changes.",
@@ -276,7 +308,8 @@ function profileFor(projectDir) {
   if (matched) return matched;
 
   return {
-    quick: "Build a production-style implementation that favors testability, clear contracts, and predictable behavior.",
+    quick:
+      "Build a production-style implementation that favors testability, clear contracts, and predictable behavior.",
     visualizeInput: "domain input",
     visualizeOutput: "validated deterministic output",
     aim: "Implement a clear architecture that separates validation, business rules, and output shaping.",
@@ -296,9 +329,7 @@ function profileFor(projectDir) {
 }
 
 function buildPrerequisites(meta) {
-  return meta.prereqs
-    .map((item, i) => `${i + 1}. ${item}`)
-    .join("\n");
+  return meta.prereqs.map((item, i) => `${i + 1}. ${item}`).join("\n");
 }
 
 function makeReadme(levelDir, projectDir) {
@@ -468,20 +499,28 @@ function enrichReadme(levelDir, projectDir) {
 
   const text = fs.readFileSync(readmePath, "utf8");
 
-  const generatedByOld = text.includes("<!-- enriched: projects/tools/enrich-project-lessons.js -->");
-  const generatedByV2 = text.includes("<!-- enriched-v2: projects/tools/enrich-project-lessons-v2.js -->");
+  const generatedByOld = text.includes(
+    "<!-- enriched: projects/tools/enrich-project-lessons.js -->",
+  );
+  const generatedByV2 = text.includes(
+    "<!-- enriched-v2: projects/tools/enrich-project-lessons-v2.js -->",
+  );
 
   if (generatedByOld || generatedByV2) {
     fs.writeFileSync(readmePath, makeReadme(levelDir, projectDir), "utf8");
     return { changed: true, patchedSections: 0 };
   }
 
-  const missing = requiredReadmeSections.filter((section) => !hasSection(text, section));
+  const missing = requiredReadmeSections.filter(
+    (section) => !hasSection(text, section),
+  );
   if (!missing.length) {
     return { changed: false, patchedSections: 0 };
   }
 
-  const additions = missing.map((section) => sectionBlock(section, levelDir, projectDir));
+  const additions = missing.map((section) =>
+    sectionBlock(section, levelDir, projectDir),
+  );
   const next = appendMissingSections(text, additions);
   fs.writeFileSync(readmePath, next, "utf8");
   return { changed: true, patchedSections: missing.length };
@@ -494,7 +533,9 @@ function run() {
 
   for (const levelDir of levels) {
     const levelPath = path.join(projectsRoot, levelDir);
-    const projectDirs = listDirectories(levelPath).filter((name) => /^\d{2}-/.test(name));
+    const projectDirs = listDirectories(levelPath).filter((name) =>
+      /^\d{2}-/.test(name),
+    );
 
     for (const projectDir of projectDirs) {
       scanned += 1;

@@ -80,19 +80,19 @@ Request -> window/account lookup -> decision -> optional increment
 ## Accuracy Traps To Avoid
 
 1. Not resetting counters when window expires
-Fix: compare now with window start and rollover.
+   Fix: compare now with window start and rollover.
 
 2. Mixing `isAllowed` with implicit increment unexpectedly
-Fix: define explicit contract for each method.
+   Fix: define explicit contract for each method.
 
 3. Negative remaining quota values
-Fix: clamp remaining quota at zero.
+   Fix: clamp remaining quota at zero.
 
 4. Shared state collisions across users
-Fix: isolate accounting by user key.
+   Fix: isolate accounting by user key.
 
 5. Time-unit mistakes (seconds vs milliseconds)
-Fix: document and enforce ms-based inputs.
+   Fix: document and enforce ms-based inputs.
 
 ---
 

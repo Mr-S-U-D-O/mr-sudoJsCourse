@@ -82,19 +82,19 @@ Path Input -> Parse -> Categorize -> Group -> Summary
 ## Accuracy Traps To Avoid
 
 1. Case-sensitive extension handling
-Fix: lowercase extension before mapping.
+   Fix: lowercase extension before mapping.
 
 2. Breaking on filenames with multiple dots
-Fix: parse extension from last dot only.
+   Fix: parse extension from last dot only.
 
 3. Failing on files without extension
-Fix: route to `other` category.
+   Fix: route to `other` category.
 
 4. Hardcoding path separators only one way
-Fix: normalize separators before parsing.
+   Fix: normalize separators before parsing.
 
 5. Nondeterministic output order
-Fix: keep stable input order inside each group.
+   Fix: keep stable input order inside each group.
 
 ---
 

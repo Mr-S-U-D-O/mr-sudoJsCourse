@@ -82,19 +82,19 @@ Command -> Validation -> State Update -> Query
 ## Accuracy Traps To Avoid
 
 1. Allowing duplicate email entries
-Fix: enforce unique email check before insert.
+   Fix: enforce unique email check before insert.
 
 2. Mutating contact objects in place
-Fix: return new arrays/objects when updating.
+   Fix: return new arrays/objects when updating.
 
 3. Unclear search semantics
-Fix: define exact behavior (case-insensitive contains match).
+   Fix: define exact behavior (case-insensitive contains match).
 
 4. Silent failures on missing IDs
-Fix: throw actionable errors for not-found IDs.
+   Fix: throw actionable errors for not-found IDs.
 
 5. Inconsistent return types
-Fix: keep each method output shape deterministic.
+   Fix: keep each method output shape deterministic.
 
 ---
 

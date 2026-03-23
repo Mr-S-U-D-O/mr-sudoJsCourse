@@ -88,24 +88,24 @@ Command (add/adjust) -> Validation -> State Update -> Movement Log -> Report Que
 ## Accuracy Traps To Avoid
 
 1. Partial writes on failed updates
-Why it fails: Quantity may change while movement log does not.
-Fix: Validate first, then commit product + movement together.
+   Why it fails: Quantity may change while movement log does not.
+   Fix: Validate first, then commit product + movement together.
 
 2. Floating-point drift for money
-Why it fails: Repeated valuation can accumulate precision noise.
-Fix: Store or compute with cent-safe strategy when needed.
+   Why it fails: Repeated valuation can accumulate precision noise.
+   Fix: Store or compute with cent-safe strategy when needed.
 
 3. Missing SKU existence checks
-Why it fails: Stock adjustments against non-existing products silently corrupt logic.
-Fix: Hard-fail with clear error if SKU is unknown.
+   Why it fails: Stock adjustments against non-existing products silently corrupt logic.
+   Fix: Hard-fail with clear error if SKU is unknown.
 
 4. Allowing negative final stock
-Why it fails: Impossible inventory state.
-Fix: Reject any adjustment that would push quantity below zero.
+   Why it fails: Impossible inventory state.
+   Fix: Reject any adjustment that would push quantity below zero.
 
 5. Mixing report logic into mutation methods
-Why it fails: Harder maintenance and hidden side effects.
-Fix: Keep `generateReport` read-only.
+   Why it fails: Harder maintenance and hidden side effects.
+   Fix: Keep `generateReport` read-only.
 
 ---
 

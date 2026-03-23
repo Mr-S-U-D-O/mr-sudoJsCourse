@@ -90,24 +90,25 @@ Board State -> Generate Candidate Moves -> Legality Filter -> Apply Move -> Reco
 ## Accuracy Traps To Avoid
 
 1. Mixing UI concerns into engine rules
-Why it fails: Rules become coupled to rendering and harder to test.
-Fix: Engine accepts/returns plain data structures only.
+   Why it fails: Rules become coupled to rendering and harder to test.
+   Fix: Engine accepts/returns plain data structures only.
 
 2. Treating pseudo-legal moves as legal
-Why it fails: Allows moves that leave own king in check.
-Fix: Simulate each candidate move and reject if king remains attacked.
+   Why it fails: Allows moves that leave own king in check.
+   Fix: Simulate each candidate move and reject if king remains attacked.
 
 3. Mutating board state during validation
-Why it fails: Validation accidentally changes live game state.
-Fix: Use cloned state for simulation.
+   Why it fails: Validation accidentally changes live game state.
+   Fix: Use cloned state for simulation.
 
 4. Skipping turn validation
-Why it fails: Same color can move twice.
-Fix: Reject moves where piece color does not match current turn.
+   Why it fails: Same color can move twice.
+   Fix: Reject moves where piece color does not match current turn.
 
 5. Incomplete checkmate/stalemate logic
-Why it fails: Game ends incorrectly.
-Fix: Distinguish:
+   Why it fails: Game ends incorrectly.
+   Fix: Distinguish:
+
 - checkmate: in check + no legal moves
 - stalemate: not in check + no legal moves
 
